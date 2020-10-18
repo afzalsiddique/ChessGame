@@ -1,5 +1,6 @@
-public class Rook implements Piece{
+package Pieces;
 
+public class Knight implements Piece {
     @Override
     public boolean makeMove(int[][] positions) {
         return false;
@@ -8,8 +9,5 @@ public class Rook implements Piece{
     @Override
     public String[] checkAvailableMoves() {
         return new String[0];
-    }
-    public void castling(){
-
     }
 }
