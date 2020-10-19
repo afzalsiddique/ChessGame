@@ -80,7 +80,7 @@ public class boardGUI {
         button9.setFocusPainted(false);
 
 
-        button1.addActionListener(new ActionListener() {
+        button9.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 

@@ -1,13 +1,21 @@
 import Pieces.*;
 
 public class Board {
-    public Piece[][] positions;
+    public Piece[][] positions = new Piece[8][8];
+    boardGUI UI;
+
     boolean checkGameState(Piece[][] positions){
         return false;
     }
+
     boolean updateGameState(Piece[][] positions) {
         return false;
     }
+
+    Board(boardGUI UI){
+        this.UI = UI;
+    }
+
     void start(){
         positions[0][0] = new RookWhite();
         positions[0][7] = new RookWhite();
@@ -41,5 +49,9 @@ public class Board {
     }
     boolean isKingChecked(){
         return false;
+    }
+
+    void RemoveThisLater(){
+//        positions[0][0].setReferredButton(UI.);
     }
 }
