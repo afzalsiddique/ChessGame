@@ -16,15 +16,8 @@ public class boardGUI {
     public boardGUI() {
         pawn1 = new Pawn();
         button1.setIcon(pawn1.getWhiteImage());
-        button1.setFocusPainted(false);
-        button2.setIcon(pawn1.getWhiteImage());
-        button2.setFocusPainted(false);
 
-        button3.setIcon(pawn1.getBlackImage());
-        button3.setFocusPainted(false);
 
-        button4.setIcon(pawn1.getBlackImage());
-        button4.setFocusPainted(false);
 
         button1.addActionListener(new ActionListener() {
             @Override

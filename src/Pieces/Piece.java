@@ -1,6 +1,7 @@
 package Pieces;
 
 public abstract class Piece {
+
     public boolean makeMove(int[][] positions) {
         return false;
     }

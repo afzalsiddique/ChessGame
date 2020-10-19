@@ -7,5 +7,13 @@ public class Game {
     public void startNewGame(){}
     public void startNewGameAI(){}
     public void selectColor(String color){}
+
+    DisplayUI displayUI;
+    Board gameBoard;
+
+    public Game(){
+        displayUI = new DisplayUI();
+        gameBoard = new Board();
+    }
 }
 
