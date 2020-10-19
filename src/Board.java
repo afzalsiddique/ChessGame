@@ -18,8 +18,8 @@ public class Board {
         positions[0][2] = new BishopWhite();
         positions[0][5] = new BishopWhite();
 
-        positions[0][3] = new KingWhite();
-        positions[0][4] = new QueenWhite();
+        positions[0][4] = new KingWhite();
+        positions[0][3] = new QueenWhite();
 
         for(int i=0;i<8;i++)
             positions[1][i] = new PawnWhite();
@@ -36,8 +36,8 @@ public class Board {
         positions[7][2] = new BishopBlack();
         positions[7][5] = new BishopBlack();
 
-        positions[7][3] = new KingBlack();
-        positions[7][4] = new QueenBlack();
+        positions[7][4] = new KingBlack();
+        positions[7][3] = new QueenBlack();
     }
     boolean isKingChecked(){
         return false;
