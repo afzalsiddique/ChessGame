@@ -52,6 +52,21 @@ public class Board {
     }
 
     void RemoveThisLater(){
-//        positions[0][0].setReferredButton(UI.);
+        positions[0][0].setReferredButton(UI.button1);
+        positions[0][1].setReferredButton(UI.button1);
+        positions[0][0].setReferredButton(UI.button1);
+        positions[0][0].setReferredButton(UI.button1);
+        positions[0][0].setReferredButton(UI.button1);
+        positions[0][0].setReferredButton(UI.button1);
+        positions[0][0].setReferredButton(UI.button1);
+        positions[0][0].setReferredButton(UI.button1);
+        positions[0][0].setReferredButton(UI.button1);
+        positions[0][0].setReferredButton(UI.button1);
+        positions[0][0].setReferredButton(UI.button1);
+        positions[0][0].setReferredButton(UI.button1);
+        positions[0][0].setReferredButton(UI.button1);
+        positions[0][0].setReferredButton(UI.button1);
+        positions[0][0].setReferredButton(UI.button1);
+        positions[0][0].setReferredButton(UI.button1);
     }
 }
