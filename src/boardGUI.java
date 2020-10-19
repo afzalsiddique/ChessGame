@@ -1,4 +1,5 @@
 import Pieces.Pawn;
+import Pieces.PawnWhite;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -71,12 +72,12 @@ public class boardGUI {
     private JButton button63;
     private JButton button64;
 
-    private Pawn pawn1;
+    private Pawn whitePawn1;
 
     public boardGUI() {
-        pawn1 = new Pawn();
-        button1.setIcon(pawn1.getWhiteImage());
-
+        whitePawn1 = new PawnWhite();
+        button9.setIcon(whitePawn1.getImage());
+        button9.setFocusPainted(false);
 
 
         button1.addActionListener(new ActionListener() {
