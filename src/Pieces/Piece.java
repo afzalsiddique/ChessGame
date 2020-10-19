@@ -1,8 +1,14 @@
 package Pieces;
 
-import javax.swing.*;
+public abstract class Piece {
+    public boolean makeMove(int[][] positions) {
+        return false;
+    }
+    public String[] checkAvailableMoves() {
+        return new String[0];
+    }
 
-public interface Piece {
-    boolean makeMove(int[][] positions);
-    String[] checkAvailableMoves();
+    public void castling(){
+
+    }
 }
