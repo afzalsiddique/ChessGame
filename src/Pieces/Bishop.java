@@ -1,6 +1,6 @@
 package Pieces;
 
-public class Bishop implements Piece {
+public class Bishop extends Piece {
     @Override
     public boolean makeMove(int[][] positions) {
         return false;

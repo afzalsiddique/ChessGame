@@ -4,7 +4,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.io.IOException;
 
-public class Pawn implements Piece {
+public class Pawn extends Piece {
     ImageIcon WhiteImage, BlackImage;
     public Pawn(){
         try {

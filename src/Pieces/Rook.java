@@ -1,6 +1,6 @@
 package Pieces;
 
-public class Rook implements Piece {
+public class Rook extends Piece {
 
     @Override
     public boolean makeMove(int[][] positions) {

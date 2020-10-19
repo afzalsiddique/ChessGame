@@ -1,6 +1,6 @@
 package Pieces;
 
-public class Queen implements Piece {
+public class Queen extends Piece {
     @Override
     public boolean makeMove(int[][] positions) {
         return false;
