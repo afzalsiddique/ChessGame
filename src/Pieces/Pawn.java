@@ -15,6 +15,14 @@ public class Pawn implements Piece {
         }
     }
 
+    public ImageIcon getWhiteImage() {
+        return WhiteImage;
+    }
+
+    public ImageIcon getBlackImage() {
+        return BlackImage;
+    }
+
     @Override
     public boolean makeMove(int[][] positions) {
         return false;
