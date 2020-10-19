@@ -1,6 +1,6 @@
 package Pieces;
 
-public class King implements Piece {
+public class King extends Piece {
     @Override
     public boolean makeMove(int[][] positions) {
         return false;

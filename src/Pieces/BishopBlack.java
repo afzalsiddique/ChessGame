@@ -1,4 +1,4 @@
 package Pieces;
 
-public class BishopBlack {
+public class BishopBlack extends Bishop{
 }

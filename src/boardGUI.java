@@ -1,5 +1,4 @@
 import Pieces.Pawn;
-import Pieces.Piece;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
