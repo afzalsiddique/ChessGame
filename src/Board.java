@@ -53,20 +53,12 @@ public class Board {
 
     void RemoveThisLater(){
         positions[0][0].setReferredButton(UI.button1);
-        positions[0][1].setReferredButton(UI.button1);
-        positions[0][0].setReferredButton(UI.button1);
-        positions[0][0].setReferredButton(UI.button1);
-        positions[0][0].setReferredButton(UI.button1);
-        positions[0][0].setReferredButton(UI.button1);
-        positions[0][0].setReferredButton(UI.button1);
-        positions[0][0].setReferredButton(UI.button1);
-        positions[0][0].setReferredButton(UI.button1);
-        positions[0][0].setReferredButton(UI.button1);
-        positions[0][0].setReferredButton(UI.button1);
-        positions[0][0].setReferredButton(UI.button1);
-        positions[0][0].setReferredButton(UI.button1);
-        positions[0][0].setReferredButton(UI.button1);
-        positions[0][0].setReferredButton(UI.button1);
-        positions[0][0].setReferredButton(UI.button1);
+        positions[1][0].setReferredButton(UI.button9);
+        positions[2][0].setReferredButton(UI.button17);
+        positions[3][0].setReferredButton(UI.button25);
+        positions[4][0].setReferredButton(UI.button33);
+        positions[5][0].setReferredButton(UI.button41);
+        positions[6][0].setReferredButton(UI.button49);
+        positions[7][0].setReferredButton(UI.button55);
     }
 }
