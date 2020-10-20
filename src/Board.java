@@ -4,6 +4,10 @@ public class Board {
     public Piece[][] positions = new Piece[8][8];
     boardGUI UI;
 
+    Piece toMove;
+    boolean makingMove = false;
+
+
     boolean checkGameState(Piece[][] positions){
         return false;
     }
@@ -19,6 +23,13 @@ public class Board {
     }
 
     void start(){
+
+        for(int i=0; i<8; i++){
+            for(int j=0; j<8; j++){
+                positions[i][j] = null;
+            }
+        }
+
         positions[0][0] = new RookWhite();
         positions[0][7] = new RookWhite();
 
@@ -61,8 +72,18 @@ public class Board {
         return true;
     }
 
-    void makeMove(){
-
+    void makeMove(int x, int y){
+        System.out.println("Internal:\n" + x + " " + y + "\nMakingMove=" + makingMove);
+        if(makingMove){
+            positions[x][y] = toMove;
+            makingMove = false;
+            toMove = null;
+        }
+        else{
+            toMove = positions[x][y];
+            positions[x][y] = null;
+            makingMove = true;
+        }
     }
 
     void RemoveThisLater(){

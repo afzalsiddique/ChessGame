@@ -86,7 +86,7 @@ public class boardGUI {
     }
 
     void makeMove(int x, int y, JButton button){
-        System.out.println(x + " " + y);
+        System.out.println(x + " " + y + "\nMakingMove=" + makingMove);
         if(makingMove){
             System.out.println("1in");
             if(!internalBoard.isOccupied(x,y)){
@@ -94,6 +94,7 @@ public class boardGUI {
                 makingMove = false;
                 button.setIcon(toMove);
                 previousButton.setIcon(null);
+                internalBoard.makeMove(x,y);
                 System.out.println("Success1");
             }
         }
@@ -104,6 +105,7 @@ public class boardGUI {
                 makingMove = true;
                 toMove = (ImageIcon) button.getIcon();
                 previousButton = button;
+                internalBoard.makeMove(x,y);
                 System.out.println("Success2");
             }
         }
