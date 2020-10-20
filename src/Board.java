@@ -6,6 +6,7 @@ public class Board {
 
     Piece toMove;
     boolean makingMove = false;
+    int prevX, prevY;
 
 
     boolean checkGameState(Piece[][] positions){
@@ -76,12 +77,14 @@ public class Board {
         System.out.println("Internal:\n" + x + " " + y + "\nMakingMove=" + makingMove);
         if(makingMove){
             positions[x][y] = toMove;
+            positions[prevX][prevY] = null;
             makingMove = false;
             toMove = null;
         }
         else{
             toMove = positions[x][y];
-            positions[x][y] = null;
+            prevX = x;
+            prevY = y;
             makingMove = true;
         }
     }
