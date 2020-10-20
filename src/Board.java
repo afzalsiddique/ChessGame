@@ -45,20 +45,20 @@ public class Board {
         for(int i=0;i<8;i++)
             positions[1][i] = new PawnWhite();
 
-        for(int i=0;i<8;i++)
-            positions[6][i] = new PawnBlack();
-
-        positions[7][0] = new RookBlack();
-        positions[7][7] = new RookBlack();
-
-        positions[7][1] = new KnightBlack();
-        positions[7][6] = new KnightBlack();
-
-        positions[7][2] = new BishopBlack();
-        positions[7][5] = new BishopBlack();
-
-        positions[7][4] = new KingBlack();
-        positions[7][3] = new QueenBlack();
+//        for(int i=0;i<8;i++)
+//            positions[6][i] = new PawnBlack();
+//
+//        positions[7][0] = new RookBlack();
+//        positions[7][7] = new RookBlack();
+//
+//        positions[7][1] = new KnightBlack();
+//        positions[7][6] = new KnightBlack();
+//
+//        positions[7][2] = new BishopBlack();
+//        positions[7][5] = new BishopBlack();
+//
+//        positions[7][4] = new KingBlack();
+//        positions[7][3] = new QueenBlack();
     }
 
     boolean isKingChecked(){
