@@ -89,7 +89,7 @@ public class boardGUI {
         System.out.println(x + " " + y + "\nMakingMove=" + makingMove);
         if(makingMove){
             System.out.println("1in");
-            if(!internalBoard.isOccupied(x,y)){
+            if(!internalBoard.isOccupied(x,y) && internalBoard.checkIfValid(x,y)){
                 System.out.println("11in");
                 makingMove = false;
                 button.setIcon(toMove);
@@ -113,69 +113,69 @@ public class boardGUI {
 
     public boardGUI() {
         whitePawn1 = new PawnWhite();
-        button9.setIcon(whitePawn1.getImage());
-        button1.setFocusPainted(false);
-        button9.setFocusPainted(false);
-        button17.setFocusPainted(false);
-        button25.setFocusPainted(false);
-        button33.setFocusPainted(false);
-        button41.setFocusPainted(false);
-        button49.setFocusPainted(false);
-        button57.setFocusPainted(false);
+        button12.setIcon(whitePawn1.getImage());
+        button4.setFocusPainted(false);
+        button12.setFocusPainted(false);
+        button20.setFocusPainted(false);
+        button28.setFocusPainted(false);
+        button36.setFocusPainted(false);
+        button44.setFocusPainted(false);
+        button52.setFocusPainted(false);
+        button60.setFocusPainted(false);
 
-        button1.addActionListener(new ActionListener() {
+        button4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               makeMove(0,0, button1);
+               makeMove(0,3, button4);
             }
         });
 
-         button9.addActionListener(new ActionListener() {
+         button12.addActionListener(new ActionListener() {
               @Override
               public void actionPerformed(ActionEvent e) {
-                   makeMove(1,0, button9);
+                   makeMove(1,3, button12);
               }
          });
 
-         button17.addActionListener(new ActionListener() {
+         button20.addActionListener(new ActionListener() {
               @Override
               public void actionPerformed(ActionEvent e) {
-                   makeMove(2,0, button17);
+                   makeMove(2,3, button20);
               }
          });
 
-         button25.addActionListener(new ActionListener() {
+         button28.addActionListener(new ActionListener() {
               @Override
               public void actionPerformed(ActionEvent e) {
-                   makeMove(3,0, button25);
+                   makeMove(3,3, button28);
               }
          });
 
-         button33.addActionListener(new ActionListener() {
+         button36.addActionListener(new ActionListener() {
               @Override
               public void actionPerformed(ActionEvent e) {
-                   makeMove(4,0, button33);
+                   makeMove(4,3, button36);
               }
          });
 
-         button41.addActionListener(new ActionListener() {
+         button44.addActionListener(new ActionListener() {
               @Override
               public void actionPerformed(ActionEvent e) {
-                   makeMove(5,0, button41);
+                   makeMove(5,3, button44);
               }
          });
 
-         button49.addActionListener(new ActionListener() {
+         button52.addActionListener(new ActionListener() {
               @Override
               public void actionPerformed(ActionEvent e) {
-                   makeMove(6,0, button49);
+                   makeMove(6,3, button52);
               }
          });
 
-        button57.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                makeMove(7,0, button57);
+        button60.addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent e) {
+                makeMove(7,3, button60);
             }
         });
     }

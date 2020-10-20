@@ -30,21 +30,21 @@ public class Board {
                 positions[i][j] = null;
             }
         }
-
-        positions[0][0] = new RookWhite();
-        positions[0][7] = new RookWhite();
-
-        positions[0][1] = new KnightWhite();
-        positions[0][6] = new KnightWhite();
-
-        positions[0][2] = new BishopWhite();
-        positions[0][5] = new BishopWhite();
-
-        positions[0][4] = new KingWhite();
-        positions[0][3] = new QueenWhite();
-
-        for(int i=0;i<8;i++)
-            positions[1][i] = new PawnWhite();
+        positions[1][3] = new PawnWhite();
+//        positions[0][0] = new RookWhite();
+//        positions[0][7] = new RookWhite();
+//
+//        positions[0][1] = new KnightWhite();
+//        positions[0][6] = new KnightWhite();
+//
+//        positions[0][2] = new BishopWhite();
+//        positions[0][5] = new BishopWhite();
+//
+//        positions[0][4] = new KingWhite();
+//        positions[0][3] = new QueenWhite();
+//
+//        for(int i=0;i<8;i++)
+//            positions[1][i] = new PawnWhite();
 
 //        for(int i=0;i<8;i++)
 //            positions[6][i] = new PawnBlack();
@@ -71,6 +71,12 @@ public class Board {
         if(positions[x][y] == null)
             return false;
         return true;
+    }
+
+    boolean checkIfValid(int x, int y){
+        if(y == prevY && x == prevX + 1)
+            return true;
+        return false;
     }
 
     void makeMove(int x, int y){
