@@ -16,7 +16,7 @@ public class Board {
         this.UI = UI;
     }
 
-    void start(){
+    public void start(){
         positions[0][0] = new RookWhite();
         positions[0][7] = new RookWhite();
 
