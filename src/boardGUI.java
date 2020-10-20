@@ -7,6 +7,10 @@ import java.awt.event.ActionListener;
 
 public class boardGUI {
      public JPanel BackPanel;
+     boolean makingMove = false;
+
+     Board internalBoard;
+
      JButton button1;
      JButton button2;
      JButton button3;
@@ -74,17 +78,90 @@ public class boardGUI {
 
     private Pawn whitePawn1;
 
+    void setInternalBoard(Board board){
+        internalBoard = board;
+    }
+
+    void makeMove(int x, int y, JButton button){
+        System.out.println(x + " " + y);
+        if(makingMove){
+
+        }
+        else{
+            if(internalBoard.isOccupied(x,y)){
+                makingMove = true;
+
+            }
+        }
+    }
+
     public boardGUI() {
         whitePawn1 = new PawnWhite();
         button9.setIcon(whitePawn1.getImage());
+        button1.setFocusPainted(false);
         button9.setFocusPainted(false);
+        button17.setFocusPainted(false);
+        button25.setFocusPainted(false);
+        button33.setFocusPainted(false);
+        button41.setFocusPainted(false);
+        button49.setFocusPainted(false);
+        button57.setFocusPainted(false);
 
-
-        button9.addActionListener(new ActionListener() {
+        button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+               makeMove(0,0, button1);
+            }
+        });
 
+         button9.addActionListener(new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                   makeMove(1,0, button9);
+              }
+         });
+
+         button17.addActionListener(new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                   makeMove(2,0, button17);
+              }
+         });
+
+         button25.addActionListener(new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                   makeMove(3,0, button25);
+              }
+         });
+
+         button33.addActionListener(new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                   makeMove(4,0, button33);
+              }
+         });
+
+         button41.addActionListener(new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                   makeMove(5,0, button41);
+              }
+         });
+
+         button49.addActionListener(new ActionListener() {
+              @Override
+              public void actionPerformed(ActionEvent e) {
+                   makeMove(6,0, button49);
+              }
+         });
+
+        button57.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                makeMove(7,0, button57);
             }
         });
     }
+
 }

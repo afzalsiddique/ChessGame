@@ -13,7 +13,7 @@ public class Game {
 
     public Game(){
         displayUI = new DisplayUI();
-        gameBoard = new Board(displayUI.b);
+        gameBoard = new Board(displayUI.DisplayBoard);
     }
 }
 

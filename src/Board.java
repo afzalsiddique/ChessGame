@@ -14,6 +14,7 @@ public class Board {
 
     Board(boardGUI UI){
         this.UI = UI;
+        UI.setInternalBoard(this);
     }
 
     void start(){
@@ -47,8 +48,15 @@ public class Board {
         positions[7][4] = new KingBlack();
         positions[7][3] = new QueenBlack();
     }
+
     boolean isKingChecked(){
         return false;
+    }
+
+    boolean isOccupied(int x, int y){
+        if(positions[x][y] == null)
+            return false;
+        return true;
     }
 
     void RemoveThisLater(){
@@ -59,6 +67,6 @@ public class Board {
         positions[4][0].setReferredButton(UI.button33);
         positions[5][0].setReferredButton(UI.button41);
         positions[6][0].setReferredButton(UI.button49);
-        positions[7][0].setReferredButton(UI.button55);
+        positions[7][0].setReferredButton(UI.button57);
     }
 }
