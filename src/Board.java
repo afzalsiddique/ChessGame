@@ -15,6 +15,7 @@ public class Board {
     Board(boardGUI UI){
         this.UI = UI;
         UI.setInternalBoard(this);
+        start();
     }
 
     void start(){
@@ -54,9 +55,14 @@ public class Board {
     }
 
     boolean isOccupied(int x, int y){
+        System.out.println("This is " + x + " " + y);
         if(positions[x][y] == null)
             return false;
         return true;
+    }
+
+    void makeMove(){
+
     }
 
     void RemoveThisLater(){

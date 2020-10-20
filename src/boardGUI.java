@@ -7,7 +7,10 @@ import java.awt.event.ActionListener;
 
 public class boardGUI {
      public JPanel BackPanel;
+
      boolean makingMove = false;
+     JButton previousButton;
+     ImageIcon toMove;
 
      Board internalBoard;
 
@@ -85,12 +88,23 @@ public class boardGUI {
     void makeMove(int x, int y, JButton button){
         System.out.println(x + " " + y);
         if(makingMove){
-
+            System.out.println("1in");
+            if(!internalBoard.isOccupied(x,y)){
+                System.out.println("11in");
+                makingMove = false;
+                button.setIcon(toMove);
+                previousButton.setIcon(null);
+                System.out.println("Success1");
+            }
         }
         else{
+            System.out.println("2in " + "bool=" + internalBoard.isOccupied(x,y));
             if(internalBoard.isOccupied(x,y)){
+                System.out.println("22in");
                 makingMove = true;
-
+                toMove = (ImageIcon) button.getIcon();
+                previousButton = button;
+                System.out.println("Success2");
             }
         }
     }
