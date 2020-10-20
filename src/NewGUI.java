@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class NewGUI extends JFrame {
     public NewJButton[][] buttons = new NewJButton[8][8];
-    String move = "MOVE";
+    String move = "";
     public NewGUI(){
         createButtons();
         makeLayoutVisible();
