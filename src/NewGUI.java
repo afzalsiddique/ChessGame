@@ -14,7 +14,18 @@ public class NewGUI extends JFrame {
             for(int j=0;j<8;j++){
                 buttons[i][j] = new NewJButton(move);
                 add(buttons[i][j]);
-                buttons[i][j].setBackground(Color.BLACK);
+                if(i%2==0){
+                    if(j%2==0)
+                        buttons[i][j].setBackground(Color.BLACK);
+                    else
+                        buttons[i][j].setBackground(Color.WHITE);
+                }
+                else {
+                    if (j % 2 != 0)
+                        buttons[i][j].setBackground(Color.BLACK);
+                    else
+                        buttons[i][j].setBackground(Color.WHITE);
+                }
             }
         }
     }
