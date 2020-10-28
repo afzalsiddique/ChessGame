@@ -3,6 +3,7 @@ package Pieces;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Pawn extends Piece {
     public Pawn(boolean isWhite){
@@ -14,9 +15,12 @@ public class Pawn extends Piece {
     }
 
     @Override
-    public void calculateAvailableMoves() {
+    public ArrayList<Spot> calculateAvailableMoves() {
+        availableMoves.clear();
         availableMoves.add(new Spot(0,0));
+        return  availableMoves;
     }
+
 
 
 }

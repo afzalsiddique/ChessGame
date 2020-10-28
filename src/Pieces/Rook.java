@@ -1,5 +1,7 @@
 package Pieces;
 
+import java.util.ArrayList;
+
 public class Rook extends Piece {
 
     @Override
@@ -8,9 +10,13 @@ public class Rook extends Piece {
     }
 
     @Override
-    public void calculateAvailableMoves() {
+    public ArrayList<Spot> calculateAvailableMoves() {
+        availableMoves.clear();
         availableMoves.add(new Spot(0,0));
+        return  availableMoves;
     }
+
+
     public void castling(){
 
     }

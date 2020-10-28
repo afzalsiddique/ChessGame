@@ -1,5 +1,7 @@
 package Pieces;
 
+import java.util.ArrayList;
+
 public class Queen extends Piece {
     @Override
     public boolean makeMove(int[][] positions) {
@@ -7,25 +9,15 @@ public class Queen extends Piece {
     }
 
     @Override
-    public void calculateAvailableMoves() {
+    public ArrayList<Spot> calculateAvailableMoves() {
+        availableMoves.clear();
         availableMoves.add(new Spot(0,0));
+        return  availableMoves;
     }
+
 
     String promotion() {
         return "";
     }
-
-    Piece selectPiece() {
-        return new Piece() {
-            @Override
-            public boolean makeMove(int[][] positions) {
-                return false;
-            }
-
-            @Override
-            public void calculateAvailableMoves() {
-                availableMoves.add(new Spot(0,0));
-            }
-        };
-    }
+    
 }
