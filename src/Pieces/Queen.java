@@ -15,9 +15,8 @@ public class Queen extends Piece {
         return  availableMoves;
     }
 
-
     String promotion() {
         return "";
     }
-    
+
 }
