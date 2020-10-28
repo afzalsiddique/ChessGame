@@ -6,6 +6,7 @@ public abstract class Piece {
 
     ImageIcon image;
     JButton ReferredButton;
+    boolean isWhite;
 
     public boolean makeMove(int[][] positions) {
         return false;

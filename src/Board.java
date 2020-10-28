@@ -2,7 +2,7 @@ import Pieces.*;
 
 public class Board {
     public Piece[][] positions = new Piece[8][8];
-    boardGUI UI;
+//    boardGUI UI;
 
     Piece toMove;
     boolean makingMove = false;
@@ -17,11 +17,11 @@ public class Board {
         return false;
     }
 
-    Board(boardGUI UI){
-        this.UI = UI;
-        UI.setInternalBoard(this);
-        start();
-    }
+//    Board(boardGUI UI){
+//        this.UI = UI;
+//        UI.setInternalBoard(this);
+//        start();
+//    }
 
     void start(){
 

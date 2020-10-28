@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.io.IOException;
 
 public class Pawn extends Piece {
-    boolean isWhite;
+
     public Pawn(boolean isWhite){
         this.isWhite = isWhite;
     }
