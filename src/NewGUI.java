@@ -1,12 +1,25 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class NewGUI extends JFrame {
     public NewJButton[][] buttons = new NewJButton[8][8];
+    ActionListener actionListener;
     String move = "";
     public NewGUI(){
         createButtons();
         makeLayoutVisible();
+    }
+
+    void createActionListener(int x, int y){
+        actionListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Make moves etc.
+            }
+        };
+
     }
 
     public void createButtons(){
@@ -14,6 +27,8 @@ public class NewGUI extends JFrame {
             for(int j=0;j<8;j++){
                 buttons[i][j] = new NewJButton("");
                 add(buttons[i][j]);
+                createActionListener(i,j);
+                buttons[i][j].addActionListener(actionListener);
                 if(i%2==0){
                     if(j%2==0)
                         buttons[i][j].setBackground(Color.WHITE);
