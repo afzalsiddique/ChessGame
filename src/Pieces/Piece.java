@@ -1,18 +1,21 @@
 package Pieces;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
 public abstract class Piece {
 
     ImageIcon image;
     JButton ReferredButton;
-    boolean isWhite;
+    protected boolean isWhite;
+    public ArrayList<Spot> availableMoves;
 
     public boolean makeMove(int[][] positions) {
         return false;
     }
-    public String[] checkAvailableMoves() {
-        return new String[0];
+
+    public void calculateAvailableMoves() {
+        availableMoves.add(new Spot(0,0));
     }
 
     public void setReferredButton(JButton referredButton) {
