@@ -15,6 +15,7 @@ public abstract class Piece {
     }
 
     public void calculateAvailableMoves() {
+        availableMoves.clear();
         availableMoves.add(new Spot(0,0));
     }
 
