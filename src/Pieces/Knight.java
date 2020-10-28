@@ -7,7 +7,7 @@ public class Knight extends Piece {
     }
 
     @Override
-    public String[] checkAvailableMoves() {
-        return new String[0];
+    public void calculateAvailableMoves() {
+        availableMoves.add(new Spot(0,0));
     }
 }

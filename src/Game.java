@@ -12,8 +12,8 @@ public class Game {
     Board gameBoard;
 
     public Game(){
-        displayUI = new DisplayUI();
-        gameBoard = new Board(displayUI.DisplayBoard);
+//        displayUI = new DisplayUI();
+//        gameBoard = new Board(displayUI.DisplayBoard);
     }
 }
 
