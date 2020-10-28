@@ -1,7 +1,10 @@
 import Pieces.*;
 
+import java.util.ArrayList;
+
 public class Board {
     public Piece[][] positions = new Piece[8][8];
+    ArrayList<Spot> emptySpots = new ArrayList<>();
 //    boardGUI UI;
 
     Piece toMove;
@@ -25,5 +28,13 @@ public class Board {
 
     void start() {
         positions[1][0] = new Pawn(true);
+    }
+    public void getEmptySpots(){
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                if(this.positions[i][j]==null)
+                    emptySpots.add(new Spot(i,j));
+            }
+        }
     }
 }
