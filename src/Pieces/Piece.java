@@ -25,7 +25,8 @@ public abstract class Piece {
     public ImageIcon getImage(){
         return image;
     }
-    public void castling(){
 
+    public void castling(){
+    
     }
 }
