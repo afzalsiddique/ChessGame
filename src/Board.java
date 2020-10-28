@@ -30,7 +30,9 @@ public class Board {
                 positions[i][j] = null;
             }
         }
-        positions[1][3] = new PawnWhite();
+
+
+//        positions[1][3] = new PawnWhite();
 //        positions[0][0] = new RookWhite();
 //        positions[0][7] = new RookWhite();
 //
@@ -62,47 +64,5 @@ public class Board {
 //        positions[7][3] = new QueenBlack();
     }
 
-    boolean isKingChecked(){
-        return false;
-    }
 
-    boolean isOccupied(int x, int y){
-        System.out.println("This is " + x + " " + y);
-        if(positions[x][y] == null)
-            return false;
-        return true;
-    }
-
-    boolean checkIfValid(int x, int y){
-        if(y == prevY && x == prevX + 1)
-            return true;
-        return false;
-    }
-
-    void makeMove(int x, int y){
-        System.out.println("Internal:\n" + x + " " + y + "\nMakingMove=" + makingMove);
-        if(makingMove){
-            positions[x][y] = toMove;
-            positions[prevX][prevY] = null;
-            makingMove = false;
-            toMove = null;
-        }
-        else{
-            toMove = positions[x][y];
-            prevX = x;
-            prevY = y;
-            makingMove = true;
-        }
-    }
-
-    void RemoveThisLater(){
-        positions[0][0].setReferredButton(UI.button1);
-        positions[1][0].setReferredButton(UI.button9);
-        positions[2][0].setReferredButton(UI.button17);
-        positions[3][0].setReferredButton(UI.button25);
-        positions[4][0].setReferredButton(UI.button33);
-        positions[5][0].setReferredButton(UI.button41);
-        positions[6][0].setReferredButton(UI.button49);
-        positions[7][0].setReferredButton(UI.button57);
-    }
 }
