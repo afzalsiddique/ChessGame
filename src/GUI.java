@@ -3,11 +3,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class NewGUI extends JFrame {
-    public NewJButton[][] buttons = new NewJButton[8][8];
+public class GUI extends JFrame {
+    public buttons[][] buttons = new buttons[8][8];
     ActionListener actionListener;
     String move = "";
-    public NewGUI(){
+    public GUI(){
         createButtons();
         makeLayoutVisible();
     }
@@ -25,7 +25,7 @@ public class NewGUI extends JFrame {
     public void createButtons(){
         for(int i=0;i<8;i++){
             for(int j=0;j<8;j++){
-                buttons[i][j] = new NewJButton("");
+                buttons[i][j] = new buttons("");
                 add(buttons[i][j]);
                 createActionListener(i,j);
                 buttons[i][j].addActionListener(actionListener);
