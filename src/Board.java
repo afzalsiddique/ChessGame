@@ -27,7 +27,7 @@ public class Board {
 //    }
 
     void start() {
-        positions[1][0] = new Pawn(true);
+        positions[1][0] = new Pawn(true, new Spot(6,1));
     }
     public void getEmptySpots(){
         for(int i=0;i<8;i++){

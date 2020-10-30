@@ -10,7 +10,7 @@ public abstract class Piece {
     protected boolean isWhite;
     public ArrayList<Spot> availableMoves = new ArrayList<>();
 
-    public boolean makeMove(int[][] positions) {
+    public boolean makeMove(Piece[][] positions) {
         return false;
     }
 

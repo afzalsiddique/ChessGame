@@ -11,7 +11,7 @@ public class Pawn extends Piece {
         this.spot = spot;
     }
     @Override
-    public boolean makeMove(int[][] positions) {
+    public boolean makeMove(Piece[][] positions) {
         return false;
     }
 
