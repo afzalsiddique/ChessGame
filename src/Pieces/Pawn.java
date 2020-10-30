@@ -6,8 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Pawn extends Piece {
-    public Pawn(boolean isWhite){
+    public Pawn(boolean isWhite, Spot spot){
         this.isWhite = isWhite;
+        this.spot = spot;
     }
     @Override
     public boolean makeMove(int[][] positions) {
