@@ -1,8 +1,5 @@
 package Pieces;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Pawn extends Piece {
@@ -19,12 +16,12 @@ public class Pawn extends Piece {
     public ArrayList<Spot> calculateAllPossibleMoves() {
 
         availableMoves.clear();
-        if (spot.x >=0 && spot.x <=7 && spot.y >=0 && spot.y <=7)
-            availableMoves.add(new Spot(spot.x-1, spot.y));
-        if (spot.x >=0 && spot.x <=7 && spot.y >=0 && spot.y <=7)
-            availableMoves.add(new Spot(spot.x-1, spot.y-1));
-        if (spot.x >=0 && spot.x <=7 && spot.y >=0 && spot.y <=7)
-            availableMoves.add(new Spot(spot.x-1, spot.y+1));
+        if (spot.row >=0 && spot.row <=7 && spot.col >=0 && spot.col <=7)
+            availableMoves.add(new Spot(spot.row -1, spot.col));
+        if (spot.row >=0 && spot.row <=7 && spot.col >=0 && spot.col <=7)
+            availableMoves.add(new Spot(spot.row -1, spot.col -1));
+        if (spot.row >=0 && spot.row <=7 && spot.col >=0 && spot.col <=7)
+            availableMoves.add(new Spot(spot.row -1, spot.col +1));
         return  availableMoves;
     }
 

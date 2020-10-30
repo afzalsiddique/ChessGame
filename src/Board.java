@@ -48,7 +48,7 @@ public class Board {
                 return;
             if(ifMoveIsValid(inputPiece.getSpot())){
                 Spot thisSpot = inputPiece.getSpot();
-                positions[thisSpot.x][thisSpot.y] = inputPiece;
+                positions[thisSpot.row][thisSpot.col] = inputPiece;
                 moveTransitionRecord.getToMovePiece().setSpot(inputPiece.getSpot());
                 moveTransitionRecord.reset();
             }
