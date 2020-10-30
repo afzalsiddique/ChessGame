@@ -18,16 +18,4 @@ public class Spot implements Comparable<Spot> {
             return -1;
         return 0;
     }
-
-
-
-//    delete this
-//    @Override
-//    public int compare(Spot spot1, Spot spot2) {
-//        if(spot1.row<spot2.row)
-//            return 1;
-//        else if(spot1.row>spot2.row)
-//            return -1;
-//        return 0;
-//    }
 }
