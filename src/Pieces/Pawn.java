@@ -16,9 +16,15 @@ public class Pawn extends Piece {
     }
 
     @Override
-    public ArrayList<Spot> calculateAvailableMoves() {
+    public ArrayList<Spot> calculateAllPossibleMoves() {
+
         availableMoves.clear();
-        availableMoves.add(new Spot(0,0));
+        if (spot.x >=0 && spot.x <=7 && spot.y >=0 && spot.y <=7)
+            availableMoves.add(new Spot(spot.x-1, spot.y));
+        if (spot.x >=0 && spot.x <=7 && spot.y >=0 && spot.y <=7)
+            availableMoves.add(new Spot(spot.x-1, spot.y-1));
+        if (spot.x >=0 && spot.x <=7 && spot.y >=0 && spot.y <=7)
+            availableMoves.add(new Spot(spot.x-1, spot.y+1));
         return  availableMoves;
     }
 
