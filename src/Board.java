@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Board {
     public Piece[][] positions = new Piece[8][8];
     ArrayList<Spot> emptySpots = new ArrayList<>();
+    ArrayList<Spot> availableMoves = new ArrayList<>();
 
     MoveTransitionRecord moveTransitionRecord = new MoveTransitionRecord();
 //    boardGUI UI;
@@ -28,8 +29,34 @@ public class Board {
 //        start();
 //    }
 
-    void makeMove(Spot inputSpot){
+    void displayAvailableMoves(){
+        availableMoves = moveTransitionRecord.getToMovePiece().calculateAllPossibleMoves();
 
+        // Display Code...
+    }
+
+    boolean ifMoveIsValid(Spot inputSpot){
+        return availableMoves.contains(inputSpot);
+    }
+
+    void makeMove(Piece inputPiece){
+        if(inputPiece == null)
+            return;
+
+        if(moveTransitionRecord.checkIfSelected()){
+            if(inputPiece.equals(moveTransitionRecord.getToMovePiece()))
+                return;
+            if(ifMoveIsValid(inputPiece.getSpot())){
+                Spot thisSpot = inputPiece.getSpot();
+                positions[thisSpot.x][thisSpot.y] = inputPiece;
+                moveTransitionRecord.getToMovePiece().setSpot(inputPiece.getSpot());
+                moveTransitionRecord.reset();
+            }
+        }
+        else{
+            moveTransitionRecord.setToMovePiece(inputPiece);
+            displayAvailableMoves();
+        }
     }
 
 

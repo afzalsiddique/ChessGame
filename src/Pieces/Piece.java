@@ -20,6 +20,14 @@ public abstract class Piece {
         return  availableMoves;
     }
 
+    public Spot getSpot() {
+        return spot;
+    }
+
+    public void setSpot(Spot spot) {
+        this.spot = spot;
+    }
+
     public void setReferredButton(JButton referredButton) {
         ReferredButton = referredButton;
     }

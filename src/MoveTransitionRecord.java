@@ -2,7 +2,6 @@ import Pieces.*;
 
 public class MoveTransitionRecord {
     private Piece toMove;
-    private Spot prevSpot;
 
     boolean checkIfSelected(){
         if(toMove == null)
@@ -11,7 +10,6 @@ public class MoveTransitionRecord {
     }
 
     public void reset(){
-        prevSpot = null;
         toMove = null;
     }
 
@@ -19,8 +17,8 @@ public class MoveTransitionRecord {
         toMove = piece;
     }
 
-    public void setPrevSpot(Spot spot){
-        prevSpot = spot;
+    public Spot getPrevSpot(){
+        return toMove.getSpot();
     }
 
     public Piece getToMovePiece(){
