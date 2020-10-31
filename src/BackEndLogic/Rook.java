@@ -23,20 +23,22 @@ public class Rook extends Piece
         {
             for (int row = spot.row + 1; row < 8; row++)
             {
-                if (board.positions[row][spot.col] == null) //Enemy piece not implemented
+                if (board.positions[row][spot.col] == null)
                     availableMoves.add(new Spot(row, spot.col));
-                else {
-                    if (!(board.positions[row][spot.col].isWhite))
-                        availableMoves.add(new Spot(row, spot.col));
+                else if (!(board.positions[row][spot.col].isWhite)) {
+                    availableMoves.add(new Spot(row, spot.col));
                     break;
                 }
+                else break;
             }
             for (int row = spot.row - 1; row >= 0; row--)
             {
                 if (board.positions[row][spot.col] == null)
                     availableMoves.add(new Spot(row, spot.col));
-                else if (!(board.positions[row][spot.col].isWhite))
+                else if (!(board.positions[row][spot.col].isWhite)) {
                     availableMoves.add(new Spot(row, spot.col));
+                    break;
+                }
                 else
                     break;
             }
@@ -44,8 +46,10 @@ public class Rook extends Piece
             {
                 if (board.positions[spot.row][col] == null)
                     availableMoves.add(new Spot(spot.row, col));
-                else if (!(board.positions[spot.row][col].isWhite))
+                else if (!(board.positions[spot.row][col].isWhite)) {
                     availableMoves.add(new Spot(spot.row, col));
+                    break;
+                }
                 else
                     break;
             }
@@ -53,8 +57,10 @@ public class Rook extends Piece
             {
                 if (board.positions[spot.row][col] == null)
                     availableMoves.add(new Spot(spot.row, col));
-                else if (!(board.positions[spot.row][col].isWhite))
+                else if (!(board.positions[spot.row][col].isWhite)) {
                     availableMoves.add(new Spot(spot.row, col));
+                    break;
+                }
                 else
                     break;
             }
