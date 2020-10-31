@@ -14,7 +14,7 @@ public abstract class Piece {
         return false;
     }
 
-    public ArrayList<Spot> calculateAllPossibleMoves() {
+    public ArrayList<Spot> calculateAllPossibleMoves(Piece[][] positions) {
         availableMoves.clear();
         availableMoves.add(new Spot(0,0));
         return  availableMoves;
