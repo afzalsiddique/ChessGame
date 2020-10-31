@@ -30,7 +30,7 @@ public class Board {
 //    }
 
     void displayAvailableMoves(){
-        availableMoves = moveTransitionRecord.getToMovePiece().calculateAllPossibleMoves();
+        availableMoves = moveTransitionRecord.getToMovePiece().calculateAllPossibleMoves(positions);
 
         // Display Code...
     }
@@ -71,5 +71,8 @@ public class Board {
                     emptySpots.add(new Spot(i,j));
             }
         }
+    }
+    public void addPiece(Piece piece){
+        positions[piece.spot.row][piece.spot.col] = piece;
     }
 }

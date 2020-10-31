@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public abstract class Piece {
-    Spot spot;
+    public Spot spot;
     ImageIcon image;
     JButton ReferredButton;
     protected boolean isWhite;
