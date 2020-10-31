@@ -1,3 +1,6 @@
+package UserInterface;
+
+
 public class Game {
     public int noOfGamesPlayed;
     public int Player1wins;
@@ -9,7 +12,7 @@ public class Game {
     public void selectColor(String color){}
 
     DisplayUI displayUI;
-    Board gameBoard;
+//    Board gameBoard;
 
     public Game(){
 //        displayUI = new DisplayUI();
