@@ -16,7 +16,13 @@ public class Spot implements Comparable<Spot> {
             return 1;
         if(this.row<spot.row)
             return -1;
+        else{
+            if(this.col>spot.col)
+                return 1;
+            if(this.col<spot.col)
+                return -1;
         return 0;
+        }
     }
 
     @Override
