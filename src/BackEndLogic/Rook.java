@@ -31,6 +31,33 @@ public class Rook extends Piece
                     break;
                 }
             }
+            for (int row = spot.row - 1; row >= 0; row--)
+            {
+                if (board.positions[row][spot.col] != null)
+                    availableMoves.add(new Spot(row, spot.col));
+                else if (!board.positions[row][spot.col].isWhite)
+                    availableMoves.add(new Spot(row, spot.col));
+                else
+                    break;
+            }
+            for (int col = spot.col + 1; col < 8; col++)
+            {
+                if (board.positions[spot.row][col] != null)
+                    availableMoves.add(new Spot(spot.row, col));
+                else if (!board.positions[spot.row][col].isWhite)
+                    availableMoves.add(new Spot(spot.row, col));
+                else
+                    break;
+            }
+            for (int col = spot.col - 1; col >= 0; col--)
+            {
+                if (board.positions[spot.row][col] != null)
+                    availableMoves.add(new Spot(spot.row, col));
+                else if (!board.positions[spot.row][col].isWhite)
+                    availableMoves.add(new Spot(spot.row, col));
+                else
+                    break;
+            }
         }
         return  availableMoves;
     }
