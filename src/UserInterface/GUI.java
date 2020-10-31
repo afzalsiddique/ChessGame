@@ -1,10 +1,12 @@
+package UserInterface;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GUI extends JFrame {
-    public buttons[][] buttons = new buttons[8][8];
+    public UserInterface.buttons[][] buttons = new buttons[8][8];
     ActionListener actionListener;
     String move = "";
     public GUI(){

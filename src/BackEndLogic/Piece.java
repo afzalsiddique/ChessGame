@@ -1,4 +1,4 @@
-package Pieces;
+package BackEndLogic;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -10,6 +10,9 @@ public abstract class Piece {
     protected boolean isWhite;
     public ArrayList<Spot> availableMoves = new ArrayList<>();
 
+
+
+
     public boolean makeMove(Piece[][] positions) {
         return false;
     }
@@ -18,6 +21,10 @@ public abstract class Piece {
         availableMoves.clear();
         availableMoves.add(new Spot(0,0));
         return  availableMoves;
+    }
+
+    public boolean isWhite() {
+        return isWhite;
     }
 
     public Spot getSpot() {

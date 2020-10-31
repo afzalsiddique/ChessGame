@@ -1,9 +1,9 @@
-import Pieces.*;
+package BackEndLogic;
 
 public class MoveTransitionRecord {
     private Piece toMove;
 
-    boolean checkIfSelected(){
+    public boolean checkIfSelected(){
         if(toMove == null)
             return false;
         return true;
@@ -29,7 +29,7 @@ public class MoveTransitionRecord {
         return toMove;
     }
 
-    public MoveTransitionRecord(){
+    MoveTransitionRecord(){
         reset();
     }
 

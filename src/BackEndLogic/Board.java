@@ -1,8 +1,12 @@
-import Pieces.*;
-
+package BackEndLogic;
 import java.util.ArrayList;
 
 public class Board {
+
+    public Board(){
+        // Do stuff
+    }
+
     public Piece[][] positions = new Piece[8][8];
     ArrayList<Spot> emptySpots = new ArrayList<>();
     ArrayList<Spot> availableMoves = new ArrayList<>();
@@ -40,7 +44,7 @@ public class Board {
     }
 
     void makeMove(Piece inputPiece){
-        if(inputPiece == null)
+        if(isOccupied(inputPiece.getSpot()) && !moveTransitionRecord.checkIfSelected())
             return;
 
         if(moveTransitionRecord.checkIfSelected()){
@@ -57,6 +61,23 @@ public class Board {
             moveTransitionRecord.setToMovePiece(inputPiece);
             displayAvailableMoves();
         }
+    }
+
+    boolean isOccupied(Spot inputSpot){
+        int col = inputSpot.col;
+        int row = inputSpot.row;
+        Piece positionToCheck = positions[row][col];
+        if(positionToCheck == null)
+            return false;
+        else
+            return true;
+    }
+
+    boolean getOccupiedColor(Spot inputSpot){
+        int col = inputSpot.col;
+        int row = inputSpot.row;
+        Piece toCheck = positions[row][col];
+        return toCheck.isWhite();
     }
 
 

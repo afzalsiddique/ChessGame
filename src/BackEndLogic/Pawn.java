@@ -1,4 +1,4 @@
-package Pieces;
+package BackEndLogic;
 
 import java.util.ArrayList;
 
@@ -7,6 +7,7 @@ public class Pawn extends Piece {
         this.isWhite = isWhite;
         this.spot = spot;
     }
+
     @Override
     public boolean makeMove(Piece[][] positions) {
         return false;
@@ -14,7 +15,6 @@ public class Pawn extends Piece {
 
     @Override
     public ArrayList<Spot> calculateAllPossibleMoves(Piece[][] positions) {
-
         availableMoves.clear();
         int row = spot.row;
         int col = spot.col;
