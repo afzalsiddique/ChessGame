@@ -20,7 +20,7 @@ public abstract class Piece {
         return  availableMoves;
     }
 
-    public boolean isWhite() {
+    public boolean getColor() {
         return isWhite;
     }
 

@@ -77,7 +77,7 @@ public class Board {
         int col = inputSpot.col;
         int row = inputSpot.row;
         Piece toCheck = positions[row][col];
-        return toCheck.isWhite();
+        return toCheck.getColor();
     }
 
 
