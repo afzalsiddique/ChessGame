@@ -11,7 +11,7 @@ public class Game {
     public void startNewGameAI(){}
     public void selectColor(String color){}
 
-    DisplayUI displayUI;
+//    DisplayUI displayUI;
 //    Board gameBoard;
 
     public Game(){
