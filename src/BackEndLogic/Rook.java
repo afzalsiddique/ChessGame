@@ -13,7 +13,7 @@ public class Rook extends Piece {
     }
 
     @Override
-    public ArrayList<Spot> calculateAllPossibleMoves(Piece[][] positions) {
+    public ArrayList<Spot> calculateAllPossibleMoves(Board board) {
         availableMoves.clear();
         for(int row = 0;row<8;row++){
             if(spot.row == row)

@@ -34,7 +34,7 @@ public class Board {
 //    }
 
     void displayAvailableMoves(){
-        availableMoves = moveTransitionRecord.getToMovePiece().calculateAllPossibleMoves(positions);
+        availableMoves = moveTransitionRecord.getToMovePiece().calculateAllPossibleMoves(this);
 
         // Display Code...
     }
