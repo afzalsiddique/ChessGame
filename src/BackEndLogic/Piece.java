@@ -5,11 +5,11 @@ import java.util.ArrayList;
 
 public abstract class Piece {
     Spot spot;
-    ImageIcon image;
+    private ImageIcon image;
     boolean isWhite;
     public ArrayList<Spot> availableMoves = new ArrayList<>();
 
-    
+
     public boolean makeMove(Piece[][] positions) {
         return false;
     }
@@ -20,7 +20,7 @@ public abstract class Piece {
         return  availableMoves;
     }
 
-    public boolean isWhite() {
+    public boolean getColor() {
         return isWhite;
     }
 
