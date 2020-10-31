@@ -20,4 +20,8 @@ public class TestPawn {
         };
         Assert.assertArrayEquals(actual.toArray(),expected.toArray());
     }
+    @Test
+    public void test2(){
+        Assert.assertEquals(true, true);
+    }
 }
