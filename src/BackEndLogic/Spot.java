@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Spot implements Comparable<Spot> {
     public int row, col;
 
-    public Spot(){};
+    public Spot(){};    // Default Constructor
 
     public Spot(int row, int col){
         this.row = row;

@@ -6,13 +6,10 @@ import java.util.ArrayList;
 public abstract class Piece {
     Spot spot;
     ImageIcon image;
-    JButton ReferredButton;
     boolean isWhite;
     public ArrayList<Spot> availableMoves = new ArrayList<>();
 
-
-
-
+    
     public boolean makeMove(Piece[][] positions) {
         return false;
     }
@@ -33,14 +30,6 @@ public abstract class Piece {
 
     public void setSpot(Spot spot) {
         this.spot = spot;
-    }
-
-    public void setReferredButton(JButton referredButton) {
-        ReferredButton = referredButton;
-    }
-
-    public JButton getReferredButton() {
-        return ReferredButton;
     }
 
     public ImageIcon getImage(){
