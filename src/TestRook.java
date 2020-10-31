@@ -26,11 +26,11 @@ public class TestRook {
         Collections.sort(actual);
         ArrayList<Spot> expected = new ArrayList<>(){
             {
-                new Spot(5,4);
-//                new Spot(4,2);
-//                new Spot(3,4);
-//                new Spot(5,4);
-//                new Spot(4,3);
+                add(new Spot(5,4));
+                add(new Spot(4,2));
+                add(new Spot(3,4));
+                add(new Spot(4,2));
+                add(new Spot(4,3));
             }
         };
         Collections.sort(expected);
