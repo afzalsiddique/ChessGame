@@ -19,15 +19,12 @@ public class Pawn extends Piece {
         int row = spot.row;
         int col = spot.col;
         if(isWhite) {
-            if (row -1 >= 0 && positions[row-1][col] != null){
-                if (row - 1 >= 0 && col - 1 >= 0 && positions[row - 1][col - 1] != null)
-                    availableMoves.add(new Spot(row - 1, col - 1));
-                if (row -1 >= 0 && col + 1 <=7 && positions[row-1][col+1] != null)
-                    availableMoves.add(new Spot(row - 1, col + 1));
-            }
-            else {
+            if (row -1 >= 0 && positions[row-1][col] == null)
                 availableMoves.add(new Spot(row - 1, col));
-            }
+            if (row - 1 >= 0 && col - 1 >= 0 && positions[row - 1][col - 1] != null)
+                availableMoves.add(new Spot(row - 1, col - 1));
+            if (row -1 >= 0 && col + 1 <=7 && positions[row-1][col+1] != null)
+                availableMoves.add(new Spot(row - 1, col + 1));
         }
         return  availableMoves;
     }

@@ -31,6 +31,7 @@ public class TestPawn {
         Collections.sort(actual);
         ArrayList<Spot> expected = new ArrayList<>(){
             {
+                add(new Spot(5,1));
                 add(new Spot(5,0));
             }
         };
