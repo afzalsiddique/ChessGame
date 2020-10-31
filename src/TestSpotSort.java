@@ -1,4 +1,4 @@
-import Pieces.Spot;
+import BackEndLogic.Spot;
 
 import java.util.ArrayList;
 import java.util.Collections;
