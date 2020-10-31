@@ -4,10 +4,10 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public abstract class Piece {
-    public Spot spot;
+    Spot spot;
     ImageIcon image;
     JButton ReferredButton;
-    protected boolean isWhite;
+    boolean isWhite;
     public ArrayList<Spot> availableMoves = new ArrayList<>();
 
 

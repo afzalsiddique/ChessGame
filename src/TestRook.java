@@ -1,7 +1,4 @@
-import BackEndLogic.Board;
-import BackEndLogic.Piece;
-import BackEndLogic.Rook;
-import BackEndLogic.Spot;
+import BackEndLogic.*;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 

@@ -94,6 +94,6 @@ public class Board {
         }
     }
     public void addPiece(Piece piece){
-        positions[piece.spot.row][piece.spot.col] = piece;
+        positions[piece.getSpot().row][piece.getSpot().col] = piece;
     }
 }
