@@ -81,7 +81,7 @@ public class Board {
     }
 
     boolean isOpponent(Piece piece1, Piece piece2){
-        if(piece1.isWhite == piece2.isWhite)
+        if(piece1.getColor() == piece2.getColor())
             return false;
         return true;
     }
