@@ -117,7 +117,6 @@ public class Board {
         }
 
         // Actual Move Code
-
     }
 
     void makeMove(int row, int col){
