@@ -13,8 +13,6 @@ public abstract class Piece {
         this.board = board;
     }
 
-    public void makeMove() {
-    }
 
     public ArrayList<Spot> calculateAllPossibleMoves() {
         availableMoves.clear();

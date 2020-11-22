@@ -9,10 +9,6 @@ public class Rook extends Piece
         this.isWhite = isWhite;
         this.spot = spot;
     }
-    @Override
-    public void makeMove() {
-
-    }
 
     @Override
     public ArrayList<Spot> calculateAllPossibleMoves()

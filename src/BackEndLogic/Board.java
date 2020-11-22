@@ -15,9 +15,7 @@ public class Board {
     MoveTransitionRecord moveTransitionRecord = new MoveTransitionRecord();
 //    boardGUI UI;
 
-    Piece toMove;
-    boolean makingMove = false;
-    int prevX, prevY;
+
 
 
     boolean checkGameState(Piece[][] positions){

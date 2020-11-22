@@ -8,9 +8,6 @@ public class Pawn extends Piece {
         this.spot = spot;
     }
 
-    @Override
-    public void makeMove() {
-    }
 
     @Override
     public ArrayList<Spot> calculateAllPossibleMoves() {
