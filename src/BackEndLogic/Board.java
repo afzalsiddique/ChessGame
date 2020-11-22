@@ -86,6 +86,14 @@ public class Board {
         return true;
     }
 
+    public Piece getPiece (int row, int col){
+        return positions[row][col];
+    }
+
+    public Piece getPiece (Spot spot){
+        return getPiece(spot.row,spot.col);
+    }
+
     void start() {
         positions[1][0] = new Pawn(true, new Spot(6,1));
     }
