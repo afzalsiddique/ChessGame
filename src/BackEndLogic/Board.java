@@ -80,6 +80,11 @@ public class Board {
         return toCheck.getColor();
     }
 
+    boolean isOpponent(Piece piece1, Piece piece2){
+        if(piece1.isWhite == piece2.isWhite)
+            return false;
+        return true;
+    }
 
     void start() {
         positions[1][0] = new Pawn(true, new Spot(6,1));
