@@ -16,7 +16,7 @@ public abstract class Piece {
     public ArrayList<Spot> calculateAllPossibleMoves(Board board) {
         availableMoves.clear();
         availableMoves.add(new Spot(0,0));
-        return  availableMoves;
+        return availableMoves;
     }
 
     public boolean getColor() {
