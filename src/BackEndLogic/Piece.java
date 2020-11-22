@@ -8,13 +8,15 @@ public abstract class Piece {
     private ImageIcon image;
     private boolean isWhite;
     public ArrayList<Spot> availableMoves = new ArrayList<>();
-
-
-    public boolean makeMove(Piece[][] positions) {
-        return false;
+    Board board;
+    public void setBoard(Board board){
+        this.board = board;
     }
 
-    public ArrayList<Spot> calculateAllPossibleMoves(Board board) {
+    public void makeMove() {
+    }
+
+    public ArrayList<Spot> calculateAllPossibleMoves() {
         availableMoves.clear();
         availableMoves.add(new Spot(0,0));
         return availableMoves;

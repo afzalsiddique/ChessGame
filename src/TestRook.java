@@ -19,7 +19,7 @@ public class TestRook {
         board.addPiece(piece3);
         board.addPiece(piece4);
         board.addPiece(piece5);
-        ArrayList<Spot> actual = piece1.calculateAllPossibleMoves(board);
+        ArrayList<Spot> actual = piece1.calculateAllPossibleMoves();
         Collections.sort(actual);
         ArrayList<Spot> expected = new ArrayList<>(){
             {
@@ -46,7 +46,7 @@ public class TestRook {
         board.addPiece(piece3);
         board.addPiece(piece4);
         board.addPiece(piece5);
-        ArrayList<Spot> actual = piece1.calculateAllPossibleMoves(board);
+        ArrayList<Spot> actual = piece1.calculateAllPossibleMoves();
         Collections.sort(actual);
         ArrayList<Spot> expected = new ArrayList<>(){
             {
@@ -65,7 +65,7 @@ public class TestRook {
         Piece piece3 = new Rook(true, new Spot(3,4));
         board.addPiece(piece2);
         board.addPiece(piece3);
-        ArrayList<Spot> actual = piece1.calculateAllPossibleMoves(board);
+        ArrayList<Spot> actual = piece1.calculateAllPossibleMoves();
         Collections.sort(actual);
         ArrayList<Spot> expected = new ArrayList<>(){
             {

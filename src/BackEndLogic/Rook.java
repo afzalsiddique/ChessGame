@@ -10,13 +10,12 @@ public class Rook extends Piece
         this.spot = spot;
     }
     @Override
-    public boolean makeMove(Piece[][] positions)
-    {
-        return super.makeMove(positions);
+    public void makeMove() {
+
     }
 
     @Override
-    public ArrayList<Spot> calculateAllPossibleMoves(Board board)
+    public ArrayList<Spot> calculateAllPossibleMoves()
     {
         availableMoves.clear();
         if (getColor())
