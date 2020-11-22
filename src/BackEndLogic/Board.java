@@ -15,53 +15,6 @@ public class Board {
     MoveTransitionRecord moveTransitionRecord = new MoveTransitionRecord();
 //    boardGUI UI;
 
-
-
-
-    boolean checkGameState(Piece[][] positions){
-        return false;
-    }
-
-    boolean updateGameState(Piece[][] positions) {
-        return false;
-    }
-
-//    Board(boardGUI UI){
-//        this.UI = UI;
-//        UI.setInternalBoard(this);
-//        start();
-//    }
-
-    void displayAvailableMoves(){
-        availableMoves = moveTransitionRecord.getToMovePiece().calculateAllPossibleMoves();
-
-        // Display Code...
-    }
-
-    boolean ifMoveIsValid(Spot inputSpot){
-        return availableMoves.contains(inputSpot);
-    }
-
-    void makeMove(Piece inputPiece){
-        if(isOccupied(inputPiece.getSpot()) && !moveTransitionRecord.checkIfSelected())
-            return;
-
-        if(moveTransitionRecord.checkIfSelected()){
-            if(inputPiece.equals(moveTransitionRecord.getToMovePiece()))
-                return;
-            if(ifMoveIsValid(inputPiece.getSpot())){
-                Spot thisSpot = inputPiece.getSpot();
-                positions[thisSpot.row][thisSpot.col] = inputPiece;
-                moveTransitionRecord.getToMovePiece().setSpot(inputPiece.getSpot());
-                moveTransitionRecord.reset();
-            }
-        }
-        else{
-            moveTransitionRecord.setToMovePiece(inputPiece);
-            displayAvailableMoves();
-        }
-    }
-
     boolean isOccupied(Spot inputSpot){
         int col = inputSpot.col;
         int row = inputSpot.row;
@@ -109,5 +62,57 @@ public class Board {
     public void addPiece(Piece piece){
         piece.setBoard(this);
         positions[piece.getSpot().row][piece.getSpot().col] = piece;
+    }
+
+
+    boolean checkGameState(Piece[][] positions){
+        return false;
+    }
+
+    boolean updateGameState(Piece[][] positions) {
+        return false;
+    }
+
+//    Board(boardGUI UI){
+//        this.UI = UI;
+//        UI.setInternalBoard(this);
+//        start();
+//    }
+
+    void displayAvailableMoves(){
+        availableMoves = moveTransitionRecord.getToMovePiece().calculateAllPossibleMoves();
+
+        // Display Code...
+    }
+
+    boolean ifMoveIsValid(Spot inputSpot){
+        return availableMoves.contains(inputSpot);
+    }
+
+    void selectPiece(Piece inputPiece){
+        if(isOccupied(inputPiece.getSpot()) && !moveTransitionRecord.checkIfSelected())
+            return;
+
+
+    }
+
+    void makeMove(Piece inputPiece){
+        if(isOccupied(inputPiece.getSpot()) && !moveTransitionRecord.checkIfSelected())
+            return;
+
+        if(moveTransitionRecord.checkIfSelected()){
+            if(inputPiece.equals(moveTransitionRecord.getToMovePiece()))
+                return;
+            if(ifMoveIsValid(inputPiece.getSpot())){
+                Spot thisSpot = inputPiece.getSpot();
+                positions[thisSpot.row][thisSpot.col] = inputPiece;
+                moveTransitionRecord.getToMovePiece().setSpot(inputPiece.getSpot());
+                moveTransitionRecord.reset();
+            }
+        }
+        else{
+            moveTransitionRecord.setToMovePiece(inputPiece);
+            displayAvailableMoves();
+        }
     }
 }
