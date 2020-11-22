@@ -9,8 +9,7 @@ public class Pawn extends Piece {
     }
 
     @Override
-    public boolean makeMove(Piece[][] positions) {
-        return false;
+    public void makeMove(Board board) {
     }
 
     @Override

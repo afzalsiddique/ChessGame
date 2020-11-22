@@ -10,8 +10,7 @@ public abstract class Piece {
     public ArrayList<Spot> availableMoves = new ArrayList<>();
 
 
-    public boolean makeMove(Piece[][] positions) {
-        return false;
+    public void makeMove(Board board) {
     }
 
     public ArrayList<Spot> calculateAllPossibleMoves(Board board) {

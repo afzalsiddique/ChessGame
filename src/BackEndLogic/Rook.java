@@ -10,9 +10,7 @@ public class Rook extends Piece
         this.spot = spot;
     }
     @Override
-    public boolean makeMove(Piece[][] positions)
-    {
-        return super.makeMove(positions);
+    public void makeMove(Board board) {
     }
 
     @Override
