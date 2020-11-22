@@ -80,6 +80,7 @@ public class Board {
     }
 
     boolean isOpponent(Piece piece1, Piece piece2){
+        if(piece1 == null || piece2 == null) return false;
         if(piece1.getColor() == piece2.getColor())
             return false;
         return true;
