@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public abstract class Piece {
     Spot spot;
     private ImageIcon image;
-    private boolean isWhite;
+    boolean isWhite;
     public ArrayList<Spot> availableMoves = new ArrayList<>();
     Board board;
     public void setBoard(Board board){

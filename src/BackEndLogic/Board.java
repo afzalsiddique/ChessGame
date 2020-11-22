@@ -6,11 +6,7 @@ public class Board {
     public Piece[][] positions = new Piece[8][8];
 
     public Board(){
-        for(int i=0;i<8;i++){
-            for(int j=0;j<8;j++){
-                positions[i][j].setBoard(this);
-            }
-        }
+
     }
 
     ArrayList<Spot> emptySpots = new ArrayList<>();
@@ -112,6 +108,7 @@ public class Board {
         }
     }
     public void addPiece(Piece piece){
+        piece.setBoard(this);
         positions[piece.getSpot().row][piece.getSpot().col] = piece;
     }
 }
