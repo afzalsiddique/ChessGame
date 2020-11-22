@@ -15,7 +15,7 @@ public class Board {
     MoveTransitionRecord moveTransitionRecord = new MoveTransitionRecord();
 //    boardGUI UI;
 
-    boolean isOccupied(Spot inputSpot){
+    boolean isOccupied(Spot inputSpot){             // True if already occupied, false if not
         int col = inputSpot.col;
         int row = inputSpot.row;
         Piece positionToCheck = positions[row][col];
@@ -79,40 +79,68 @@ public class Board {
 //        start();
 //    }
 
-    void displayAvailableMoves(){
+    void calculateAvailableMoves(){
         availableMoves = moveTransitionRecord.getToMovePiece().calculateAllPossibleMoves();
+    }
 
-        // Display Code...
+    ArrayList<Spot> getAvailableMoves(){
+        return availableMoves;
+    }
+
+    void clearAvailableMoves(){
+        availableMoves.clear();
     }
 
     boolean ifMoveIsValid(Spot inputSpot){
         return availableMoves.contains(inputSpot);
     }
 
-    void selectPiece(Piece inputPiece){
-        if(isOccupied(inputPiece.getSpot()) && !moveTransitionRecord.checkIfSelected())
+    void selectPiece(Spot spot){
+        if(!isOccupied(spot)) {
+            System.out.println("Nothing There, Bitch");
             return;
-
-
+        }
+        moveTransitionRecord.setToMovePiece(getPiece(spot));
+        calculateAvailableMoves();
     }
 
-    void makeMove(Piece inputPiece){
-        if(isOccupied(inputPiece.getSpot()) && !moveTransitionRecord.checkIfSelected())
-            return;
-
-        if(moveTransitionRecord.checkIfSelected()){
-            if(inputPiece.equals(moveTransitionRecord.getToMovePiece()))
-                return;
-            if(ifMoveIsValid(inputPiece.getSpot())){
-                Spot thisSpot = inputPiece.getSpot();
-                positions[thisSpot.row][thisSpot.col] = inputPiece;
-                moveTransitionRecord.getToMovePiece().setSpot(inputPiece.getSpot());
-                moveTransitionRecord.reset();
-            }
-        }
-        else{
-            moveTransitionRecord.setToMovePiece(inputPiece);
-            displayAvailableMoves();
-        }
+    void selectPiece(int row, int col){
+        selectPiece(new Spot(row, col));
     }
+
+    void makeMove(Spot spot){
+        if(!ifMoveIsValid(spot)){
+            System.out.println("Not a valid Move, Bitch");
+            clearAvailableMoves();
+            moveTransitionRecord.reset();
+            return;
+        }
+
+        // Actual Move Code
+        
+    }
+
+    void makeMove(int row, int col){
+        makeMove(new Spot(row, col));
+    }
+
+//    void makeMove(Piece inputPiece){
+//        if(isOccupied(inputPiece.getSpot()) && !moveTransitionRecord.checkIfSelected())
+//            return;
+//
+//        if(moveTransitionRecord.checkIfSelected()){
+//            if(inputPiece.equals(moveTransitionRecord.getToMovePiece()))
+//                return;
+//            if(ifMoveIsValid(inputPiece.getSpot())){
+//                Spot thisSpot = inputPiece.getSpot();
+//                positions[thisSpot.row][thisSpot.col] = inputPiece;
+//                moveTransitionRecord.getToMovePiece().setSpot(inputPiece.getSpot());
+//                moveTransitionRecord.reset();
+//            }
+//        }
+//        else{
+//            moveTransitionRecord.setToMovePiece(inputPiece);
+//            displayAvailableMoves();
+//        }
+//    }
 }
