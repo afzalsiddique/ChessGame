@@ -21,9 +21,9 @@ public class Pawn extends Piece {
         if(isWhite) {
             if (row -1 >= 0 && !board.isOccupied(new Spot(row-1, col)))
                 availableMoves.add(new Spot(row - 1, col));
-            if (row - 1 >= 0 && col - 1 >= 0 && positions[row - 1][col - 1] != null)
+            if (row - 1 >= 0 && col - 1 >= 0 && board.isOccupied(new Spot(row-1, col-1)) && !positions[row-1][col-1].isWhite)
                 availableMoves.add(new Spot(row - 1, col - 1));
-            if (row -1 >= 0 && col + 1 <=7 && positions[row-1][col+1] != null)
+            if (row - 1 >= 0 && col + 1 <= 7 && board.isOccupied(new Spot(row-1, col+1)) && !positions[row-1][col+1].isWhite)
                 availableMoves.add(new Spot(row - 1, col + 1));
         }
         return  availableMoves;
