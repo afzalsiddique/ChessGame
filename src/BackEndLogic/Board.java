@@ -3,11 +3,16 @@ import java.util.ArrayList;
 
 public class Board {
 
+    public Piece[][] positions = new Piece[8][8];
+
     public Board(){
-        // Do stuff
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                positions[i][j].setBoard(this);
+            }
+        }
     }
 
-    public Piece[][] positions = new Piece[8][8];
     ArrayList<Spot> emptySpots = new ArrayList<>();
     ArrayList<Spot> availableMoves = new ArrayList<>();
 
@@ -34,7 +39,7 @@ public class Board {
 //    }
 
     void displayAvailableMoves(){
-        availableMoves = moveTransitionRecord.getToMovePiece().calculateAllPossibleMoves(this);
+        availableMoves = moveTransitionRecord.getToMovePiece().calculateAllPossibleMoves();
 
         // Display Code...
     }

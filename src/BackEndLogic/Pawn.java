@@ -9,11 +9,11 @@ public class Pawn extends Piece {
     }
 
     @Override
-    public void makeMove(Board board) {
+    public void makeMove() {
     }
 
     @Override
-    public ArrayList<Spot> calculateAllPossibleMoves(Board board) {
+    public ArrayList<Spot> calculateAllPossibleMoves() {
         Piece[][] positions = board.positions;
         availableMoves.clear();
         int row = spot.row;
