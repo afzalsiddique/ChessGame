@@ -37,7 +37,7 @@ public class Rook extends Piece
             {
                 if (board.positions[row][spot.col] == null)
                     availableMoves.add(new Spot(row, spot.col));
-                else if (!(board.positions[row][spot.col].getColor())) {
+                else if (!board.positions[row][spot.col].getColor()) {
                     availableMoves.add(new Spot(row, spot.col));
                     break;
                 }
