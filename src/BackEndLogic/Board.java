@@ -65,11 +65,6 @@ public class Board {
             }
         }
     }
-    public void addPiece(Piece piece){
-        piece.setBoard(this);
-        positions[piece.getSpot().row][piece.getSpot().col] = piece;
-    }
-
 
     boolean checkGameState(Piece[][] positions){
         return false;
@@ -78,12 +73,6 @@ public class Board {
     boolean updateGameState(Piece[][] positions) {
         return false;
     }
-
-//    Board(boardGUI UI){
-//        this.UI = UI;
-//        UI.setInternalBoard(this);
-//        start();
-//    }
 
     private void calculateAvailableMoves(){
         availableMoves = moveTransitionRecord.getToMovePiece().calculateAllPossibleMoves();
@@ -123,6 +112,24 @@ public class Board {
         }
 
         // Actual Move Code
+        clearAvailableMoves();
+        removeSelectedPiece();
+        moveSelectedPiece(spot);
+    }
+
+    public void addPiece(Piece piece){
+        piece.setBoard(this);
+        positions[piece.getSpot().row][piece.getSpot().col] = piece;
+    }
+
+    void moveSelectedPiece(Spot inputSpot){
+        moveTransitionRecord.getToMovePiece().setSpot(inputSpot);
+        addPiece(moveTransitionRecord.getToMovePiece());
+    }
+
+    void removeSelectedPiece(){
+        Spot prevPos = moveTransitionRecord.getToMovePiece().getSpot();
+        positions[prevPos.row][prevPos.col] = null;
     }
 
     public void makeMove(int row, int col){

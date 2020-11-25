@@ -31,6 +31,9 @@ public class GUI extends JFrame {
                     System.out.println("Found a piece at " + i + " " + j);
                     buttons[i][j].setIcon(backEndBoard.getPiece(i,j).getImage());
                 }
+                else{
+                    buttons[i][j].setIcon(null);
+                }
             }
         }
     }
@@ -72,6 +75,7 @@ public class GUI extends JFrame {
 
     private void moveSelectedPiece(int x, int y){
         backEndBoard.makeMove(x, y);
+        updateGUI();
         backEndBoard.clearAvailableMoves();
         refreshBackGrounds();
     }
