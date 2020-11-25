@@ -38,7 +38,7 @@ public class GUI extends JFrame {
     }
 
     private void highlightSpot(Spot inputSpot){
-        buttons[inputSpot.row][inputSpot.col].setBackground(Color.GREEN.darker().darker());
+        buttons[inputSpot.row][inputSpot.col].setBackground(Color.GREEN.darker().darker().darker().darker());
     }
 
     private void highlightAvailableMoves(ArrayList<Spot> availableMoves){
