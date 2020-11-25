@@ -1,11 +1,13 @@
 package UserInterface;
 
 import BackEndLogic.Board;
+import BackEndLogic.Spot;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class GUI extends JFrame {
     public buttons[][] buttons = new buttons[8][8];
@@ -34,12 +36,24 @@ public class GUI extends JFrame {
         }
     }
 
+    private void highlightSpot(Spot inputSpot){
+        buttons[inputSpot.row][inputSpot.col].setBackground(Color.GREEN.darker().darker());
+    }
+
+    private void highlightAvailableMoves(ArrayList<Spot> availableMoves){
+        for(int i=0; i<availableMoves.size(); i++){
+            highlightSpot(availableMoves.get(i));
+        }
+    }
+
     void selectPiece(int x, int y){
         backEndBoard.selectPiece(x, y);
+        highlightAvailableMoves(backEndBoard.getAvailableMoves());
     }
 
     void moveSelectedPiece(int x, int y){
         backEndBoard.makeMove(x, y);
+        backEndBoard.clearAvailableMoves();
     }
 
     void createActionListener(int x, int y){

@@ -85,15 +85,15 @@ public class Board {
 //        start();
 //    }
 
-    void calculateAvailableMoves(){
+    private void calculateAvailableMoves(){
         availableMoves = moveTransitionRecord.getToMovePiece().calculateAllPossibleMoves();
     }
 
-    ArrayList<Spot> getAvailableMoves(){
+    public ArrayList<Spot> getAvailableMoves(){
         return availableMoves;
     }
 
-    void clearAvailableMoves(){
+    public void clearAvailableMoves(){
         availableMoves.clear();
     }
 
