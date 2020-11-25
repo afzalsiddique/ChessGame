@@ -24,11 +24,11 @@ public class GUI extends JFrame {
     }
 
     void selectPiece(int x, int y){
-
+        backEndBoard.selectPiece(x, y);
     }
 
     void moveSelectedPiece(int x, int y){
-
+        backEndBoard.makeMove(x, y);
     }
 
     void createActionListener(int x, int y){

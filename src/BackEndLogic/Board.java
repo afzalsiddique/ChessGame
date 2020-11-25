@@ -97,7 +97,7 @@ public class Board {
         return availableMoves.contains(inputSpot);
     }
 
-    void selectPiece(Spot spot){
+    public void selectPiece(Spot spot){
         if(!isOccupied(spot)) {
             System.out.println("Nothing There, Bitch");
             return;
@@ -106,11 +106,11 @@ public class Board {
         calculateAvailableMoves();
     }
 
-    void selectPiece(int row, int col){
+    public void selectPiece(int row, int col){
         selectPiece(new Spot(row, col));
     }
 
-    void makeMove(Spot spot){
+    public void makeMove(Spot spot){
         if(!ifMoveIsValid(spot)){
             System.out.println("Not a valid Move, Bitch");
             clearAvailableMoves();
@@ -121,7 +121,7 @@ public class Board {
         // Actual Move Code
     }
 
-    void makeMove(int row, int col){
+    public void makeMove(int row, int col){
         makeMove(new Spot(row, col));
     }
 
