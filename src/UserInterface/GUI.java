@@ -1,5 +1,7 @@
 package UserInterface;
 
+import BackEndLogic.Board;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,9 +12,12 @@ public class GUI extends JFrame {
     ActionListener actionListener;
     String move = "";
 
+    Board backEndBoard;
+
     boolean isSelectedState = false;
 
-    public GUI(){
+    public GUI(Board board){
+        this.backEndBoard = board;
         createButtons();
         makeLayoutVisible();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -34,9 +39,11 @@ public class GUI extends JFrame {
 
                 if(isSelectedState){
                     moveSelectedPiece(x, y);
+                    isSelectedState = false;
                 }
                 else{
                     selectPiece(x, y);
+                    isSelectedState = true;
                 }
 
             }

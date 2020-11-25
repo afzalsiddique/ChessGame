@@ -1,4 +1,6 @@
 package BackEndLogic;
+import UserInterface.GUI;
+
 import java.util.ArrayList;
 
 public class Board {
@@ -6,7 +8,7 @@ public class Board {
     public Piece[][] positions = new Piece[8][8];
 
     public Board(){
-
+        GUI gui = new GUI(this);
     }
 
     ArrayList<Spot> emptySpots = new ArrayList<>();
