@@ -53,9 +53,8 @@ public class GUI extends JFrame {
                 highlightSpot(availableMoves.get(i));
 
             //Opponent Piece's Spot
-            else{
+            else
                 highlightCapture(availableMoves.get(i));
-            }
         }
 
     }
