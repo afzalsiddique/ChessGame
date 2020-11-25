@@ -1,5 +1,8 @@
 package BackEndLogic;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Rook extends Piece
@@ -8,6 +11,20 @@ public class Rook extends Piece
     {
         this.isWhite = isWhite;
         this.spot = spot;
+        ImportImage();
+    }
+
+    private void ImportImage(){
+        try {
+            if(isWhite){
+                setImage(new ImageIcon(ImageIO.read(getClass().getResource("RookWhite.png"))));
+            }
+            else {
+                setImage(new ImageIcon(ImageIO.read(getClass().getResource("RookBlack.png"))));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
