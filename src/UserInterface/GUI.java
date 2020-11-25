@@ -28,7 +28,6 @@ public class GUI extends JFrame {
         for(int i=0; i<8; i++){
             for(int j=0; j<8; j++){
                 if(backEndBoard.isOccupied(i,j)){
-                    System.out.println("Found a piece at " + i + " " + j);
                     buttons[i][j].setIcon(backEndBoard.getPiece(i,j).getImage());
                 }
                 else{

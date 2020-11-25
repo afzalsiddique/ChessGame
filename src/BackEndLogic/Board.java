@@ -135,24 +135,4 @@ public class Board {
     public void makeMove(int row, int col){
         makeMove(new Spot(row, col));
     }
-
-//    void makeMove(Piece inputPiece){
-//        if(isOccupied(inputPiece.getSpot()) && !moveTransitionRecord.checkIfSelected())
-//            return;
-//
-//        if(moveTransitionRecord.checkIfSelected()){
-//            if(inputPiece.equals(moveTransitionRecord.getToMovePiece()))
-//                return;
-//            if(ifMoveIsValid(inputPiece.getSpot())){
-//                Spot thisSpot = inputPiece.getSpot();
-//                positions[thisSpot.row][thisSpot.col] = inputPiece;
-//                moveTransitionRecord.getToMovePiece().setSpot(inputPiece.getSpot());
-//                moveTransitionRecord.reset();
-//            }
-//        }
-//        else{
-//            moveTransitionRecord.setToMovePiece(inputPiece);
-//            displayAvailableMoves();
-//        }
-//    }
 }
