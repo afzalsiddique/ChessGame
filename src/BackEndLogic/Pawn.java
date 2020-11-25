@@ -7,6 +7,10 @@ public class Pawn extends Piece {
         this.isWhite = isWhite;
         this.spot = spot;
     }
+    public Pawn(boolean isWhite, int x, int y){
+        this.isWhite = isWhite;
+        this.spot = new Spot(x,y);
+    }
 
 
     @Override

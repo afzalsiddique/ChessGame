@@ -23,6 +23,17 @@ public class GUI extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
+    public void updateGUI(){
+        for(int i=0; i<8; i++){
+            for(int j=0; j<8; j++){
+                if(backEndBoard.isOccupied(i,j)){
+                    System.out.println("Found a piece at " + i + " " + j);
+                    buttons[i][j].setIcon(backEndBoard.getPiece(i,j).getImage());
+                }
+            }
+        }
+    }
+
     void selectPiece(int x, int y){
         backEndBoard.selectPiece(x, y);
     }

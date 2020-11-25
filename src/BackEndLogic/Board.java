@@ -8,7 +8,7 @@ public class Board {
     public Piece[][] positions = new Piece[8][8];
 
     public Board(){
-        GUI gui = new GUI(this);
+
     }
 
     ArrayList<Spot> emptySpots = new ArrayList<>();
@@ -17,7 +17,7 @@ public class Board {
     MoveTransitionRecord moveTransitionRecord = new MoveTransitionRecord();
 //    boardGUI UI;
 
-    boolean isOccupied(Spot inputSpot){             // True if already occupied, false if not
+    public boolean isOccupied(Spot inputSpot){             // True if already occupied, false if not
         int col = inputSpot.col;
         int row = inputSpot.row;
         Piece positionToCheck = positions[row][col];
@@ -25,6 +25,10 @@ public class Board {
             return false;
         else
             return true;
+    }
+
+    public boolean isOccupied(int x, int y){
+        return isOccupied(new Spot(x, y));
     }
 
     boolean getOccupiedColor(Spot inputSpot){
