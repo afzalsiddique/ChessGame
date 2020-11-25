@@ -46,6 +46,26 @@ public class GUI extends JFrame {
         }
     }
 
+    private void refreshBackGrounds(){
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                // Set the color
+                if(i%2==0){
+                    if(j%2==0)
+                        buttons[i][j].setBackground(Color.WHITE);
+                    else
+                        buttons[i][j].setBackground(Color.BLACK);
+                }
+                else {
+                    if (j%2!=0)
+                        buttons[i][j].setBackground(Color.WHITE);
+                    else
+                        buttons[i][j].setBackground(Color.BLACK);
+                }
+            }
+        }
+    }
+
     void selectPiece(int x, int y){
         backEndBoard.selectPiece(x, y);
         highlightAvailableMoves(backEndBoard.getAvailableMoves());
@@ -54,6 +74,7 @@ public class GUI extends JFrame {
     void moveSelectedPiece(int x, int y){
         backEndBoard.makeMove(x, y);
         backEndBoard.clearAvailableMoves();
+        refreshBackGrounds();
     }
 
     void createActionListener(int x, int y){
