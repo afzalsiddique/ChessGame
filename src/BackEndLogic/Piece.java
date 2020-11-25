@@ -1,6 +1,7 @@
 package BackEndLogic;
 
 import javax.swing.*;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public abstract class Piece {
@@ -34,6 +35,10 @@ public abstract class Piece {
 
     public ImageIcon getImage(){
         return image;
+    }
+
+    public void setImage(ImageIcon image) {
+        this.image = image;
     }
 
     public void castling(){

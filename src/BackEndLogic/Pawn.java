@@ -1,17 +1,36 @@
 package BackEndLogic;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Pawn extends Piece {
     public Pawn(boolean isWhite, Spot spot){
         this.isWhite = isWhite;
         this.spot = spot;
+        ImportImage();
     }
+
     public Pawn(boolean isWhite, int x, int y){
         this.isWhite = isWhite;
         this.spot = new Spot(x,y);
+        ImportImage();
     }
 
+    private void ImportImage(){
+        try {
+            if(isWhite){
+                setImage(new ImageIcon(ImageIO.read(getClass().getResource("PawnWhite.png"))));
+            }
+            else {
+                setImage(new ImageIcon(ImageIO.read(getClass().getResource("PawnBlack.png"))));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public ArrayList<Spot> calculateAllPossibleMoves() {
