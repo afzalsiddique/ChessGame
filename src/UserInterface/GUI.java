@@ -10,8 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class GUI extends JFrame {
-    public buttons[][] buttons = new buttons[8][8];
-    ActionListener actionListener;
+    private buttons[][] buttons = new buttons[8][8];
     String move = "";
 
     Board backEndBoard;
@@ -77,8 +76,8 @@ public class GUI extends JFrame {
         refreshBackGrounds();
     }
 
-    void createActionListener(int x, int y){
-        actionListener = new ActionListener() {
+    ActionListener createActionListener(int x, int y){
+        return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Make moves etc.
@@ -94,7 +93,6 @@ public class GUI extends JFrame {
 
             }
         };
-
     }
 
     public void createButtons(){
@@ -102,8 +100,7 @@ public class GUI extends JFrame {
             for(int j=0;j<8;j++){
                 buttons[i][j] = new buttons("");
                 add(buttons[i][j]);
-                createActionListener(i,j);
-                buttons[i][j].addActionListener(actionListener);
+                buttons[i][j].addActionListener(createActionListener(i,j));
 
                 // Set the color
                 if(i%2==0){
