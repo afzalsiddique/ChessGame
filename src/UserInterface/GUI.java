@@ -41,10 +41,23 @@ public class GUI extends JFrame {
         buttons[inputSpot.row][inputSpot.col].setBackground(Color.GREEN.darker().darker().darker().darker());
     }
 
+    private void highlightCapture(Spot inputSpot){
+        buttons[inputSpot.row][inputSpot.col].setBackground(Color.RED.darker().darker());
+    }
+
     private void highlightAvailableMoves(ArrayList<Spot> availableMoves){
         for(int i=0; i<availableMoves.size(); i++){
-            highlightSpot(availableMoves.get(i));
+
+            //Empty Spot
+            if(!backEndBoard.isOccupied(availableMoves.get(i)))
+                highlightSpot(availableMoves.get(i));
+
+            //Opponent Piece's Spot
+            else{
+                highlightCapture(availableMoves.get(i));
+            }
         }
+
     }
 
     private void refreshBackGrounds(){
