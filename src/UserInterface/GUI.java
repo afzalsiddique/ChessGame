@@ -13,9 +13,9 @@ public class GUI extends JFrame {
     private buttons[][] buttons = new buttons[8][8];
     String move = "";
 
-    Board backEndBoard;
+    private Board backEndBoard;
 
-    boolean isSelectedState = false;
+    private boolean isSelectedState = false;
 
     public GUI(Board board){
         this.backEndBoard = board;
@@ -65,18 +65,18 @@ public class GUI extends JFrame {
         }
     }
 
-    void selectPiece(int x, int y){
+    private void selectPiece(int x, int y){
         backEndBoard.selectPiece(x, y);
         highlightAvailableMoves(backEndBoard.getAvailableMoves());
     }
 
-    void moveSelectedPiece(int x, int y){
+    private void moveSelectedPiece(int x, int y){
         backEndBoard.makeMove(x, y);
         backEndBoard.clearAvailableMoves();
         refreshBackGrounds();
     }
 
-    ActionListener createActionListener(int x, int y){
+    private ActionListener createActionListener(int x, int y){
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -95,7 +95,7 @@ public class GUI extends JFrame {
         };
     }
 
-    public void createButtons(){
+    private void createButtons(){
         for(int i=0;i<8;i++){
             for(int j=0;j<8;j++){
                 buttons[i][j] = new buttons("");
