@@ -3,6 +3,7 @@ package BackEndLogic;
 import java.util.ArrayList;
 
 import static java.lang.Integer.max;
+import static java.lang.Integer.min;
 
 public class AI_Agent {
     Board board;
@@ -37,6 +38,8 @@ public class AI_Agent {
                             // make the move
                             // move pieceSource to spotPieceDest
                             movePieceToSpot(board, pieceSource, spotPieceDest);
+                            // make spotPieceSource null
+                            board.positions[spotPieceSource.row][spotPieceSource.col] = null;
                             // calculate score and take the maxScore
                             score = minimax(board, depth-1, !maxPlayer);
                             maxScore = max(maxScore, score);
@@ -53,7 +56,31 @@ public class AI_Agent {
         }
         else{
             int minScore = 999999;
-
+            for(int i=0;i<8;i++){
+                for(int j=0;j<8;j++){
+                    pieceSource = positions[i][j];
+                    if(pieceSource!=null){
+                        spotPieceSource = pieceSource.getSpot();
+                        ArrayList<Spot> availableMoves = pieceSource.calculateAllPossibleMoves();
+                        for(Spot spotPieceDest:availableMoves){
+                            pieceDest = board.getPiece(spotPieceDest);
+                            // make the move
+                            // move pieceSource to spotPieceDest
+                            movePieceToSpot(board, pieceSource, spotPieceDest);
+                            // make spotPieceSource null
+                            board.positions[spotPieceSource.row][spotPieceSource.col] = null;
+                            // calculate score and take the min Score
+                            score = minimax(board, depth-1, !maxPlayer);
+                            minScore = min(minScore, score);
+                            // undo the move
+                            // move pieceSource to spotPieceSource
+                            movePieceToSpot(board, pieceSource, spotPieceSource);
+                            // move pieceDest to spotPieceDest
+                            movePieceToSpot(board, pieceDest, spotPieceDest);
+                        }
+                    }
+                }
+            }
             return minScore;
         }
     }
