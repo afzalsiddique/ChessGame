@@ -34,7 +34,7 @@ public class TestAI_Agent {
         board.addPiece(piece1);
         board.addPiece(piece2);
         AI_Agent ai_agent = new AI_Agent(board);
-        int actual = ai_agent.evaluate(board.positions);
+        int actual = ai_agent.evaluate(board);
         int expected = 20;
         Assert.assertEquals(expected, actual);
     }
