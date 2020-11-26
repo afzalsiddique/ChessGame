@@ -134,4 +134,11 @@ public class Rook extends Piece
     void setValue(){
         this.value = 50;
     }
+    @Override
+    public String toString() {
+        String temp;
+        if(isWhite) temp = "w";
+        else temp = "b";
+        return temp+"R";
+    }
 }

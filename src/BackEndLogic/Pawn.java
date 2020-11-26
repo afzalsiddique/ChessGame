@@ -62,4 +62,12 @@ public class Pawn extends Piece {
     void setValue() {
         value = 10;
     }
+
+    @Override
+    public String toString() {
+        String temp;
+        if(isWhite) temp = "w";
+        else temp = "b";
+        return temp+"P";
+    }
 }

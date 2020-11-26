@@ -1,6 +1,4 @@
 package BackEndLogic;
-import UserInterface.GUI;
-
 import java.util.ArrayList;
 
 public class Board {
@@ -134,5 +132,21 @@ public class Board {
 
     public void makeMove(int row, int col){
         makeMove(new Spot(row, col));
+    }
+
+    @Override
+    public String toString() {
+        String temp = "";
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                Piece piece = positions[i][j];
+                if(piece!=null)
+                    temp = temp + piece.toString();
+                else
+                    temp = temp + "..";
+            }
+            temp = temp + "\n";
+        }
+        return temp;
     }
 }

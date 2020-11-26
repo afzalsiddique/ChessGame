@@ -52,4 +52,7 @@ public abstract class Piece {
             return -value;
     }
     abstract void setValue();
+
+    @Override
+    abstract public String toString();
 }
