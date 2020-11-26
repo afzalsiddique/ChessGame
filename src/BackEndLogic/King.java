@@ -36,6 +36,23 @@ public class King extends Piece {
         return null;
     }
 
+    ArrayList<Spot> getThisPiecesMoves(Piece somePiece){
+        return somePiece.calculateAllPossibleMoves()
+    }
+
+    void checkChecksForAllOpponentPieces(){
+        ArrayList<Spot> AvailableMovesThatNeedToBeRemoved;
+
+        for(int i=0; i<8; i++){
+            for(int j=0; j<8; j++){
+                if(board.isOpponent(this, board.getPiece(i,j))){
+                    ArrayList<Spot> piecesAvailableMoves = getThisPiecesMoves(board.getPiece(i,j));
+                    
+                }
+            }
+        }
+    }
+
     @Override
     public ArrayList<Spot> calculateAllPossibleMoves() {
         availableMoves.clear();
