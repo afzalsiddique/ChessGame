@@ -55,7 +55,7 @@ public class King extends Piece {
             if(!commonMoves.contains(kingMoves.get(i)))
                 finalMoves.add(kingMoves.get(i));
         }
-        
+
         return finalMoves;
     }
 
