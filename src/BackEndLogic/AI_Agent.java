@@ -8,7 +8,7 @@ public class AI_Agent {
     public AI_Agent(Board board) {
         this.board = board;
     }
-    public ArrayList<Spot> getAllAvailableMoves(){
+    public ArrayList<Spot> getAllAvailableMovesOfEveryPiece(){
         ArrayList<Spot> allMoves = new ArrayList<>();
         Piece[][] positions = board.positions;
         for(int i=0;i<8;i++){
