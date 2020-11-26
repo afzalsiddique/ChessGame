@@ -108,7 +108,78 @@ public class Knight extends Piece {
         }
         else
         {
-
+            if (currentSpot.row < 7 && currentSpot.col < 6)
+            {
+                if (board.positions[currentSpot.row + 1][currentSpot.col + 2] == null)
+                    availableMoves.add(new Spot(currentSpot.row + 1, currentSpot.col + 2));
+                else if (board.positions[currentSpot.row + 1][currentSpot.col + 2].getColor())
+                {
+                    availableMoves.add(new Spot(currentSpot.row + 1, currentSpot.col + 2));
+                }
+            }
+            if(currentSpot.row < 7 && currentSpot.col > 1)
+            {
+                if (board.positions[currentSpot.row + 1][currentSpot.col - 2] == null)
+                    availableMoves.add(new Spot(currentSpot.row + 1, currentSpot.col - 2));
+                else if (board.positions[currentSpot.row + 1][currentSpot.col - 2].getColor())
+                {
+                    availableMoves.add(new Spot(currentSpot.row + 1, currentSpot.col - 2));
+                }
+            }
+            if (currentSpot.row < 6 && currentSpot.col > 0)
+            {
+                if (board.positions[currentSpot.row + 2][currentSpot.col - 1] == null)
+                    availableMoves.add(new Spot(currentSpot.row + 1, currentSpot.col - 2));
+                else if (board.positions[currentSpot.row + 2][currentSpot.col - 1].getColor())
+                {
+                    availableMoves.add(new Spot(currentSpot.row + 1, currentSpot.col - 2));
+                }
+            }
+            if(currentSpot.row < 6 && currentSpot.col < 7)
+            {
+                if (board.positions[currentSpot.row + 2][currentSpot.col + 1] == null)
+                    availableMoves.add(new Spot(currentSpot.row + 2, currentSpot.col + 1));
+                else if (board.positions[currentSpot.row + 2][currentSpot.col + 1].getColor())
+                {
+                    availableMoves.add(new Spot(currentSpot.row + 2, currentSpot.col + 1));
+                }
+            }
+            if (currentSpot.row > 0 && currentSpot.col > 1)
+            {
+                if (board.positions[currentSpot.row - 1][currentSpot.col - 2] == null)
+                    availableMoves.add(new Spot(currentSpot.row - 1, currentSpot.col - 2));
+                else if (board.positions[currentSpot.row - 1][currentSpot.col - 2].getColor())
+                {
+                    availableMoves.add(new Spot(currentSpot.row - 1, currentSpot.col - 2));
+                }
+            }
+            if(currentSpot.row > 1 && currentSpot.col > 0)
+            {
+                if (board.positions[currentSpot.row - 2][currentSpot.col - 1] == null)
+                    availableMoves.add(new Spot(currentSpot.row - 2, currentSpot.col - 1));
+                else if (board.positions[currentSpot.row - 2][currentSpot.col - 1].getColor())
+                {
+                    availableMoves.add(new Spot(currentSpot.row - 2, currentSpot.col - 1));
+                }
+            }
+            if (currentSpot.row > 1 && currentSpot.col < 7)
+            {
+                if (board.positions[currentSpot.row - 2][currentSpot.col + 1] == null)
+                    availableMoves.add(new Spot(currentSpot.row - 2, currentSpot.col + 1));
+                else if (board.positions[currentSpot.row - 2][currentSpot.col + 1].getColor())
+                {
+                    availableMoves.add(new Spot(currentSpot.row - 2, currentSpot.col + 1));
+                }
+            }
+            if(currentSpot.row > 0 && currentSpot.col < 6)
+            {
+                if (board.positions[currentSpot.row - 1][currentSpot.col + 2] == null)
+                    availableMoves.add(new Spot(currentSpot.row - 1, currentSpot.col + 2));
+                else if (board.positions[currentSpot.row - 1][currentSpot.col + 2].getColor())
+                {
+                    availableMoves.add(new Spot(currentSpot.row - 1, currentSpot.col + 2));
+                }
+            }
         }
         return  availableMoves;
     }
