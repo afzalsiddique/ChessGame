@@ -86,13 +86,13 @@ public class AI_Agent {
             return minScore;
         }
     }
-    public Spot findBestMove(Board board){
+    public Spot[] findBestMove(Board board){
+        Spot[] sourceAndDest = {new Spot(-1,-1), new Spot(-1,-1)};
         int DEPTH = 1;
         Spot spotPieceSource;
         Spot spotPieceDest;
         Piece pieceSource;
         Piece pieceDest; // could be null
-        Spot bestMove = new Spot();
         Piece[][] positions = board.positions;
         int bestVal = -999999;
         for(int i=0;i<8;i++){
@@ -111,21 +111,22 @@ public class AI_Agent {
                         board.positions[spotPieceSource.row][spotPieceSource.col] = null;
                         // calculate moveVal and take the bestVal
                         int moveVal = minimax(board, DEPTH, false);
+                        if(moveVal > bestVal){
+                            sourceAndDest[0].row = i;
+                            sourceAndDest[0].col = j;
+                            sourceAndDest[1] = new Spot(spotPieceDest.row, spotPieceDest.col);
+                            bestVal = moveVal;
+                        }
                         // undo the move
                         // move pieceSource to spotPieceSource
                         movePieceToSpot(board, pieceSource, spotPieceSource);
                         // move pieceDest to spotPieceDest
                         movePieceToSpot(board, pieceDest, spotPieceDest);
-                        if(moveVal > bestVal){
-                            bestMove.row = i;
-                            bestMove.col = j;
-                            bestVal = moveVal;
-                        }
                     }
                 }
             }
         }
-        return bestMove;
+        return sourceAndDest;
     }
     public void movePieceToSpot(Board board, Piece piece, Spot spot){
         int row = spot.row;
