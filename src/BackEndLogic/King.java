@@ -37,7 +37,7 @@ public class King extends Piece {
     }
 
     ArrayList<Spot> getThisPiecesMoves(Piece somePiece){
-        return somePiece.calculateAllPossibleMoves()
+        return somePiece.calculateAllPossibleMoves();
     }
 
     void checkChecksForAllOpponentPieces(){
@@ -47,7 +47,7 @@ public class King extends Piece {
             for(int j=0; j<8; j++){
                 if(board.isOpponent(this, board.getPiece(i,j))){
                     ArrayList<Spot> piecesAvailableMoves = getThisPiecesMoves(board.getPiece(i,j));
-                    
+
                 }
             }
         }
