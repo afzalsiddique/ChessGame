@@ -117,16 +117,16 @@ public class Board {
 
     public void addPiece(Piece piece){
         piece.setBoard(this);
-        positions[piece.getSpot().row][piece.getSpot().col] = piece;
+        positions[piece.getCurrentSpot().row][piece.getCurrentSpot().col] = piece;
     }
 
     void moveSelectedPiece(Spot inputSpot){
-        moveTransitionRecord.getToMovePiece().setSpot(inputSpot);
+        moveTransitionRecord.getToMovePiece().setCurrentSpot(inputSpot);
         addPiece(moveTransitionRecord.getToMovePiece());
     }
 
     void removeSelectedPiece(){
-        Spot prevPos = moveTransitionRecord.getToMovePiece().getSpot();
+        Spot prevPos = moveTransitionRecord.getToMovePiece().getCurrentSpot();
         positions[prevPos.row][prevPos.col] = null;
     }
 

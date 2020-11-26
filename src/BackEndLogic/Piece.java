@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public abstract class Piece {
-    Spot spot;
+    Spot currentSpot;
     private ImageIcon image;
     boolean isWhite;
     public ArrayList<Spot> availableMoves = new ArrayList<>();
@@ -25,12 +25,12 @@ public abstract class Piece {
         return isWhite;
     }
 
-    public Spot getSpot() {
-        return spot;
+    public Spot getCurrentSpot() {
+        return currentSpot;
     }
 
-    public void setSpot(Spot spot) {
-        this.spot = spot;
+    public void setCurrentSpot(Spot currentSpot) {
+        this.currentSpot = currentSpot;
     }
 
     public ImageIcon getImage(){

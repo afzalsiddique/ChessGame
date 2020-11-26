@@ -18,7 +18,7 @@ public class MoveTransitionRecord {
     }
 
     public Spot getPrevSpot(){
-        return toMove.getSpot();
+        return toMove.getCurrentSpot();
     }
 
     public Piece getToMovePiece(){

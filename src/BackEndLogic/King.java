@@ -9,7 +9,7 @@ public class King extends Piece {
 
     public King(boolean isWhite, Spot inputSpot){
         this.isWhite = isWhite;
-        this.spot = inputSpot;
+        this.currentSpot = inputSpot;
         importImage();
         setValue();
     }
@@ -39,7 +39,27 @@ public class King extends Piece {
     @Override
     public ArrayList<Spot> calculateAllPossibleMoves() {
         availableMoves.clear();
-        availableMoves.add(new Spot(0,0));
+        int row = currentSpot.row;
+        int col = currentSpot.col;
+        if(row + 1 <= 7)
+            availableMoves.add(new Spot(row+1, col));
+        if(row - 1 >= 0)
+            availableMoves.add(new Spot(row-1, col));
+        if(col + 1 <= 7)
+            availableMoves.add(new Spot(row, col+1));
+        if(col - 1 >= 0)
+            availableMoves.add(new Spot(row, col-1));
+
+        if(row + 1 <= 7 && col + 1 <= 7)
+            availableMoves.add(new Spot(row+1, col+1));
+        if(row + 1 <= 7 && col - 1 >= 0)
+            availableMoves.add(new Spot(row+1, col-1));
+        if(row - 1 >= 0 && col + 1 <= 7)
+            availableMoves.add(new Spot(row-1, col+1));
+        if(row - 1 >= 0 && col - 1 >= 0)
+            availableMoves.add(new Spot(row-1, col-1));
+
+
         return  availableMoves;
     }
 

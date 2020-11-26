@@ -10,7 +10,7 @@ public class Rook extends Piece
     public Rook(boolean isWhite, Spot spot)
     {
         this.isWhite = isWhite;
-        this.spot = spot;
+        this.currentSpot = spot;
         ImportImage();
         setValue();
     }
@@ -34,44 +34,44 @@ public class Rook extends Piece
         availableMoves.clear();
         if (getColor())
         {
-            for (int row = spot.row + 1; row < 8; row++)
+            for (int row = currentSpot.row + 1; row < 8; row++)
             {
-                if (board.positions[row][spot.col] == null)
-                    availableMoves.add(new Spot(row, spot.col));
-                else if (!board.positions[row][spot.col].getColor()) {
-                    availableMoves.add(new Spot(row, spot.col));
+                if (board.positions[row][currentSpot.col] == null)
+                    availableMoves.add(new Spot(row, currentSpot.col));
+                else if (!board.positions[row][currentSpot.col].getColor()) {
+                    availableMoves.add(new Spot(row, currentSpot.col));
                     break;
                 }
                 else break;
             }
-            for (int row = spot.row - 1; row >= 0; row--)
+            for (int row = currentSpot.row - 1; row >= 0; row--)
             {
-                if (board.positions[row][spot.col] == null)
-                    availableMoves.add(new Spot(row, spot.col));
-                else if (!board.positions[row][spot.col].getColor()) {
-                    availableMoves.add(new Spot(row, spot.col));
+                if (board.positions[row][currentSpot.col] == null)
+                    availableMoves.add(new Spot(row, currentSpot.col));
+                else if (!board.positions[row][currentSpot.col].getColor()) {
+                    availableMoves.add(new Spot(row, currentSpot.col));
                     break;
                 }
                 else
                     break;
             }
-            for (int col = spot.col + 1; col < 8; col++)
+            for (int col = currentSpot.col + 1; col < 8; col++)
             {
-                if (board.positions[spot.row][col] == null)
-                    availableMoves.add(new Spot(spot.row, col));
-                else if (!board.positions[spot.row][col].getColor()) {
-                    availableMoves.add(new Spot(spot.row, col));
+                if (board.positions[currentSpot.row][col] == null)
+                    availableMoves.add(new Spot(currentSpot.row, col));
+                else if (!board.positions[currentSpot.row][col].getColor()) {
+                    availableMoves.add(new Spot(currentSpot.row, col));
                     break;
                 }
                 else
                     break;
             }
-            for (int col = spot.col - 1; col >= 0; col--)
+            for (int col = currentSpot.col - 1; col >= 0; col--)
             {
-                if (board.positions[spot.row][col] == null)
-                    availableMoves.add(new Spot(spot.row, col));
-                else if (!board.positions[spot.row][col].getColor()) {
-                    availableMoves.add(new Spot(spot.row, col));
+                if (board.positions[currentSpot.row][col] == null)
+                    availableMoves.add(new Spot(currentSpot.row, col));
+                else if (!board.positions[currentSpot.row][col].getColor()) {
+                    availableMoves.add(new Spot(currentSpot.row, col));
                     break;
                 }
                 else
@@ -79,44 +79,44 @@ public class Rook extends Piece
             }
         }
         else {
-            for (int row = spot.row + 1; row < 8; row++)
+            for (int row = currentSpot.row + 1; row < 8; row++)
             {
-                if (board.positions[row][spot.col] == null)
-                    availableMoves.add(new Spot(row, spot.col));
-                else if (board.positions[row][spot.col].getColor()) {
-                    availableMoves.add(new Spot(row, spot.col));
+                if (board.positions[row][currentSpot.col] == null)
+                    availableMoves.add(new Spot(row, currentSpot.col));
+                else if (board.positions[row][currentSpot.col].getColor()) {
+                    availableMoves.add(new Spot(row, currentSpot.col));
                     break;
                 }
                 else break;
             }
-            for (int row = spot.row - 1; row >= 0; row--)
+            for (int row = currentSpot.row - 1; row >= 0; row--)
             {
-                if (board.positions[row][spot.col] == null)
-                    availableMoves.add(new Spot(row, spot.col));
-                else if (board.positions[row][spot.col].getColor()) {
-                    availableMoves.add(new Spot(row, spot.col));
+                if (board.positions[row][currentSpot.col] == null)
+                    availableMoves.add(new Spot(row, currentSpot.col));
+                else if (board.positions[row][currentSpot.col].getColor()) {
+                    availableMoves.add(new Spot(row, currentSpot.col));
                     break;
                 }
                 else
                     break;
             }
-            for (int col = spot.col + 1; col < 8; col++)
+            for (int col = currentSpot.col + 1; col < 8; col++)
             {
-                if (board.positions[spot.row][col] == null)
-                    availableMoves.add(new Spot(spot.row, col));
-                else if (board.positions[spot.row][col].getColor()) {
-                    availableMoves.add(new Spot(spot.row, col));
+                if (board.positions[currentSpot.row][col] == null)
+                    availableMoves.add(new Spot(currentSpot.row, col));
+                else if (board.positions[currentSpot.row][col].getColor()) {
+                    availableMoves.add(new Spot(currentSpot.row, col));
                     break;
                 }
                 else
                     break;
             }
-            for (int col = spot.col - 1; col >= 0; col--)
+            for (int col = currentSpot.col - 1; col >= 0; col--)
             {
-                if (board.positions[spot.row][col] == null)
-                    availableMoves.add(new Spot(spot.row, col));
-                else if (board.positions[spot.row][col].getColor()) {
-                    availableMoves.add(new Spot(spot.row, col));
+                if (board.positions[currentSpot.row][col] == null)
+                    availableMoves.add(new Spot(currentSpot.row, col));
+                else if (board.positions[currentSpot.row][col].getColor()) {
+                    availableMoves.add(new Spot(currentSpot.row, col));
                     break;
                 }
                 else
