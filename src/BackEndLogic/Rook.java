@@ -12,6 +12,7 @@ public class Rook extends Piece
         this.isWhite = isWhite;
         this.spot = spot;
         ImportImage();
+        setValue();
     }
 
     private void ImportImage(){

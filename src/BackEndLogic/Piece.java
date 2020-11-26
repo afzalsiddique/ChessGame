@@ -10,7 +10,7 @@ public abstract class Piece {
     public ArrayList<Spot> availableMoves = new ArrayList<>();
     Board board;
     public String color;
-    protected int value;
+    static int value;
     public void setBoard(Board board){
         this.board = board;
     }

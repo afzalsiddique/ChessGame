@@ -10,12 +10,14 @@ public class Pawn extends Piece {
         this.isWhite = isWhite;
         this.spot = spot;
         ImportImage();
+        setValue();
     }
 
     public Pawn(boolean isWhite, int x, int y){
         this.isWhite = isWhite;
         this.spot = new Spot(x,y);
         ImportImage();
+        setValue();
     }
 
     private void ImportImage(){
@@ -55,7 +57,9 @@ public class Pawn extends Piece {
         }
         return  availableMoves;
     }
-    void setValue(){
-        this.value = 10;
+
+    @Override
+    void setValue() {
+        value = 10;
     }
 }
