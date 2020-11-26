@@ -37,7 +37,7 @@ public abstract class Piece {
         return image;
     }
 
-    public void setImage(ImageIcon image) {
+    protected void setImage(ImageIcon image) {
         this.image = image;
     }
 
@@ -50,6 +50,7 @@ public abstract class Piece {
         else
             return -value;
     }
+
     abstract void setValue();
 
     @Override

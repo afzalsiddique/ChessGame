@@ -58,8 +58,8 @@ public class Pawn extends Piece {
         return  availableMoves;
     }
 
-    @Override
-    void setValue() {
+
+    public void setValue() {
         value = 10;
     }
 

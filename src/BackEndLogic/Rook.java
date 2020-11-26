@@ -131,7 +131,7 @@ public class Rook extends Piece
     {
 
     }
-    void setValue(){
+    public void setValue(){
         this.value = 50;
     }
     @Override
