@@ -130,4 +130,7 @@ public class Rook extends Piece
     {
 
     }
+    void setValue(){
+        this.value = 50;
+    }
 }

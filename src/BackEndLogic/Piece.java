@@ -1,9 +1,6 @@
 package BackEndLogic;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public abstract class Piece {
@@ -13,6 +10,7 @@ public abstract class Piece {
     public ArrayList<Spot> availableMoves = new ArrayList<>();
     Board board;
     public String color;
+    protected int value;
     public void setBoard(Board board){
         this.board = board;
     }
@@ -47,4 +45,11 @@ public abstract class Piece {
     public void castling(){
     
     }
+    public int getValue(){
+        if(isWhite)
+            return value;
+        else
+            return -value;
+    }
+    abstract void setValue();
 }
