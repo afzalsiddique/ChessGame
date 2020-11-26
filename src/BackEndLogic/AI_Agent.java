@@ -63,19 +63,7 @@ public class AI_Agent {
         board.positions[row][col] = piece;
     }
 
-    // remove this method
-    public ArrayList<Spot> getAllAvailableMovesOfEveryPiece(){
-        ArrayList<Spot> allMoves = new ArrayList<>();
-        Piece[][] positions = board.positions;
-        for(int i=0;i<8;i++){
-            for(int j=0;j<8;j++){
-                if (positions[i][j] != null){
-                    allMoves.addAll(positions[i][j].calculateAllPossibleMoves());
-                }
-            }
-        }
-        return allMoves;
-    }
+
     public int evaluate(Board board){ // this can evaluate any board not just current game board
         // need to calculate checkmate score
         // if white wins score should be greater than 10000 or must be changed in minimax method
