@@ -75,7 +75,7 @@ public class TestAI_Agent {
         board.addPiece(piece4);
         AI_Agent ai_agent = new AI_Agent(board);
         Spot actual = ai_agent.findBestMove(board);
-        Spot expected = new Spot(0,3);
+        Spot expected = new Spot(0,3); // this is actually returning which spot has the best move
         Assert.assertEquals(expected, actual);
     }
 }
