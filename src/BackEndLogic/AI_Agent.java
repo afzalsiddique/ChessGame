@@ -84,6 +84,46 @@ public class AI_Agent {
             return minScore;
         }
     }
+    public Spot findBestMove(Board board){
+        int DEPTH = 4;
+        Spot spotPieceSource;
+//        spotPieceDest is after availableMoves method is called
+        Piece pieceSource;
+        Piece pieceDest; // could be null
+        Spot bestMove = new Spot();
+        Piece[][] positions = board.positions;
+        int bestVal = -999999;
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                pieceSource = positions[i][j];
+                if(pieceSource!=null){
+                    spotPieceSource = pieceSource.getSpot();
+                    ArrayList<Spot> availableMoves = pieceSource.calculateAllPossibleMoves();
+                    for(Spot spotPieceDest:availableMoves){
+                        pieceDest = board.getPiece(spotPieceDest);
+                        // make the move
+                        // move pieceSource to spotPieceDest
+                        movePieceToSpot(board, pieceSource, spotPieceDest);
+                        // make spotPieceSource null
+                        board.positions[spotPieceSource.row][spotPieceSource.col] = null;
+                        // calculate moveVal and take the bestVal
+                        int moveVal = minimax(board, DEPTH, false);
+                        // undo the move
+                        // move pieceSource to spotPieceSource
+                        movePieceToSpot(board, pieceSource, spotPieceSource);
+                        // move pieceDest to spotPieceDest
+                        movePieceToSpot(board, pieceDest, spotPieceDest);
+                        if(moveVal > bestVal){
+                            bestMove.row = i;
+                            bestMove.col = j;
+                            bestVal = moveVal;
+                        }
+                    }
+                }
+            }
+        }
+        return bestMove;
+    }
     public void movePieceToSpot(Board board, Piece piece, Spot spot){
         int row = spot.row;
         int col = spot.col;
