@@ -41,4 +41,9 @@ public class Spot implements Comparable<Spot> {
     public int hashCode() {
         return Objects.hash(row, col);
     }
+
+    @Override
+    public String toString() {
+        return "row: "+String.valueOf(row)+" col: "+String.valueOf(col);
+    }
 }

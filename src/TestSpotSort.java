@@ -23,4 +23,12 @@ class TestSpotSort{
             };
             Assert.assertArrayEquals(expected.toArray(), actual.toArray());
         }
+
+    @Test
+    public void test2(){
+        Spot spot = new Spot(1,5);
+        String actual = spot.toString();
+        String expected = "row: 1 col: 5";
+        Assert.assertEquals(expected, actual);
+    }
 }
