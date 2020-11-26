@@ -1,4 +1,7 @@
-import BackEndLogic.*;
+import BackEndLogic.Board;
+import BackEndLogic.Pawn;
+import BackEndLogic.Piece;
+import BackEndLogic.Spot;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
@@ -36,13 +39,14 @@ public class TestPawn {
             }
         };
         Collections.sort(expected);
-        for(int i = 0; i < actual.size(); i++) {
-            System.out.println(actual.get(i).row + " " + actual.get(i).col);
-        }
-        System.out.print("\n");
-        for(int i = 0; i < expected.size(); i++) {
-            System.out.println(expected.get(i).row + " " + expected.get(i).col);
-        }
+//        for(int i = 0; i < actual.size(); i++) {
+//            System.out.println(actual.get(i).row + " " + actual.get(i).col);
+//        }
+//        System.out.print("\n");
+//        for(int i = 0; i < expected.size(); i++) {
+//            System.out.println(expected.get(i).row + " " + expected.get(i).col);
+//        }
         Assert.assertArrayEquals(expected.toArray(), actual.toArray());
     }
+
 }
