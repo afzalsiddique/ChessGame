@@ -87,7 +87,7 @@ public class AI_Agent {
         }
     }
     public Spot findBestMove(Board board){
-        int DEPTH = 4;
+        int DEPTH = 2;
         Spot spotPieceSource;
         Spot spotPieceDest;
         Piece pieceSource;
