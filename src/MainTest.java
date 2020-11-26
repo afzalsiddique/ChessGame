@@ -33,6 +33,10 @@ public class MainTest {
        Piece bQueen = new Queen(false, new Spot(0,3));
        Piece wKing = new King(true, new Spot(7,4));
        Piece bKing = new King(false, new Spot(0,4));
+       Piece wKnight1 = new Knight(true, new Spot(7,1));
+       Piece wKnight2 = new Knight(true, new Spot(7,6));
+       Piece bKnight1 = new Knight(false, new Spot(0,1));
+       Piece bKnight2 = new Knight(false, new Spot(0,6));
 
        board.addPiece(wRook1);
        board.addPiece(wRook2);
@@ -62,6 +66,10 @@ public class MainTest {
        board.addPiece(bQueen);
        board.addPiece(wKing);
        board.addPiece(bKing);
+       board.addPiece(wKnight1);
+       board.addPiece(wKnight2);
+       board.addPiece(bKnight1);
+       board.addPiece(bKnight2);
 
        GUI gui = new GUI(board);
        gui.updateGUI();
