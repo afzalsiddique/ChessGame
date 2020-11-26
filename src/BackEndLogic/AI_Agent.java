@@ -87,7 +87,7 @@ public class AI_Agent {
         }
     }
     public Spot findBestMove(Board board){
-        int DEPTH = 1;
+        int DEPTH = 5;
         Spot spotPieceSource;
         Spot spotPieceDest;
         Piece pieceSource;
@@ -98,7 +98,7 @@ public class AI_Agent {
         for(int i=0;i<8;i++){
             for(int j=0;j<8;j++){
                 pieceSource = positions[i][j];
-                if(pieceSource!=null && pieceSource.isWhite){
+                if(pieceSource!=null && pieceSource.isWhite){ // We are finding best move for the White
                     spotPieceSource = pieceSource.getCurrentSpot();
                     ArrayList<Spot> availableMoves = pieceSource.calculateAllPossibleMoves();
                     for(int k=0;k<availableMoves.size();k++){
