@@ -74,8 +74,99 @@ public class TestAI_Agent {
         board.addPiece(piece3);
         board.addPiece(piece4);
         AI_Agent ai_agent = new AI_Agent(board);
-        Spot actual = ai_agent.findBestMove(board);
-        Spot expected = new Spot(0,3); // this is actually returning which spot has the best move
+        Spot actual = ai_agent.findBestMove(board); // this is actually returning which spot has the best move
+        Spot expected = new Spot(1,2);
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void test6(){
+        Board board = new Board();
+        Piece piece1 = new Pawn(false, new Spot(0,0));
+        Piece piece2 = new Pawn(false, new Spot(0,3));
+        Piece piece3 = new Pawn(false, new Spot(2,1));
+        Piece piece4 = new Pawn(false, new Spot(3,1));
+        Piece piece5 = new Pawn(false, new Spot(5,1));
+        Piece piece6 = new Pawn(true, new Spot(1,0));
+        Piece piece7 = new Pawn(true, new Spot(2,3));
+        Piece piece8 = new Pawn(true, new Spot(3,2));
+        Piece piece9 = new Pawn(true, new Spot(5,3));
+        board.addPiece(piece1);
+        board.addPiece(piece2);
+        board.addPiece(piece3);
+        board.addPiece(piece4);
+        board.addPiece(piece5);
+        board.addPiece(piece6);
+        board.addPiece(piece7);
+        board.addPiece(piece8);
+        board.addPiece(piece9);
+        AI_Agent ai_agent = new AI_Agent(board);
+        Spot actual = ai_agent.findBestMove(board); // this is actually returning which spot has the best move
+        Spot expected = new Spot(3,2);
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void test7(){
+        Board board = new Board();
+        Piece piece1 = new Pawn(false, new Spot(0,0));
+        Piece piece10 = new Pawn(false, new Spot(0,3));
+        Piece piece2 = new Rook(false, new Spot(0,5));
+        Piece piece3 = new Pawn(false, new Spot(2,1));
+        Piece piece4 = new Pawn(false, new Spot(3,1));
+        Piece piece5 = new Pawn(false, new Spot(5,1));
+        Piece piece6 = new Pawn(true, new Spot(1,0));
+        Piece piece7 = new Pawn(true, new Spot(2,3));
+        Piece piece8 = new Pawn(true, new Spot(3,2));
+        Piece piece9 = new Pawn(true, new Spot(5,3));
+        Piece piece11 = new Rook(true, new Spot(7,5));
+        board.addPiece(piece1);
+        board.addPiece(piece2);
+        board.addPiece(piece3);
+        board.addPiece(piece4);
+        board.addPiece(piece5);
+        board.addPiece(piece6);
+        board.addPiece(piece7);
+        board.addPiece(piece8);
+        board.addPiece(piece9);
+        board.addPiece(piece10);
+        board.addPiece(piece11);
+        AI_Agent ai_agent = new AI_Agent(board);
+        Spot actual = ai_agent.findBestMove(board); // this is actually returning which spot has the best move
+        Spot expected = new Spot(7,5);
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void test8(){
+        Board board = new Board();
+        Piece piece1 = new Pawn(false, new Spot(0,0));
+        Piece piece10 = new Pawn(false, new Spot(0,3));
+        Piece piece2 = new Rook(false, new Spot(0,5));
+        Piece piece3 = new Pawn(false, new Spot(2,1));
+        Piece piece4 = new Pawn(false, new Spot(3,1));
+        Piece piece5 = new Pawn(false, new Spot(5,1));
+        Piece piece12 = new Pawn(false, new Spot(7,6));
+        Piece piece6 = new Pawn(true, new Spot(1,1));
+        Piece piece7 = new Pawn(true, new Spot(1,2));
+        Piece piece8 = new Pawn(true, new Spot(3,2));
+        Piece piece9 = new Pawn(true, new Spot(5,3));
+        Piece piece11 = new Rook(true, new Spot(7,5));
+        board.addPiece(piece1);
+        board.addPiece(piece2);
+        board.addPiece(piece3);
+        board.addPiece(piece4);
+        board.addPiece(piece5);
+        board.addPiece(piece6);
+        board.addPiece(piece7);
+        board.addPiece(piece8);
+        board.addPiece(piece9);
+        board.addPiece(piece10);
+        board.addPiece(piece11);
+        AI_Agent ai_agent = new AI_Agent(board);
+        Spot actual = ai_agent.findBestMove(board); // this is actually returning which spot has the best move
+        Spot expected = new Spot(7,5);
+        Assert.assertEquals(expected, actual);
+    }
+
 }
