@@ -13,7 +13,7 @@ public class AI_Agent {
     }
     public int minimax(Board board, int depth, boolean maxPlayer){ // first call to this method should be with !maxPlayer
         Spot spotPieceSource;
-//        spotPieceDest is after availableMoves method is called
+        Spot spotPieceDest;
         Piece pieceSource;
         Piece pieceDest; // could be null
         int score = evaluate(board);
@@ -33,7 +33,8 @@ public class AI_Agent {
                     if(pieceSource!=null){
                         spotPieceSource = pieceSource.getSpot();
                         ArrayList<Spot> availableMoves = pieceSource.calculateAllPossibleMoves();
-                        for(Spot spotPieceDest:availableMoves){
+                        for(int k=0;k<availableMoves.size();k++) {
+                            spotPieceDest = availableMoves.get(k);
                             pieceDest = board.getPiece(spotPieceDest);
                             // make the move
                             // move pieceSource to spotPieceDest
@@ -41,7 +42,7 @@ public class AI_Agent {
                             // make spotPieceSource null
                             board.positions[spotPieceSource.row][spotPieceSource.col] = null;
                             // calculate score and take the maxScore
-                            score = minimax(board, depth-1, !maxPlayer);
+                            score = minimax(board, depth - 1, !maxPlayer);
                             maxScore = max(maxScore, score);
                             // undo the move
                             // move pieceSource to spotPieceSource
@@ -62,7 +63,8 @@ public class AI_Agent {
                     if(pieceSource!=null){
                         spotPieceSource = pieceSource.getSpot();
                         ArrayList<Spot> availableMoves = pieceSource.calculateAllPossibleMoves();
-                        for(Spot spotPieceDest:availableMoves){
+                        for(int k=0;k<availableMoves.size();k++){
+                            spotPieceDest = availableMoves.get(k);
                             pieceDest = board.getPiece(spotPieceDest);
                             // make the move
                             // move pieceSource to spotPieceDest
@@ -87,7 +89,7 @@ public class AI_Agent {
     public Spot findBestMove(Board board){
         int DEPTH = 4;
         Spot spotPieceSource;
-//        spotPieceDest is after availableMoves method is called
+        Spot spotPieceDest;
         Piece pieceSource;
         Piece pieceDest; // could be null
         Spot bestMove = new Spot();
@@ -99,7 +101,8 @@ public class AI_Agent {
                 if(pieceSource!=null){
                     spotPieceSource = pieceSource.getSpot();
                     ArrayList<Spot> availableMoves = pieceSource.calculateAllPossibleMoves();
-                    for(Spot spotPieceDest:availableMoves){
+                    for(int k=0;k<availableMoves.size();k++){
+                        spotPieceDest = availableMoves.get(k);
                         pieceDest = board.getPiece(spotPieceDest);
                         // make the move
                         // move pieceSource to spotPieceDest

@@ -30,4 +30,19 @@ public class TestAI_Agent {
         int expected = 0;
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void test3(){
+        Board board = new Board();
+        Piece piece1 = new Pawn(true, new Spot(7,0));
+        Piece piece3 = new Pawn(true, new Spot(7,1));
+        Piece piece2 = new Pawn(false, new Spot(0,0));
+        board.addPiece(piece1);
+        board.addPiece(piece2);
+        board.addPiece(piece3);
+        AI_Agent ai_agent = new AI_Agent(board);
+        int actual = ai_agent.minimax(board,2, false);
+        int expected = 10;
+        Assert.assertEquals(expected, actual);
+    }
 }
