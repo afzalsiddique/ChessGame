@@ -19,7 +19,7 @@ public class MainTest {
        board.addPiece(bishop1);
        board.addPiece(bishop2);
 
-       board.addPiece(new King(true, new Spot(3,5)));
+       board.addPiece(new King(true, new Spot(6,5)));
 
        GUI gui = new GUI(board);
        gui.updateGUI();

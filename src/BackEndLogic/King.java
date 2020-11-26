@@ -40,14 +40,30 @@ public class King extends Piece {
         return somePiece.calculateAllPossibleMoves();
     }
 
-    void checkChecksForAllOpponentPieces(){
-        ArrayList<Spot> AvailableMovesThatNeedToBeRemoved;
+    ArrayList<Spot> RemoveCommonElements(ArrayList<Spot> kingMoves, ArrayList<Spot> pieceMoves){
+        ArrayList<Spot> finalMoves = new ArrayList<>();
+        ArrayList<Spot> commonMoves = new ArrayList<>();
+        finalMoves.clear();
+        for(int i=0; i<kingMoves.size(); i++){
+            for(int j=0; j<pieceMoves.size(); j++){
+                if(kingMoves.get(i).equals(pieceMoves.get(j)))
+                    commonMoves.add(kingMoves.get(i));
+            }
+        }
 
+        for(int i=0; i<kingMoves.size(); i++){
+            if(!commonMoves.contains(kingMoves.get(i)))
+                finalMoves.add(kingMoves.get(i));
+        }
+        
+        return finalMoves;
+    }
+
+    void checkChecksForAllOpponentPieces(){
         for(int i=0; i<8; i++){
             for(int j=0; j<8; j++){
                 if(board.isOpponent(this, board.getPiece(i,j))){
-                    ArrayList<Spot> piecesAvailableMoves = getThisPiecesMoves(board.getPiece(i,j));
-
+                    this.availableMoves = RemoveCommonElements(this.availableMoves, getThisPiecesMoves(board.getPiece(i,j)));
                 }
             }
         }
@@ -76,6 +92,7 @@ public class King extends Piece {
         if(thisRow - 1 >= 0 && thisCol - 1 >= 0 && (board.isOpponent(this, board.getPiece(thisRow-1, thisCol-1)) || !board.isOccupied(thisRow-1, thisCol-1)))
             availableMoves.add(new Spot(thisRow-1, thisCol-1));
 
+        checkChecksForAllOpponentPieces();
 
         return  availableMoves;
     }
