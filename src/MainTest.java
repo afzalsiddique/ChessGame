@@ -15,7 +15,7 @@ public class MainTest {
        board.addPiece(rook1);
        board.addPiece(rook2);
 
-       board.addPiece(new King(true, new Spot(2,0)));
+       board.addPiece(new King(true, new Spot(3,5)));
 
        GUI gui = new GUI(board);
        gui.updateGUI();
