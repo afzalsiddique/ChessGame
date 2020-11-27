@@ -59,15 +59,6 @@ public class King extends Piece {
         return finalMoves;
     }
 
-    void checkChecksForAllOpponentPieces(){
-        for(int i=0; i<8; i++){
-            for(int j=0; j<8; j++){
-                if(board.isOpponent(this, board.getPiece(i,j))){
-                    this.availableMoves = RemoveCommonElements(this.availableMoves, getThisPiecesMoves(board.getPiece(i,j)));
-                }
-            }
-        }
-    }
 
     @Override
     public ArrayList<Spot> calculateAllPossibleMoves() {
@@ -92,7 +83,7 @@ public class King extends Piece {
         if(thisRow - 1 >= 0 && thisCol - 1 >= 0 && (board.isOpponent(this, board.getPiece(thisRow-1, thisCol-1)) || !board.isOccupied(thisRow-1, thisCol-1)))
             availableMoves.add(new Spot(thisRow-1, thisCol-1));
 
-        checkChecksForAllOpponentPieces();
+        this.availableMoves = board.modifyKingAvailableMoves(availableMoves, isWhite);
 
         return  availableMoves;
     }

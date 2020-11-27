@@ -1,4 +1,6 @@
 package BackEndLogic;
+import UserInterface.GUI;
+
 import java.util.ArrayList;
 
 public class Board {
@@ -64,6 +66,22 @@ public class Board {
         }
     }
 
+    void removePiece(int row, int col){
+        positions[row][col] = null;
+    }
+
+    void removePiece(Spot spot){
+        removePiece(spot.row, spot.col);
+    }
+
+    void putPieceAtLocation(int row, int col, Piece inputPiece){
+        positions[row][col] = inputPiece;
+    }
+
+    void putPieceAtLocation(Spot inputSpot, Piece inputPiece){
+        putPieceAtLocation(inputSpot.row, inputSpot.col, inputPiece);
+    }
+
     private King getKing(boolean isWhite){
         for(int i=0; i<8; i++){
             for(int j=0; j<8; j++){
@@ -79,19 +97,55 @@ public class Board {
     }
 
     // True if checked, false otherwise
-    boolean checkIfKingIsChecked(boolean isWhite){
+    private boolean checkIfKingIsChecked(boolean isWhite){
         King currentKing = getKing(isWhite);
 
         for(int i=0; i<8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (isOpponent(currentKing, getPiece(i, j))) {
                     ArrayList<Spot> somePieceMoves = getThisPieceMoves(getPiece(i, j));
-                    if (somePieceMoves.contains(currentKing.getCurrentSpot()))
+                    System.out.println("Opponent at " + i + " " + j);
+                    if (somePieceMoves.contains(currentKing.getCurrentSpot())) {
+                        System.out.println("Checking Checks = true");
                         return true;
+                    }
                 }
             }
         }
+        System.out.println("Checking Checks = false");
         return false;
+    }
+
+    private boolean checkIfMoveCreatesCheck(Spot newSpot, boolean isWhite){
+        Spot oldSpot = getKing(isWhite).getCurrentSpot();
+
+        putPieceAtLocation(newSpot, getPiece(oldSpot));
+
+        removePiece(oldSpot);
+
+        Boolean isCheck = checkIfKingIsChecked(isWhite);
+
+
+        if(isCheck)
+            System.out.println("Found at " + newSpot.row + " " + newSpot.col);
+
+
+
+        putPieceAtLocation(oldSpot, getPiece(newSpot));
+
+        removePiece(newSpot);
+
+        return isCheck;
+    }
+
+    protected ArrayList<Spot> modifyKingAvailableMoves(ArrayList<Spot> kingMoves, boolean isWhite){        // Remove the Moves that cause check
+        ArrayList<Spot> finalMoves = new ArrayList<>();
+        for(int i=0; i<kingMoves.size(); i++){
+            if(!checkIfMoveCreatesCheck(kingMoves.get(i), isWhite))
+                finalMoves.add(kingMoves.get(i));
+        }
+
+        return finalMoves;
     }
 
     boolean checkGameState(Piece[][] positions){
@@ -143,6 +197,7 @@ public class Board {
         clearAvailableMoves();
         removeSelectedPiece();
         moveSelectedPiece(spot);
+        checkIfKingIsChecked(true);
     }
 
     public void addPiece(Piece piece){
