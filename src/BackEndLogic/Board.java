@@ -64,6 +64,36 @@ public class Board {
         }
     }
 
+    private King getKing(boolean isWhite){
+        for(int i=0; i<8; i++){
+            for(int j=0; j<8; j++){
+                if(getPiece(i,j) instanceof King && getPiece(i,j).getColor() == isWhite)
+                    return (King) getPiece(i,j);
+            }
+        }
+        return null;
+    }
+
+    ArrayList<Spot> getThisPieceMoves(Piece inputPiece){
+        return inputPiece.calculateAllPossibleMoves();
+    }
+
+    // True if checked, false otherwise
+    boolean checkIfKingIsChecked(boolean isWhite){
+        King currentKing = getKing(isWhite);
+
+        for(int i=0; i<8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (isOpponent(currentKing, getPiece(i, j))) {
+                    ArrayList<Spot> somePieceMoves = getThisPieceMoves(getPiece(i, j));
+                    if (somePieceMoves.contains(currentKing.getCurrentSpot()))
+                        return true;
+                }
+            }
+        }
+        return false;
+    }
+
     boolean checkGameState(Piece[][] positions){
         return false;
     }
