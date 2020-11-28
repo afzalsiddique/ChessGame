@@ -85,8 +85,12 @@ public class Board {
     private King getKing(boolean isWhite){
         for(int i=0; i<8; i++){
             for(int j=0; j<8; j++){
-                if(getPiece(i,j) instanceof King && getPiece(i,j).getColor() == isWhite)
-                    return (King) getPiece(i,j);
+                if(getPiece(i,j) == null)
+                    continue;
+                if(getPiece(i,j) instanceof King && getPiece(i,j).getColor() == isWhite) {
+                    System.out.println("Found king at " + i + " " + j);
+                    return (King) getPiece(i, j);
+                }
             }
         }
         return null;
@@ -99,6 +103,14 @@ public class Board {
     // True if checked, false otherwise
     private boolean checkIfKingIsChecked(boolean isWhite){
         King currentKing = getKing(isWhite);
+
+        System.out.println("King at " + currentKing.getCurrentSpot().row + " " + currentKing.getCurrentSpot().col);
+
+        if(getPiece(7,7) != null)
+            System.out.println("Found at new Spot");
+
+        if(getPiece(6,7) == null)
+            System.out.println("Not Found at old Spot");
 
         for(int i=0; i<8; i++) {
             for (int j = 0; j < 8; j++) {
@@ -119,9 +131,19 @@ public class Board {
     private boolean checkIfMoveCreatesCheck(Spot newSpot, boolean isWhite){
         Spot oldSpot = getKing(isWhite).getCurrentSpot();
 
+        System.out.println("Checking at " + newSpot.row + " " + newSpot.col);
+
         putPieceAtLocation(newSpot, getPiece(oldSpot));
 
+        getPiece(newSpot).setCurrentSpot(newSpot);
+
+        if(getPiece(newSpot.row, newSpot.col) != null)
+            System.out.println("No Error in writing");
+
         removePiece(oldSpot);
+
+        if(getPiece(oldSpot.row, oldSpot.col) == null)
+            System.out.println("No Error in removing");
 
         Boolean isCheck = checkIfKingIsChecked(isWhite);
 
@@ -132,6 +154,8 @@ public class Board {
 
 
         putPieceAtLocation(oldSpot, getPiece(newSpot));
+
+        getPiece(oldSpot).setCurrentSpot(oldSpot);
 
         removePiece(newSpot);
 
