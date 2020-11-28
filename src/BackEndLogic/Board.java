@@ -76,6 +76,7 @@ public class Board {
 
     void putPieceAtLocation(int row, int col, Piece inputPiece){
         positions[row][col] = inputPiece;
+        getPiece(row, col).setCurrentSpot(new Spot(row, col));
     }
 
     void putPieceAtLocation(Spot inputSpot, Piece inputPiece){
@@ -145,8 +146,6 @@ public class Board {
 
         putPieceAtLocation(newSpot, getPiece(oldSpot));
 
-        getPiece(newSpot).setCurrentSpot(newSpot);
-
         if(getPiece(newSpot.row, newSpot.col) != null)
             System.out.println("No Error in writing");
 
@@ -161,11 +160,7 @@ public class Board {
         if(isCheck)
             System.out.println("Found at " + newSpot.row + " " + newSpot.col);
 
-
-
         putPieceAtLocation(oldSpot, getPiece(newSpot));
-
-        getPiece(oldSpot).setCurrentSpot(oldSpot);
 
         removePiece(newSpot);
 
