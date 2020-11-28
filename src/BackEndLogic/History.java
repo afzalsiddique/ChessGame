@@ -3,7 +3,7 @@ package BackEndLogic;
 import java.util.ArrayList;
 
 public class History {
-    ArrayList<Piece[][]> record = new ArrayList<Piece[][]>();
+    ArrayList<Board> records = new ArrayList<Board>();
     Board board;
 
     public History(Board board){
@@ -32,7 +32,12 @@ public class History {
                 }
             }
         }
-        record.add(positions);
+        records.add(new Board(positions));
+    }
+    public Board getLastRecord(){
+        Board board = records.get(records.size()-1);
+        records.remove(records.size()-1);
+        return board;
     }
 
 }

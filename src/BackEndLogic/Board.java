@@ -1,6 +1,4 @@
 package BackEndLogic;
-import UserInterface.GUI;
-
 import java.util.ArrayList;
 
 public class Board {
@@ -8,6 +6,9 @@ public class Board {
     public Piece[][] positions = new Piece[8][8];
 
     public Board(){ }
+    public Board(Piece[][] positions){
+        this.positions = positions;
+    }
 
     ArrayList<Spot> emptySpots = new ArrayList<>();
     ArrayList<Spot> availableMoves = new ArrayList<>();
