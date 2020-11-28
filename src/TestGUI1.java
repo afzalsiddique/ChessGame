@@ -11,6 +11,7 @@ public class TestGUI1 {
         board.addPiece(new Rook(true, new Spot(5,0)));
         board.addPiece(new Rook(false, new Spot(4,6)));
         board.addPiece(new King(true, new Spot(6,6)));
+        board.addPiece(new King(false, new Spot(4,4)));
 
         gui.updateGUI();
     }

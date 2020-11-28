@@ -100,6 +100,10 @@ public class Board {
         return inputPiece.calculateAllPossibleMoves();
     }
 
+    ArrayList<Spot> getThisPieceMovesKing(King inputPiece){
+        return inputPiece.calculateAllPossibleMovesForOpponent();
+    }
+
     // True if checked, false otherwise
     private boolean checkIfKingIsChecked(boolean isWhite){
         King currentKing = getKing(isWhite);
@@ -115,7 +119,13 @@ public class Board {
         for(int i=0; i<8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (isOpponent(currentKing, getPiece(i, j))) {
-                    ArrayList<Spot> somePieceMoves = getThisPieceMoves(getPiece(i, j));
+                    ArrayList<Spot> somePieceMoves = new ArrayList<>();
+
+                    if(getPiece(i,j) instanceof King)
+                        somePieceMoves = getThisPieceMovesKing((King) getPiece(i,j));
+                    else
+                        somePieceMoves = getThisPieceMoves(getPiece(i, j));
+
                     System.out.println("Opponent at " + i + " " + j);
                     if (somePieceMoves.contains(currentKing.getCurrentSpot())) {
                         System.out.println("Checking Checks = true");
