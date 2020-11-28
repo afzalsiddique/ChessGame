@@ -2,9 +2,14 @@ package BackEndLogic;
 
 import java.util.ArrayList;
 
-public class Undo {
-    ArrayList<Piece[][]> moves = new ArrayList<Piece[][]>();
+public class History {
+    ArrayList<Piece[][]> record = new ArrayList<Piece[][]>();
     Board board;
+
+    public History(Board board){
+        this.board = board;
+    }
+
     public void addMove(){
         Piece[][] positions = new Piece[8][8];
         for(int i=0;i<8;i++){
@@ -27,7 +32,7 @@ public class Undo {
                 }
             }
         }
-        moves.add(positions);
+        record.add(positions);
     }
 
 }

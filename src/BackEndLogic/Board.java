@@ -7,9 +7,7 @@ public class Board {
 
     public Piece[][] positions = new Piece[8][8];
 
-    public Board(){
-
-    }
+    public Board(){ }
 
     ArrayList<Spot> emptySpots = new ArrayList<>();
     ArrayList<Spot> availableMoves = new ArrayList<>();
