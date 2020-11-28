@@ -15,15 +15,15 @@ public class Undo {
                     if(piece.getClass().isInstance(Pawn.class))
                         positions[i][j] = new Pawn(piece.getColor(), spot);
                     else if(piece.getClass().isInstance(Rook.class))
-                        positions[i][j] = new Pawn(piece.getColor(), spot);
+                        positions[i][j] = new Rook(piece.getColor(), spot);
                     else if(piece.getClass().isInstance(Bishop.class))
-                        positions[i][j] = new Pawn(piece.getColor(), spot);
+                        positions[i][j] = new Bishop(piece.getColor(), spot);
                     else if(piece.getClass().isInstance(King.class))
-                        positions[i][j] = new Pawn(piece.getColor(), spot);
+                        positions[i][j] = new King(piece.getColor(), spot);
                     else if(piece.getClass().isInstance(Queen.class))
-                        positions[i][j] = new Pawn(piece.getColor(), spot);
+                        positions[i][j] = new Queen(piece.getColor(), spot);
                     else if(piece.getClass().isInstance(Knight.class))
-                        positions[i][j] = new Pawn(piece.getColor(), spot);
+                        positions[i][j] = new Knight(piece.getColor(), spot);
                 }
             }
         }
