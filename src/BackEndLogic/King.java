@@ -59,35 +59,6 @@ public class King extends Piece {
         return finalMoves;
     }
 
-
-    @Override
-    public ArrayList<Spot> calculateAllPossibleMoves() {
-        availableMoves.clear();
-        int thisRow = currentSpot.row;
-        int thisCol = currentSpot.col;
-        if(thisRow + 1 <= 7 && (board.isOpponent(this, board.getPiece(thisRow+1, thisCol)) || !board.isOccupied(thisRow+1, thisCol)))
-            availableMoves.add(new Spot(thisRow+1, thisCol));
-        if(thisRow - 1 >= 0 && (board.isOpponent(this, board.getPiece(thisRow-1, thisCol)) || !board.isOccupied(thisRow-1, thisCol)))
-            availableMoves.add(new Spot(thisRow-1, thisCol));
-        if(thisCol + 1 <= 7 && (board.isOpponent(this, board.getPiece(thisRow, thisCol+1)) || !board.isOccupied(thisRow, thisCol+1)))
-            availableMoves.add(new Spot(thisRow, thisCol+1));
-        if(thisCol - 1 >= 0 && (board.isOpponent(this, board.getPiece(thisRow, thisCol-1)) || !board.isOccupied(thisRow, thisCol-1)))
-            availableMoves.add(new Spot(thisRow, thisCol-1));
-
-        if(thisRow + 1 <= 7 && thisCol + 1 <= 7 && (board.isOpponent(this, board.getPiece(thisRow+1, thisCol+1)) || !board.isOccupied(thisRow+1, thisCol+1)))
-            availableMoves.add(new Spot(thisRow+1, thisCol+1));
-        if(thisRow + 1 <= 7 && thisCol - 1 >= 0 && (board.isOpponent(this, board.getPiece(thisRow+1, thisCol-1)) || !board.isOccupied(thisRow+1, thisCol-1)))
-            availableMoves.add(new Spot(thisRow+1, thisCol-1));
-        if(thisRow - 1 >= 0 && thisCol + 1 <= 7 && (board.isOpponent(this, board.getPiece(thisRow-1, thisCol+1)) || !board.isOccupied(thisRow-1, thisCol+1)))
-            availableMoves.add(new Spot(thisRow-1, thisCol+1));
-        if(thisRow - 1 >= 0 && thisCol - 1 >= 0 && (board.isOpponent(this, board.getPiece(thisRow-1, thisCol-1)) || !board.isOccupied(thisRow-1, thisCol-1)))
-            availableMoves.add(new Spot(thisRow-1, thisCol-1));
-
-        this.availableMoves = board.modifyKingAvailableMoves(availableMoves, isWhite);
-
-        return  availableMoves;
-    }
-
     public ArrayList<Spot> calculateAllPossibleMovesForOpponent() {
         availableMoves.clear();
         int thisRow = currentSpot.row;
@@ -109,6 +80,16 @@ public class King extends Piece {
             availableMoves.add(new Spot(thisRow-1, thisCol+1));
         if(thisRow - 1 >= 0 && thisCol - 1 >= 0 && (board.isOpponent(this, board.getPiece(thisRow-1, thisCol-1)) || !board.isOccupied(thisRow-1, thisCol-1)))
             availableMoves.add(new Spot(thisRow-1, thisCol-1));
+
+        return  availableMoves;
+    }
+
+    @Override
+    public ArrayList<Spot> calculateAllPossibleMoves() {
+
+        calculateAllPossibleMovesForOpponent();
+
+        this.availableMoves = board.modifyKingAvailableMoves(availableMoves, isWhite);
 
         return  availableMoves;
     }

@@ -24,7 +24,6 @@ public class GUI extends JFrame {
         makeLayoutVisible();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-
         JButton undoButton = new JButton("Undo Last Move");
         undoButton.addActionListener(new ActionListener() {
             @Override
