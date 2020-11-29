@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class GUI extends JFrame {
     private buttons[][] buttons = new buttons[8][8];
+
     String move = "";
 
     private Board backEndBoard;
@@ -22,6 +23,18 @@ public class GUI extends JFrame {
         createButtons();
         makeLayoutVisible();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+
+        JButton undoButton = new JButton("Undo Last Move");
+        undoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                backEndBoard.undoLastMove();
+                updateGUI();
+            }
+        });
+
+        this.add(undoButton);
     }
 
     public void updateGUI(){

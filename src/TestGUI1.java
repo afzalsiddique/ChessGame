@@ -13,6 +13,8 @@ public class TestGUI1 {
         board.addPiece(new King(true, new Spot(6,6)));
         board.addPiece(new King(false, new Spot(4,4)));
 
+        board.recordMove();
+
         gui.updateGUI();
     }
 }

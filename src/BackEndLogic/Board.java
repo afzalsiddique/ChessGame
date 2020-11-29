@@ -5,7 +5,9 @@ public class Board {
 
     public Piece[][] positions = new Piece[8][8];
 
-    public Board(){ }
+    History moveHistory = new History();
+
+    public Board(){}
     public Board(Piece[][] positions){
         this.positions = positions;
     }
@@ -15,6 +17,33 @@ public class Board {
 
     MoveTransitionRecord moveTransitionRecord = new MoveTransitionRecord();
 //    boardGUI UI;
+
+
+    public void recordMove(){
+        moveHistory.addMove(this);
+        moveHistory.printSize();
+    }
+
+    void printBoard(){
+        System.out.println("Prev Board:");
+        for(int i=0; i<8; i++){
+            for(int j=0; j<8; j++){
+                if(positions[i][j] != null)
+                    System.out.print(1);
+                else
+                    System.out.print(0);
+            }
+            System.out.print('\n');
+        }
+    }
+
+    public void undoLastMove(){
+        Piece[][] tempBoard = moveHistory.getLastRecord();
+        if(tempBoard == null)
+            return;
+        this.positions = tempBoard;
+        printBoard();
+    }
 
     public boolean isOccupied(Spot inputSpot){             // True if already occupied, false if not
         int col = inputSpot.col;
@@ -88,7 +117,6 @@ public class Board {
                 if(getPiece(i,j) == null)
                     continue;
                 if(getPiece(i,j) instanceof King && getPiece(i,j).getColor() == isWhite) {
-                    System.out.println("Found king at " + i + " " + j);
                     return (King) getPiece(i, j);
                 }
             }
@@ -108,14 +136,6 @@ public class Board {
     private boolean checkIfKingIsChecked(boolean isWhite){
         King currentKing = getKing(isWhite);
 
-        System.out.println("King at " + currentKing.getCurrentSpot().row + " " + currentKing.getCurrentSpot().col);
-
-        if(getPiece(7,7) != null)
-            System.out.println("Found at new Spot");
-
-        if(getPiece(6,7) == null)
-            System.out.println("Not Found at old Spot");
-
         for(int i=0; i<8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (isOpponent(currentKing, getPiece(i, j))) {
@@ -126,38 +146,26 @@ public class Board {
                     else
                         somePieceMoves = getThisPieceMoves(getPiece(i, j));
 
-                    System.out.println("Opponent at " + i + " " + j);
                     if (somePieceMoves.contains(currentKing.getCurrentSpot())) {
-                        System.out.println("Checking Checks = true");
                         return true;
                     }
                 }
             }
         }
-        System.out.println("Checking Checks = false");
         return false;
     }
 
     private boolean checkIfMoveCreatesCheck(Spot newSpot, boolean isWhite){
         Spot oldSpot = getKing(isWhite).getCurrentSpot();
 
-        System.out.println("Checking at " + newSpot.row + " " + newSpot.col);
-
         putPieceAtLocation(newSpot, getPiece(oldSpot));
 
-        if(getPiece(newSpot.row, newSpot.col) != null)
-            System.out.println("No Error in writing");
 
         removePiece(oldSpot);
 
-        if(getPiece(oldSpot.row, oldSpot.col) == null)
-            System.out.println("No Error in removing");
 
         Boolean isCheck = checkIfKingIsChecked(isWhite);
 
-
-        if(isCheck)
-            System.out.println("Found at " + newSpot.row + " " + newSpot.col);
 
         putPieceAtLocation(oldSpot, getPiece(newSpot));
 
@@ -226,6 +234,8 @@ public class Board {
         removeSelectedPiece();
         moveSelectedPiece(spot);
         checkIfKingIsChecked(true);
+
+        recordMove();
     }
 
     public void addPiece(Piece piece){
