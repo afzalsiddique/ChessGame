@@ -9,11 +9,8 @@ public class History {
 //        addMove(board);
 //    }
 
-<<<<<<< HEAD
-    public void addRecord(){
-=======
-    public void addMove(Board board){
->>>>>>> Design03
+
+    public void addRecord(Board board){
         Piece[][] positions = new Piece[8][8];
         for(int i=0;i<8;i++){
             for(int j=0;j<8;j++){
