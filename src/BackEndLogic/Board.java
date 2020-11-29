@@ -20,7 +20,7 @@ public class Board {
 
 
     public void recordMove(){
-        moveHistory.addMove(this);
+        moveHistory.addRecord(this);
         moveHistory.printSize();
     }
 
