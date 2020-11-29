@@ -28,6 +28,7 @@ public class History {
                         positions[i][j] = new Queen(piece.getColor(), spot);
                     else if(piece instanceof Knight)
                         positions[i][j] = new Knight(piece.getColor(), spot);
+                    positions[i][j].setBoard(board);
                 }
             }
         }
