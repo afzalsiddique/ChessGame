@@ -151,7 +151,7 @@ public class GUI extends JFrame {
         setLayout(new FlowLayout());
         setSize(700, 750);
         setResizable(false);
-        setTitle("Chess, Bitch");
+        setTitle("Chess");
         setVisible(true);
     }
 }
