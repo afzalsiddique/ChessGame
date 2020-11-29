@@ -210,7 +210,7 @@ public class Board {
 
     public void selectPiece(Spot spot){
         if(!isOccupied(spot)) {
-            System.out.println("Nothing There, Bitch");
+            System.out.println("Nothing There");
             return;
         }
         moveTransitionRecord.setToMovePiece(getPiece(spot));
@@ -223,7 +223,7 @@ public class Board {
 
     public void makeMove(Spot spot){
         if(!ifMoveIsValid(spot)){
-            System.out.println("Not a valid Move, Bitch");
+            System.out.println("Not a valid Move");
             clearAvailableMoves();
             moveTransitionRecord.reset();
             return;
