@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class GUI extends JPanel {
+public class BoardGUI extends JPanel {
     private buttons[][] buttons = new buttons[8][8];
 
     String move = "";
@@ -18,7 +18,7 @@ public class GUI extends JPanel {
 
     private boolean isSelectedState = false;
 
-    public GUI(Board board){
+    public BoardGUI(Board board){
         this.backEndBoard = board;
         createButtons();
         makeLayoutVisible();

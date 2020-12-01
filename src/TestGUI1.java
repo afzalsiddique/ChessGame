@@ -5,7 +5,7 @@ public class TestGUI1 {
 
     public static void main(String[] args) {
         Board board = new Board();
-        GUI gui = new GUI(board);
+        BoardGUI gui = new BoardGUI(board);
 
         board.addPiece(new Pawn(true, new Spot(6,0)));
         board.addPiece(new Rook(true, new Spot(5,0)));

@@ -1,5 +1,5 @@
 import BackEndLogic.*;
-import UserInterface.GUI;
+import UserInterface.BoardGUI;
 import UserInterface.DisplayWindow;
 
 public class MainTest {
@@ -30,7 +30,7 @@ public class MainTest {
           board.addPiece(new Pawn(false, new Spot(1,i)));
        }
 
-       GUI gui = new GUI(board);
+       BoardGUI gui = new BoardGUI(board);
        gui.updateGUI();
 
        DisplayWindow DisplayWindow = new DisplayWindow();
