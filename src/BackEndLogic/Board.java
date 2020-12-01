@@ -104,7 +104,9 @@ public class Board {
 
     void putPieceAtLocation(int row, int col, Piece inputPiece){
         positions[row][col] = inputPiece;
-        getPiece(row, col).setCurrentSpot(new Spot(row, col));
+
+        if(getPiece(row, col) != null)
+            getPiece(row, col).setCurrentSpot(new Spot(row, col));
     }
 
     void putPieceAtLocation(Spot inputSpot, Piece inputPiece){
@@ -158,18 +160,17 @@ public class Board {
     private boolean checkIfMoveCreatesCheck(Spot newSpot, boolean isWhite){
         Spot oldSpot = getKing(isWhite).getCurrentSpot();
 
-        putPieceAtLocation(newSpot, getPiece(oldSpot));
+        Piece tempPiece = getPiece(newSpot);
 
+        putPieceAtLocation(newSpot, getPiece(oldSpot));
 
         removePiece(oldSpot);
 
-
         Boolean isCheck = checkIfKingIsChecked(isWhite);
-
 
         putPieceAtLocation(oldSpot, getPiece(newSpot));
 
-        removePiece(newSpot);
+        putPieceAtLocation(newSpot, tempPiece);
 
         return isCheck;
     }
