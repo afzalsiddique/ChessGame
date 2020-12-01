@@ -7,8 +7,7 @@ import java.awt.event.ActionListener;
 
 public class buttons extends JButton implements ActionListener {
     Dimension dim = new Dimension(80, 80);
-    buttons(String text){
-       super(text);
+    buttons(){
        setPreferredSize(dim);
        addActionListener(this);
        setEnabled(true);

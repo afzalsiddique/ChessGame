@@ -125,7 +125,7 @@ public class GUI extends JFrame {
     private void createButtons(){
         for(int i=0;i<8;i++){
             for(int j=0;j<8;j++){
-                buttons[i][j] = new buttons("");
+                buttons[i][j] = new buttons();
                 add(buttons[i][j]);
                 buttons[i][j].addActionListener(createActionListener(i,j));
 
