@@ -53,7 +53,7 @@ public class Pawn extends Piece {
                 availableMoves.add(new Spot(currentRow - 1, currentCol - 1));
             if (currentRow - 1 >= 0 && currentCol + 1 <= 7  && board.isOpponent(this,positions[currentRow-1][currentCol+1]))
                 availableMoves.add(new Spot(currentRow - 1, currentCol + 1));
-            if (firstMove)
+            if (firstMove && !board.isOccupied(currentRow-2, currentCol))
                 availableMoves.add(new Spot(currentRow-2, currentCol));
         }
         else {
@@ -63,7 +63,7 @@ public class Pawn extends Piece {
                 availableMoves.add(new Spot(currentRow + 1, currentCol + 1));
             if (currentRow + 1 <= 7 && currentCol - 1 >= 0  && board.isOpponent(this,positions[currentRow+1][currentCol-1]))
                 availableMoves.add(new Spot(currentRow + 1, currentCol - 1));
-            if (firstMove)
+            if (firstMove && !board.isOccupied(currentRow+2, currentCol))
                 availableMoves.add(new Spot(currentRow+2, currentCol));
         }
         return  availableMoves;
