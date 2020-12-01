@@ -1,5 +1,6 @@
 import BackEndLogic.*;
 import UserInterface.GUI;
+import UserInterface.displayWindow;
 
 public class MainTest {
     public static void main(String[] args) {
@@ -31,5 +32,9 @@ public class MainTest {
 
        GUI gui = new GUI(board);
        gui.updateGUI();
+
+       displayWindow DisplayWindow = new displayWindow();
+
+       DisplayWindow.addPanel(gui);
     }
 }
