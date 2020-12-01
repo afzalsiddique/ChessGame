@@ -3,9 +3,9 @@ package UserInterface;
 import javax.swing.*;
 import java.awt.*;
 
-public class buttons extends JButton {
+public class Button extends JButton {
     Dimension dim = new Dimension(80, 80);
-    buttons(){
+    Button(){
        setPreferredSize(dim);
        setEnabled(true);
     }

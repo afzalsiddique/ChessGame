@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class BoardGUI extends JPanel {
-    private buttons[][] buttons = new buttons[8][8];
+    private Button[][] Button = new Button[8][8];
 
     String move = "";
 
@@ -39,21 +39,21 @@ public class BoardGUI extends JPanel {
         for(int i=0; i<8; i++){
             for(int j=0; j<8; j++){
                 if(backEndBoard.isOccupied(i,j)){
-                    buttons[i][j].setIcon(backEndBoard.getPiece(i,j).getImage());
+                    Button[i][j].setIcon(backEndBoard.getPiece(i,j).getImage());
                 }
                 else{
-                    buttons[i][j].setIcon(null);
+                    Button[i][j].setIcon(null);
                 }
             }
         }
     }
 
     private void highlightSpot(Spot inputSpot){
-        buttons[inputSpot.row][inputSpot.col].setBackground(Color.GREEN.darker().darker().darker().darker());
+        Button[inputSpot.row][inputSpot.col].setBackground(Color.GREEN.darker().darker().darker().darker());
     }
 
     private void highlightCapture(Spot inputSpot){
-        buttons[inputSpot.row][inputSpot.col].setBackground(Color.RED.darker().darker());
+        Button[inputSpot.row][inputSpot.col].setBackground(Color.RED.darker().darker());
     }
 
     private void highlightAvailableMoves(ArrayList<Spot> availableMoves){
@@ -76,15 +76,15 @@ public class BoardGUI extends JPanel {
                 // Set the color
                 if(i%2==0){
                     if(j%2==0)
-                        buttons[i][j].setBackground(Color.LIGHT_GRAY);
+                        Button[i][j].setBackground(Color.LIGHT_GRAY);
                     else
-                        buttons[i][j].setBackground(Color.BLACK);
+                        Button[i][j].setBackground(Color.BLACK);
                 }
                 else {
                     if (j%2!=0)
-                        buttons[i][j].setBackground(Color.LIGHT_GRAY);
+                        Button[i][j].setBackground(Color.LIGHT_GRAY);
                     else
-                        buttons[i][j].setBackground(Color.BLACK);
+                        Button[i][j].setBackground(Color.BLACK);
                 }
             }
         }
@@ -124,22 +124,22 @@ public class BoardGUI extends JPanel {
     private void createButtons(){
         for(int i=0;i<8;i++){
             for(int j=0;j<8;j++){
-                buttons[i][j] = new buttons();
-                add(buttons[i][j]);
-                buttons[i][j].addActionListener(createActionListener(i,j));
+                Button[i][j] = new Button();
+                add(Button[i][j]);
+                Button[i][j].addActionListener(createActionListener(i,j));
 
                 // Set the color
                 if(i%2==0){
                     if(j%2==0)
-                        buttons[i][j].setBackground(Color.LIGHT_GRAY);
+                        Button[i][j].setBackground(Color.LIGHT_GRAY);
                     else
-                        buttons[i][j].setBackground(Color.BLACK);
+                        Button[i][j].setBackground(Color.BLACK);
                 }
                 else {
                     if (j%2!=0)
-                        buttons[i][j].setBackground(Color.LIGHT_GRAY);
+                        Button[i][j].setBackground(Color.LIGHT_GRAY);
                     else
-                        buttons[i][j].setBackground(Color.BLACK);
+                        Button[i][j].setBackground(Color.BLACK);
                 }
             }
         }
