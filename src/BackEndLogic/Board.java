@@ -246,6 +246,9 @@ public class Board {
     void moveSelectedPiece(Spot inputSpot){
         moveTransitionRecord.getToMovePiece().setCurrentSpot(inputSpot);
         addPiece(moveTransitionRecord.getToMovePiece());
+
+        if(moveTransitionRecord.getToMovePiece() instanceof Pawn)
+            ((Pawn) moveTransitionRecord.getToMovePiece()).setFirstMove(false);
     }
 
     void removeSelectedPiece(){

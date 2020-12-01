@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Pawn extends Piece {
+
+    private boolean firstMove = true;
+
     public Pawn(boolean isWhite, Spot spot){
         this.isWhite = isWhite;
         this.currentSpot = spot;
@@ -18,6 +21,10 @@ public class Pawn extends Piece {
         this.currentSpot = new Spot(x,y);
         ImportImage();
         setValue();
+    }
+
+    public void setFirstMove(boolean thisBoolean){
+        firstMove = thisBoolean;
     }
 
     private void ImportImage(){
@@ -37,23 +44,27 @@ public class Pawn extends Piece {
     public ArrayList<Spot> calculateAllPossibleMoves() {
         Piece[][] positions = board.positions;
         availableMoves.clear();
-        int row = currentSpot.row;
-        int col = currentSpot.col;
+        int currentRow = currentSpot.row;
+        int currentCol = currentSpot.col;
         if(isWhite) {
-            if (row - 1 >= 0 && !board.isOccupied(new Spot(row-1, col)))
-                availableMoves.add(new Spot(row - 1, col));
-            if (row - 1 >= 0 && col - 1 >= 0  && board.isOpponent(this,positions[row-1][col-1]))
-                availableMoves.add(new Spot(row - 1, col - 1));
-            if (row - 1 >= 0 && col + 1 <= 7  && board.isOpponent(this,positions[row-1][col+1]))
-                availableMoves.add(new Spot(row - 1, col + 1));
+            if (currentRow - 1 >= 0 && !board.isOccupied(new Spot(currentRow-1, currentCol)))
+                availableMoves.add(new Spot(currentRow - 1, currentCol));
+            if (currentRow - 1 >= 0 && currentCol - 1 >= 0  && board.isOpponent(this,positions[currentRow-1][currentCol-1]))
+                availableMoves.add(new Spot(currentRow - 1, currentCol - 1));
+            if (currentRow - 1 >= 0 && currentCol + 1 <= 7  && board.isOpponent(this,positions[currentRow-1][currentCol+1]))
+                availableMoves.add(new Spot(currentRow - 1, currentCol + 1));
+            if (firstMove)
+                availableMoves.add(new Spot(currentRow-2, currentCol));
         }
         else {
-            if (row + 1 <= 7 && !board.isOccupied(new Spot(row+1, col)))
-                availableMoves.add(new Spot(row + 1, col));
-            if (row + 1 <= 7 && col + 1 <= 7  && board.isOpponent(this,positions[row+1][col+1]))
-                availableMoves.add(new Spot(row + 1, col + 1));
-            if (row + 1 <= 7 && col - 1 >= 0  && board.isOpponent(this,positions[row+1][col-1]))
-                availableMoves.add(new Spot(row + 1, col - 1));
+            if (currentRow + 1 <= 7 && !board.isOccupied(new Spot(currentRow+1, currentCol)))
+                availableMoves.add(new Spot(currentRow + 1, currentCol));
+            if (currentRow + 1 <= 7 && currentCol + 1 <= 7  && board.isOpponent(this,positions[currentRow+1][currentCol+1]))
+                availableMoves.add(new Spot(currentRow + 1, currentCol + 1));
+            if (currentRow + 1 <= 7 && currentCol - 1 >= 0  && board.isOpponent(this,positions[currentRow+1][currentCol-1]))
+                availableMoves.add(new Spot(currentRow + 1, currentCol - 1));
+            if (firstMove)
+                availableMoves.add(new Spot(currentRow+2, currentCol));
         }
         return  availableMoves;
     }
