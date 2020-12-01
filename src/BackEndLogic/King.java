@@ -59,7 +59,8 @@ public class King extends Piece {
         return finalMoves;
     }
 
-    public ArrayList<Spot> calculateAllPossibleMovesForOpponent() {
+    @Override
+    public ArrayList<Spot> calculateAllPossibleMovesWithoutModifying() {
         availableMoves.clear();
         int thisRow = currentSpot.row;
         int thisCol = currentSpot.col;
@@ -87,9 +88,9 @@ public class King extends Piece {
     @Override
     public ArrayList<Spot> calculateAllPossibleMoves() {
 
-        calculateAllPossibleMovesForOpponent();
+        calculateAllPossibleMovesWithoutModifying();
 
-        this.availableMoves = board.modifyKingAvailableMoves(availableMoves, isWhite);
+        this.availableMoves = board.modifyAvailableMoves(availableMoves, currentSpot, isWhite);
 
         return  availableMoves;
     }

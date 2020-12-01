@@ -15,6 +15,11 @@ public abstract class Piece {
         this.board = board;
     }
 
+    public ArrayList<Spot> calculateAllPossibleMovesWithoutModifying() {
+        availableMoves.clear();
+        return availableMoves;
+    }
+
     public ArrayList<Spot> calculateAllPossibleMoves() {
         availableMoves.clear();
         availableMoves.add(new Spot(0,0));
