@@ -213,7 +213,7 @@ public class Queen extends Piece {
     }
 
     public void setValue(){
-        this.value = 50;
+        this.value = 90;
     }
     @Override
     public String toString() {

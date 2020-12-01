@@ -127,7 +127,7 @@ public class Bishop extends Piece
     }
 
     public void setValue(){
-        this.value = 50;
+        this.value = 30;
     }
 
     @Override
