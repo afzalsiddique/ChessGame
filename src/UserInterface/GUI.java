@@ -77,13 +77,13 @@ public class GUI extends JFrame {
                 // Set the color
                 if(i%2==0){
                     if(j%2==0)
-                        buttons[i][j].setBackground(Color.WHITE);
+                        buttons[i][j].setBackground(Color.LIGHT_GRAY);
                     else
                         buttons[i][j].setBackground(Color.BLACK);
                 }
                 else {
                     if (j%2!=0)
-                        buttons[i][j].setBackground(Color.WHITE);
+                        buttons[i][j].setBackground(Color.LIGHT_GRAY);
                     else
                         buttons[i][j].setBackground(Color.BLACK);
                 }
@@ -132,13 +132,13 @@ public class GUI extends JFrame {
                 // Set the color
                 if(i%2==0){
                     if(j%2==0)
-                        buttons[i][j].setBackground(Color.WHITE);
+                        buttons[i][j].setBackground(Color.LIGHT_GRAY);
                     else
                         buttons[i][j].setBackground(Color.BLACK);
                 }
                 else {
                     if (j%2!=0)
-                        buttons[i][j].setBackground(Color.WHITE);
+                        buttons[i][j].setBackground(Color.LIGHT_GRAY);
                     else
                         buttons[i][j].setBackground(Color.BLACK);
                 }
