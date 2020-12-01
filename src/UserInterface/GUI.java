@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class GUI extends JFrame {
+public class GUI extends JPanel {
     private buttons[][] buttons = new buttons[8][8];
 
     String move = "";
@@ -22,7 +22,6 @@ public class GUI extends JFrame {
         this.backEndBoard = board;
         createButtons();
         makeLayoutVisible();
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         JButton undoButton = new JButton("Undo Last Move");
         undoButton.addActionListener(new ActionListener() {
@@ -148,9 +147,5 @@ public class GUI extends JFrame {
 
     private void makeLayoutVisible() {
         setLayout(new FlowLayout(FlowLayout.LEFT, 0,0));
-        setSize(660, 705);
-        setResizable(false);
-        setTitle("Chess");
-        setVisible(true);
     }
 }
