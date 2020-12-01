@@ -3,11 +3,11 @@ package UserInterface;
 import javax.swing.*;
 import java.awt.*;
 
-public class displayWindow{
+public class DisplayWindow {
 
     JFrame window = new JFrame("Chess");
 
-    public displayWindow(){
+    public DisplayWindow(){
         window.setSize(700,720);
         window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         window.setLayout(new GridLayout());

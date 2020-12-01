@@ -9,8 +9,8 @@ public class GodClass {
 
         GUI gui = new GUI(board);
 
-        displayWindow DisplayWindow = new displayWindow();
+        DisplayWindow displayWindow = new DisplayWindow();
 
-        DisplayWindow.addPanel(gui);
+        displayWindow.addPanel(gui);
     }
 }
