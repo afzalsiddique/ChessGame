@@ -1,6 +1,7 @@
 package BackEndLogic;
 
-public class AIPlayer {
+public class AIPlayer extends Player{
 
+    @Override
     void makeMove(){};
 }
