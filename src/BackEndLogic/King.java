@@ -28,7 +28,7 @@ public class King extends Piece {
     }
 
     void setValue() {
-        value = 15;
+        value = 900;
     }
 
     @Override

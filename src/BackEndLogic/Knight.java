@@ -184,7 +184,7 @@ public class Knight extends Piece {
         return  availableMoves;
     }
     public void setValue(){
-        this.value = 50;
+        this.value = 30;
     }
     @Override
     public String toString() {
