@@ -13,6 +13,9 @@ public class BoardGUI extends JPanel {
     private Button[][] Button = new Button[8][8];
 
     String move = "";
+    public int noOfGamesPlayed;
+    public int Player1wins;
+    public int Player2wins;
 
     private Board backEndBoard;
 
@@ -21,8 +24,12 @@ public class BoardGUI extends JPanel {
     public BoardGUI(Board board){
         this.backEndBoard = board;
         createButtons();
+        createThingsBelowBoard();
         makeLayoutVisible();
 
+
+    }
+    private void createThingsBelowBoard(){
         JButton undoButton = new JButton("Undo Last Move");
         undoButton.addActionListener(new ActionListener() {
             @Override
@@ -31,8 +38,19 @@ public class BoardGUI extends JPanel {
                 updateGUI();
             }
         });
-
         this.add(undoButton);
+        JButton startNewGame = new JButton("Start New Game");
+        undoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // call the board.startnewGame() here
+            }
+        });
+        this.add(startNewGame);
+        JLabel player1Wins = new JLabel(" Player1 Wins: "+this.Player1wins);
+        add(player1Wins);
+        JLabel player2Wins = new JLabel(" Player2 Wins: "+this.Player2wins);
+        add(player2Wins);
     }
 
     public void updateGUI(){
