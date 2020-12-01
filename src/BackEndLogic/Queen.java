@@ -29,7 +29,7 @@ public class Queen extends Piece {
     }
 
     @Override
-    public ArrayList<Spot> calculateAllPossibleMoves()
+    public ArrayList<Spot> calculateAllPossibleMovesWithoutModifying()
     {
         availableMoves.clear();
         if (getColor())

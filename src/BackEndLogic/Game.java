@@ -21,6 +21,8 @@ public class Game {
         board.addPiece(bPawn8);
         board.addPiece(wBishop1);
         board.addPiece(wPawn1);
+        board.addPiece(new King(true, new Spot(5,5)));
+        board.addPiece(new King(false, new Spot(2,1)));
 
     }
 

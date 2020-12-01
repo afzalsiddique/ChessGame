@@ -29,7 +29,7 @@ public class Rook extends Piece
     }
 
     @Override
-    public ArrayList<Spot> calculateAllPossibleMoves()
+    public ArrayList<Spot> calculateAllPossibleMovesWithoutModifying()
     {
         availableMoves.clear();
         if (getColor())
@@ -125,7 +125,6 @@ public class Rook extends Piece
         }
         return  availableMoves;
     }
-
 
     public void castling()
     {

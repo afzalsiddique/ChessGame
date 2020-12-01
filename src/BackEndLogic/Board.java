@@ -126,12 +126,12 @@ public class Board {
         return null;
     }
 
-    ArrayList<Spot> getThisPieceMoves(Piece inputPiece){
-        return inputPiece.calculateAllPossibleMoves();
+    ArrayList<Spot> getThisPieceMovesWithoutModifying(Piece inputPiece){
+        return inputPiece.calculateAllPossibleMovesWithoutModifying();
     }
 
     ArrayList<Spot> getThisPieceMovesKing(King inputPiece){
-        return inputPiece.calculateAllPossibleMovesForOpponent();
+        return inputPiece.calculateAllPossibleMovesWithoutModifying();
     }
 
     // True if checked, false otherwise
@@ -146,7 +146,7 @@ public class Board {
                     if(getPiece(i,j) instanceof King)
                         somePieceMoves = getThisPieceMovesKing((King) getPiece(i,j));
                     else
-                        somePieceMoves = getThisPieceMoves(getPiece(i, j));
+                        somePieceMoves = getThisPieceMovesWithoutModifying(getPiece(i, j));
 
                     if (somePieceMoves.contains(currentKing.getCurrentSpot())) {
                         return true;
@@ -157,9 +157,7 @@ public class Board {
         return false;
     }
 
-    private boolean checkIfMoveCreatesCheck(Spot newSpot, boolean isWhite){
-        Spot oldSpot = getKing(isWhite).getCurrentSpot();
-
+    private boolean checkIfMoveCreatesCheck(Spot newSpot, Spot oldSpot, boolean isWhite){
         Piece tempPiece = getPiece(newSpot);
 
         putPieceAtLocation(newSpot, getPiece(oldSpot));
@@ -175,11 +173,11 @@ public class Board {
         return isCheck;
     }
 
-    protected ArrayList<Spot> modifyKingAvailableMoves(ArrayList<Spot> kingMoves, boolean isWhite){        // Remove the Moves that cause check
+    protected ArrayList<Spot> modifyAvailableMoves(ArrayList<Spot> Moves, Spot currentSpot, boolean isWhite){        // Remove the Moves that cause check
         ArrayList<Spot> finalMoves = new ArrayList<>();
-        for(int i=0; i<kingMoves.size(); i++){
-            if(!checkIfMoveCreatesCheck(kingMoves.get(i), isWhite))
-                finalMoves.add(kingMoves.get(i));
+        for(int i=0; i<Moves.size(); i++){
+            if(!checkIfMoveCreatesCheck(Moves.get(i), currentSpot, isWhite))
+                finalMoves.add(Moves.get(i));
         }
 
         return finalMoves;

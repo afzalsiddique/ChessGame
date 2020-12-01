@@ -41,7 +41,7 @@ public class Pawn extends Piece {
     }
 
     @Override
-    public ArrayList<Spot> calculateAllPossibleMoves() {
+    public ArrayList<Spot> calculateAllPossibleMovesWithoutModifying() {
         Piece[][] positions = board.positions;
         availableMoves.clear();
         int currentRow = currentSpot.row;
@@ -68,7 +68,6 @@ public class Pawn extends Piece {
         }
         return  availableMoves;
     }
-
 
     public void setValue() {
         value = 10;
