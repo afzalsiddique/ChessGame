@@ -21,8 +21,8 @@ public abstract class Piece {
     }
 
     public ArrayList<Spot> calculateAllPossibleMoves() {
-        availableMoves.clear();
-        availableMoves.add(new Spot(0,0));
+        calculateAllPossibleMovesWithoutModifying();
+        this.availableMoves = board.modifyAvailableMoves(availableMoves, currentSpot, isWhite);
         return availableMoves;
     }
 

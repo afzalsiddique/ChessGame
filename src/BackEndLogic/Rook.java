@@ -126,13 +126,6 @@ public class Rook extends Piece
         return  availableMoves;
     }
 
-
-    public ArrayList<Spot> calculateAllPossibleMoves(){
-        calculateAllPossibleMovesWithoutModifying();
-        this.availableMoves = board.modifyAvailableMoves(availableMoves, currentSpot, isWhite);
-        return availableMoves;
-    }
-
     public void castling()
     {
 

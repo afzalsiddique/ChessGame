@@ -85,16 +85,6 @@ public class King extends Piece {
         return  availableMoves;
     }
 
-    @Override
-    public ArrayList<Spot> calculateAllPossibleMoves() {
-
-        calculateAllPossibleMovesWithoutModifying();
-
-        this.availableMoves = board.modifyAvailableMoves(availableMoves, currentSpot, isWhite);
-
-        return  availableMoves;
-    }
-
     public void castling(){
 
     }

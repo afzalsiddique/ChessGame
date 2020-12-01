@@ -29,7 +29,7 @@ public class Knight extends Piece {
     }
 
     @Override
-    public ArrayList<Spot> calculateAllPossibleMoves() {
+    public ArrayList<Spot> calculateAllPossibleMovesWithoutModifying() {
         availableMoves.clear();
         if (getColor())
         {
@@ -183,6 +183,7 @@ public class Knight extends Piece {
         }
         return  availableMoves;
     }
+
     public void setValue(){
         this.value = 30;
     }
