@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 public class Game extends JPanel {
     public Game(){
         createAIButtons();
+        createLabels();
         makeLayoutVisible();
     }
 
@@ -19,6 +20,15 @@ public class Game extends JPanel {
         add(playerVsAI);
         playerVsPlayer.addActionListener(createActionListener());
         playerVsAI.addActionListener(createActionListener());
+    }
+
+    private void createLabels(){
+        JLabel noOfGamesPlayed = new JLabel("Games Played: "+this.noOfGamesPlayed);
+        add(noOfGamesPlayed);
+        JLabel player1Wins = new JLabel("Player1 Won: "+this.Player1wins);
+        add(player1Wins);
+        JLabel player2Wins = new JLabel("Player2 Won: ");
+        add(player2Wins);
     }
 
     private ActionListener createActionListener(){
@@ -36,8 +46,8 @@ public class Game extends JPanel {
 
 
 
-//    public int noOfGamesPlayed;
-//    public int Player1wins;
+    public int noOfGamesPlayed;
+    public int Player1wins;
 //    public int Player2wins;
 //    public int playerTurn;
 //
