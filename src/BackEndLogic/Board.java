@@ -142,15 +142,13 @@ public class Board {
             for (int j = 0; j < 8; j++) {
                 if (isOpponent(currentKing, getPiece(i, j))) {
                     ArrayList<Spot> somePieceMoves = new ArrayList<>();
-
                     if(getPiece(i,j) instanceof King)
                         somePieceMoves = getThisPieceMovesKing((King) getPiece(i,j));
                     else
                         somePieceMoves = getThisPieceMovesWithoutModifying(getPiece(i, j));
 
-                    if (somePieceMoves.contains(currentKing.getCurrentSpot())) {
+                    if (somePieceMoves.contains(currentKing.getCurrentSpot()))
                         return true;
-                    }
                 }
             }
         }
