@@ -1,5 +1,5 @@
 import BackEndLogic.*;
-import UserInterface.GUI;
+import UserInterface.BoardGUI;
 
 public class AllPieceDemo {
     public static void main(String[] args) {
@@ -70,7 +70,7 @@ public class AllPieceDemo {
 //        board.addPiece(bKnight1);
         board.addPiece(bKnight2);
 
-        GUI gui = new GUI(board);
+        BoardGUI gui = new BoardGUI(board);
         gui.updateGUI();
     }
 }

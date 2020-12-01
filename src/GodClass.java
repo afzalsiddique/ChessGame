@@ -1,13 +1,15 @@
-import BackEndLogic.Board;
+import BackEndLogic.Game;
 import UserInterface.*;
 
 public class GodClass {
 
     public static void main(String[] args) {
 
-        Board board = new Board();
+        Game actualGame = new Game();
 
-        GUI gui = new GUI(board);
+        BoardGUI gui = new BoardGUI(actualGame.getBoard());
+
+        gui.updateGUI();
 
         DisplayWindow displayWindow = new DisplayWindow();
 
