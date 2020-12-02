@@ -3,7 +3,8 @@ package BackEndLogic;
 public class Game {
     Board board = new Board();
     History moveHistory = new History();
-
+    public int whiteWins;
+    public int blackWins;
     Player whitePlayer;
     Player blackPlayer;
 
@@ -27,6 +28,15 @@ public class Game {
 
     public void setBoard(Board board){
         this.board = board;
+    }
+    public void checkIfGameEndedAndUpdateWinCount(){
+        String winner = board.getWinner();
+        if(winner.equals("black"))
+            blackWins++;
+        else if(winner.equals("white"))
+            whiteWins++;
+        else if(winner.equals("none"))
+            return;
     }
 
     public Board getBoard(){
