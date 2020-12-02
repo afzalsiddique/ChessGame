@@ -18,6 +18,32 @@ public class Board {
     MoveTransitionRecord moveTransitionRecord = new MoveTransitionRecord();
 //    boardGUI UI;
 
+    public String getWinner(){
+        ArrayList<Spot> allPossibleMovesWhite = new ArrayList<>();
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                Piece piece = positions[i][j];
+                if(piece!=null && piece.isWhite){
+                        allPossibleMovesWhite.addAll(piece.calculateAllPossibleMoves());
+                }
+            }
+        }
+
+        ArrayList<Spot> allPossibleMovesBlack = new ArrayList<>();
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                Piece piece = positions[i][j];
+                if(piece!=null && !piece.isWhite){
+                    allPossibleMovesBlack.addAll(piece.calculateAllPossibleMoves());
+                }
+            }
+        }
+        if(allPossibleMovesBlack.size()==0)
+            return "white";
+        else if(allPossibleMovesWhite.size()==0)
+            return "black";
+        return "none";
+    }
 
     public void recordMove(){
         moveHistory.addRecord(this);

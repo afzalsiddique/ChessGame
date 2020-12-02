@@ -9,7 +9,6 @@ public abstract class Piece {
     boolean isWhite;
     public ArrayList<Spot> availableMoves = new ArrayList<>();
     Board board;
-    public String color;
     protected static int value;
     public void setBoard(Board board){
         this.board = board;
