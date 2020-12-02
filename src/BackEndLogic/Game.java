@@ -25,8 +25,20 @@ public class Game {
         board.addPiece(new King(false, new Spot(2,1)));
     }
 
+    public void setBoard(Board board){
+        this.board = board;
+    }
+
     public Board getBoard(){
         return board;
+    }
+
+    public void UndoLastMove(){
+        if(moveHistory.isEmpty())
+            return;
+
+        moveHistory.removeLastRecord();;
+        setBoard(moveHistory.getLastRecord());
     }
 
 }

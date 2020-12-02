@@ -71,7 +71,9 @@ public class AllPieceDemo {
 //        board.addPiece(bKnight1);
         board.addPiece(bKnight2);
 
-        BoardGUI gui = new BoardGUI(board);
+        Game actualGame = new Game();
+        actualGame.setBoard(board);
+        BoardGUI gui = new BoardGUI(actualGame);
         gui.updateGUI();
 
         DisplayWindow displayWindow = new DisplayWindow();

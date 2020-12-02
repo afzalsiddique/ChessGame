@@ -1,6 +1,7 @@
 package UserInterface;
 
 import BackEndLogic.Board;
+import BackEndLogic.Game;
 import BackEndLogic.Spot;
 
 import javax.swing.*;
@@ -18,23 +19,26 @@ public class BoardGUI extends JPanel {
     public int Player2wins;
 
     private Board backEndBoard;
+    private Game GameInfo;
 
     private boolean isSelectedState = false;
 
-    public BoardGUI(Board board){
-        this.backEndBoard = board;
+    public BoardGUI(Game gameInfo){
+        this.GameInfo = gameInfo;
+        backEndBoard = gameInfo.getBoard();
         createButtons();
         createThingsBelowBoard();
         makeLayoutVisible();
-
-
     }
+
     private void createThingsBelowBoard(){
         JButton undoButton = new JButton("Undo Last Move");
         undoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 //                backEndBoard.undoLastMove();
+                GameInfo.UndoLastMove();
+                backEndBoard = GameInfo.getBoard();
                 updateGUI();
             }
         });
@@ -43,7 +47,7 @@ public class BoardGUI extends JPanel {
         undoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // call the board.startnewGame() here
+                // call the board.startNewGame() here
             }
         });
         this.add(startNewGame);

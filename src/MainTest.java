@@ -30,7 +30,9 @@ public class MainTest {
           board.addPiece(new Pawn(false, new Spot(1,i)));
        }
 
-       BoardGUI gui = new BoardGUI(board);
+       Game actualGame = new Game();
+       actualGame.setBoard(board);
+       BoardGUI gui = new BoardGUI(actualGame);
        gui.updateGUI();
 
        DisplayWindow DisplayWindow = new DisplayWindow();

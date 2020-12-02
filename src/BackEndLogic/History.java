@@ -1,9 +1,10 @@
 package BackEndLogic;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class History {
-    ArrayList<Piece[][]> records = new ArrayList<>();
+    Stack<Board> records = new Stack<>();
 
 //    public History(Board board){
 //        addMove(board);
@@ -34,12 +35,12 @@ public class History {
             }
         }
         System.out.println("Added a Move");
-        printBoard(positions);
-        records.add(positions);
+        printBoard(new Board(positions));
+        records.push(new Board(positions));
     }
 
-    void printBoard(Piece[][] positions){
-        System.out.println("Board from history:");
+    void printBoard(Board board){
+        Piece positions[][] = board.getPositions();
         for(int i=0; i<8; i++){
             for(int j=0; j<8; j++){
                 if(positions[i][j] != null)
@@ -51,14 +52,30 @@ public class History {
         }
     }
 
-    public Piece[][] getLastRecord(){
+    public boolean isEmpty(){
+        return records.isEmpty();
+    }
+
+    public void printEntireHistory(){
+        for(int i=0; i<records.size(); i++){
+            System.out.println("Move=" + i);
+        }
+    }
+
+    public void removeLastRecord(){
+        if(records.isEmpty())
+            return;
+        System.out.println("Removing last Move, Size is now: " + records.size());
+        records.pop();
+        printEntireHistory();
+    }
+
+    public Board getLastRecord(){
         if(records.isEmpty())
             return null;
-        records.remove(records.size()-1);
-        System.out.println("Removing last Move, Size is now: " + records.size());
-        Piece[][] positions= records.get(records.size()-1);
-        printBoard(records.get(records.size()-1));
-        return positions;
+        Board res = records.peek();
+        printEntireHistory();
+        return res;
     }
 
     void printSize(){

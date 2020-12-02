@@ -77,6 +77,10 @@ public class Board {
         }
     }
 
+    Piece[][] getPositions(){
+        return positions;
+    }
+
     void removePiece(int row, int col){
         positions[row][col] = null;
     }
