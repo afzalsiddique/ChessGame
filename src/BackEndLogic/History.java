@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class History {
-    Stack<Board> records = new Stack<>();
+    private Stack<Board> records = new Stack<>();
 
 //    public History(Board board){
 //        addMove(board);
@@ -57,21 +57,22 @@ public class History {
     }
 
     public void printEntireHistory(){
+        System.out.println("Printing Entire History:");
         for(int i=0; i<records.size(); i++){
             System.out.println("Move=" + i);
+            printBoard(records.get(i));
         }
     }
 
     public void removeLastRecord(){
         if(records.isEmpty())
             return;
-        System.out.println("Removing last Move, Size is now: " + records.size());
         records.pop();
-        printEntireHistory();
+        System.out.println("Removed last Move, Size is now: " + records.size());
     }
 
     public Board getLastRecord(){
-        if(records.isEmpty())
+        if(isEmpty())
             return null;
         Board res = records.peek();
         printEntireHistory();

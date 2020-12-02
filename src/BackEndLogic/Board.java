@@ -15,8 +15,9 @@ public class Board {
 
     MoveTransitionRecord moveTransitionRecord = new MoveTransitionRecord();
 
-    void printBoard(){
-        System.out.println("Prev Board:");
+    // Debugging Tool
+    public void printBoard(){
+        System.out.println("Current Board:");
         for(int i=0; i<8; i++){
             for(int j=0; j<8; j++){
                 if(positions[i][j] != null)
@@ -81,22 +82,22 @@ public class Board {
         return positions;
     }
 
-    void removePiece(int row, int col){
+    public void removePiece(int row, int col){
         positions[row][col] = null;
     }
 
-    void removePiece(Spot spot){
+    public void removePiece(Spot spot){
         removePiece(spot.row, spot.col);
     }
 
-    void putPieceAtLocation(int row, int col, Piece inputPiece){
+    public void putPieceAtLocation(int row, int col, Piece inputPiece){
         positions[row][col] = inputPiece;
 
         if(getPiece(row, col) != null)
             getPiece(row, col).setCurrentSpot(new Spot(row, col));
     }
 
-    void putPieceAtLocation(Spot inputSpot, Piece inputPiece){
+    public void putPieceAtLocation(Spot inputSpot, Piece inputPiece){
         putPieceAtLocation(inputSpot.row, inputSpot.col, inputPiece);
     }
 
