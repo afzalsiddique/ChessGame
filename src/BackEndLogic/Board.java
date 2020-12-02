@@ -5,8 +5,6 @@ public class Board {
 
     public Piece[][] positions = new Piece[8][8];
 
-    History moveHistory = new History();
-
     public Board(){}
     public Board(Piece[][] positions){
         this.positions = positions;
@@ -16,13 +14,6 @@ public class Board {
     ArrayList<Spot> availableMoves = new ArrayList<>();
 
     MoveTransitionRecord moveTransitionRecord = new MoveTransitionRecord();
-//    boardGUI UI;
-
-
-    public void recordMove(){
-        moveHistory.addRecord(this);
-        moveHistory.printSize();
-    }
 
     void printBoard(){
         System.out.println("Prev Board:");
@@ -35,14 +26,6 @@ public class Board {
             }
             System.out.print('\n');
         }
-    }
-
-    public void undoLastMove(){
-        Piece[][] tempBoard = moveHistory.getLastRecord();
-        if(tempBoard == null)
-            return;
-        this.positions = tempBoard;
-        printBoard();
     }
 
     public boolean isOccupied(Spot inputSpot){             // True if already occupied, false if not
@@ -230,9 +213,7 @@ public class Board {
         clearAvailableMoves();
         removeSelectedPiece();
         moveSelectedPiece(spot);
-        checkIfKingIsChecked(true);
-
-        recordMove();
+//        checkIfKingIsChecked(true);
     }
 
     public void addPiece(Piece piece){

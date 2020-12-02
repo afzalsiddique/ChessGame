@@ -6,8 +6,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Game extends JPanel {
-    public Game(){
+public class MainMenu extends JPanel {
+    public MainMenu(){
         createAIButtons();
         makeLayoutVisible();
     }

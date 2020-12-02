@@ -7,7 +7,7 @@ public class DisplayMenu {
 
         Game actualGame = new Game();
 
-        UserInterface.Game menu = new UserInterface.Game();
+        MainMenu menu = new MainMenu();
 
 
         DisplayWindow displayWindow = new DisplayWindow();

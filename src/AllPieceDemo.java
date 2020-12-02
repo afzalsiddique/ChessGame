@@ -1,5 +1,6 @@
 import BackEndLogic.*;
 import UserInterface.BoardGUI;
+import UserInterface.DisplayWindow;
 
 public class AllPieceDemo {
     public static void main(String[] args) {
@@ -72,5 +73,8 @@ public class AllPieceDemo {
 
         BoardGUI gui = new BoardGUI(board);
         gui.updateGUI();
+
+        DisplayWindow displayWindow = new DisplayWindow();
+        displayWindow.addPanel(gui);
     }
 }
