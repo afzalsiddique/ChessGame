@@ -30,13 +30,13 @@ public class Game {
         this.board = board;
     }
     public void checkIfGameEndedAndUpdateWinCount(){
-        String winner = board.getWinner();
-        if(winner.equals("black"))
-            blackWins++;
-        else if(winner.equals("white"))
-            whiteWins++;
-        else if(winner.equals("none"))
-            return;
+//        String winner = board.getWinner();
+//        if(winner.equals("black"))
+//            blackWins++;
+//        else if(winner.equals("white"))
+//            whiteWins++;
+//        else if(winner.equals("none"))
+//            return;
     }
 
     public Board getBoard(){

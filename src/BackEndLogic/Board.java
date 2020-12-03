@@ -101,7 +101,7 @@ public class Board {
         putPieceAtLocation(inputSpot.row, inputSpot.col, inputPiece);
     }
 
-    private King getKing(boolean isWhite){
+    public King getKing(boolean isWhite){
         for(int i=0; i<8; i++){
             for(int j=0; j<8; j++){
                 if(getPiece(i,j) == null)
@@ -123,7 +123,7 @@ public class Board {
     }
 
     // True if checked, false otherwise
-    private boolean checkIfKingIsChecked(boolean isWhite){
+    public boolean checkIfKingIsChecked(boolean isWhite){
         King currentKing = getKing(isWhite);
 
         for(int i=0; i<8; i++) {
@@ -218,7 +218,7 @@ public class Board {
         clearAvailableMoves();
         removeSelectedPiece();
         moveSelectedPiece(spot);
-//        checkIfKingIsChecked(true);
+
     }
 
     public void addPiece(Piece piece){

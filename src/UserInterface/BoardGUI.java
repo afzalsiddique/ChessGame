@@ -36,7 +36,6 @@ public class BoardGUI extends JPanel {
         undoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                backEndBoard.undoLastMove();
                 GameInfo.UndoLastMove();
                 backEndBoard = GameInfo.getBoard();
                 updateGUI();
@@ -76,6 +75,10 @@ public class BoardGUI extends JPanel {
 
     private void highlightCapture(Spot inputSpot){
         Button[inputSpot.row][inputSpot.col].setBackground(Color.RED.darker().darker());
+    }
+
+    public void highlightCheck(Spot kingSpot){
+        Button[kingSpot.row][kingSpot.col].setBackground(Color.ORANGE.darker());
     }
 
     private void highlightAvailableMoves(ArrayList<Spot> availableMoves){
@@ -122,6 +125,14 @@ public class BoardGUI extends JPanel {
         updateGUI();
         backEndBoard.clearAvailableMoves();
         refreshBackGrounds();
+        if(backEndBoard.checkIfKingIsChecked(true)){
+            Spot reqSpot = backEndBoard.getKing(true).getCurrentSpot();
+            highlightCheck(reqSpot);
+        }
+        if(backEndBoard.checkIfKingIsChecked(false)){
+            Spot reqSpot = backEndBoard.getKing(false).getCurrentSpot();
+            highlightCheck(reqSpot);
+        }
     }
 
     private ActionListener createActionListener(int x, int y){
