@@ -8,8 +8,8 @@ public class Game {
     Board backEndBoard = new Board();
     BoardGUI boardGUI;
     History moveHistory = new History();
-    public int whiteWins;
-    public int blackWins;
+    static public int whiteWins;
+    static public int blackWins;
     Player whitePlayer;
     Player blackPlayer;
 
