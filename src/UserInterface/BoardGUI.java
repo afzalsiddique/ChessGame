@@ -62,6 +62,7 @@ public class BoardGUI extends JPanel {
                 game.startNewGame();
                 System.out.println("start new game from board gui");
                 updateGUI();
+                refreshBackGrounds();
             }
         });
         this.add(startNewGame);
