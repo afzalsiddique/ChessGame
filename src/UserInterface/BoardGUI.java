@@ -79,6 +79,8 @@ public class BoardGUI extends JPanel {
                 }
             }
         }
+        player1Wins.setText("                       Player1 Wins: "+game.whiteWins+"              ");
+        player2Wins.setText("                Player2 Wins: "+game.blackWins+"                  ");
     }
 
     private void highlightSpot(Spot inputSpot){
