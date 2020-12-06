@@ -1,14 +1,19 @@
 package BackEndLogic;
 
+import UserInterface.BoardGUI;
+
 import java.util.ArrayList;
 
 public class Game {
     Board backEndBoard = new Board();
+    BoardGUI boardGUI;
     History moveHistory = new History();
     public int whiteWins;
     public int blackWins;
     Player whitePlayer;
     Player blackPlayer;
+
+    boolean whiteTurn = true;
 
     Piece bRook1 = new Rook(false, new Spot(0,0));
 
@@ -26,6 +31,10 @@ public class Game {
         backEndBoard.addPiece(wPawn1);
         backEndBoard.addPiece(new King(true, new Spot(5,5)));
         backEndBoard.addPiece(new King(false, new Spot(2,1)));
+    }
+
+    public void setFrontEndBoard(BoardGUI boardGUI){
+        this.boardGUI = boardGUI;
     }
 
     public void setBackEndBoard(Board backEndBoard){
@@ -58,7 +67,13 @@ public class Game {
     }
 
     public void selectPiece(int row, int col){
+        if(!backEndBoard.isOccupied(row, col)) {
+            System.out.println("Nothing There");
+            return;
+        }
+
         backEndBoard.selectPiece(row, col);
+        boardGUI.highlightAvailableMoves(getAvailableMoves());
     }
 
     public void selectPiece(Spot spot){

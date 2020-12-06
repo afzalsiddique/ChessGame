@@ -24,6 +24,7 @@ public class BoardGUI extends JPanel {
 
     public BoardGUI(Game gameInfo){
         this.game = gameInfo;
+        gameInfo.setFrontEndBoard(this);
         createButtons();
         createThingsBelowBoard();
         makeLayoutVisible();
@@ -80,7 +81,7 @@ public class BoardGUI extends JPanel {
         Button[kingSpot.row][kingSpot.col].setBackground(Color.ORANGE.darker());
     }
 
-    private void highlightAvailableMoves(ArrayList<Spot> availableMoves){
+    public void highlightAvailableMoves(ArrayList<Spot> availableMoves){
         Board backEndBoard = game.getBackEndBoard();
         for(int i=0; i<availableMoves.size(); i++){
 
@@ -92,7 +93,6 @@ public class BoardGUI extends JPanel {
             else
                 highlightCapture(availableMoves.get(i));
         }
-
     }
 
     private void refreshBackGrounds(){
@@ -117,7 +117,6 @@ public class BoardGUI extends JPanel {
 
     private void selectPiece(int x, int y){
         game.selectPiece(x,y);
-        highlightAvailableMoves(game.getAvailableMoves());
     }
 
     private void moveSelectedPiece(int x, int y){
