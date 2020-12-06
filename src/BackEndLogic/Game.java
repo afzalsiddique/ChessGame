@@ -13,7 +13,7 @@ public class Game {
     Player whitePlayer;
     Player blackPlayer;
 
-    boolean whiteTurn = true;
+    static boolean whiteTurn = true;
 
     Piece bRook1 = new Rook(false, new Spot(0,0));
 
