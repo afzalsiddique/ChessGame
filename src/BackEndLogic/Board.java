@@ -48,6 +48,7 @@ public class Board {
                 }
             }
         }
+
         if(allPossibleMovesBlack.size()==0 && checkIfKingIsChecked(false)) {
             System.out.println("white wins");
             return "white";
