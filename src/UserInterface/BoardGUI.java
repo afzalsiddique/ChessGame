@@ -148,11 +148,9 @@ public class BoardGUI extends JPanel {
 
                 if(isSelectedState){
                     moveSelectedPiece(x, y);
-                    isSelectedState = false;
                 }
                 else{
                     selectPiece(x, y);
-                    isSelectedState = true;
                 }
 
             }
