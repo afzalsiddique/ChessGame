@@ -28,7 +28,37 @@ public class Board {
             System.out.print('\n');
         }
     }
+    public String getWinner(){
+        ArrayList<Spot> allPossibleMovesWhite = new ArrayList<>();
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                Piece piece = positions[i][j];
+                if(piece!=null && piece.isWhite){
+                    allPossibleMovesWhite.addAll(piece.calculateAllPossibleMoves());
+                }
+            }
+        }
 
+        ArrayList<Spot> allPossibleMovesBlack = new ArrayList<>();
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                Piece piece = positions[i][j];
+                if(piece!=null && !piece.isWhite){
+                    allPossibleMovesBlack.addAll(piece.calculateAllPossibleMoves());
+                }
+            }
+        }
+        if(allPossibleMovesBlack.size()==0) {
+            System.out.println("white wins");
+            return "white";
+        }
+        else if(allPossibleMovesWhite.size()==0) {
+            System.out.println("black wins");
+            return "black";
+        }
+        System.out.println("no winner yet");
+        return "none";
+    }
     public boolean isOccupied(Spot inputSpot){             // True if already occupied, false if not
         int col = inputSpot.col;
         int row = inputSpot.row;
