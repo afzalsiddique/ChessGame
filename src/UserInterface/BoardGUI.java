@@ -48,11 +48,11 @@ public class BoardGUI extends JPanel {
                 // call the board.startNewGame() here
             }
         });
-        this.add(startNewGame);
-        JLabel player1Wins = new JLabel(" Player1 Wins: "+this.Player1wins);
+        JLabel player1Wins = new JLabel("                       Player1 Wins: "+this.Player1wins+"              ");
         add(player1Wins);
-        JLabel player2Wins = new JLabel(" Player2 Wins: "+this.Player2wins);
+        JLabel player2Wins = new JLabel("                Player2 Wins: "+this.Player2wins+"                  ");
         add(player2Wins);
+        this.add(startNewGame);
     }
 
     public void updateGUI(){

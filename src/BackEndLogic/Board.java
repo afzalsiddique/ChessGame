@@ -48,13 +48,21 @@ public class Board {
                 }
             }
         }
-        if(allPossibleMovesBlack.size()==0) {
+        if(allPossibleMovesBlack.size()==0 && checkIfKingIsChecked(false)) {
             System.out.println("white wins");
             return "white";
         }
-        else if(allPossibleMovesWhite.size()==0) {
+        else if(allPossibleMovesWhite.size()==0 && checkIfKingIsChecked(true)) {
             System.out.println("black wins");
             return "black";
+        }
+        else if(allPossibleMovesBlack.size()==0 && !checkIfKingIsChecked(false)){
+            System.out.println("draw");
+            return "draw";
+        }
+        else if(allPossibleMovesWhite.size()==0 && !checkIfKingIsChecked(true)){
+            System.out.println("draw");
+            return "draw";
         }
         System.out.println("no winner yet");
         return "none";
