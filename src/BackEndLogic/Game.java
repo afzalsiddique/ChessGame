@@ -15,26 +15,24 @@ public class Game {
 
     static boolean whiteTurn = true;
 
-    Piece bRook1 = new Rook(false, new Spot(0,0));
-
-    Piece wRook2 = new Rook(true, new Spot(7,7));
-    Piece wRook1 = new Rook(true, new Spot(6,7));
-    Piece wPawn1 = new Pawn(true, new Spot(6,0));
-
-    Piece bPawn8 = new Pawn(false, new Spot(1,7));
-    Piece wBishop1 = new Bishop(true, new Spot(7,2));
-
     public Game(){
-        backEndBoard.addPiece(bRook1);
-        backEndBoard.addPiece(wRook2);
-        backEndBoard.addPiece(wRook1);
-        backEndBoard.addPiece(bPawn8);
-        backEndBoard.addPiece(wBishop1);
-        backEndBoard.addPiece(wPawn1);
+        startNewGame();
+    }
+    public void startNewGame(){
+        for(int i=0;i<8;i++){
+            for(int j=0;j<8;j++){
+                backEndBoard.positions[i][j] = null;
+            }
+        }
+        backEndBoard.addPiece(new Rook(false, new Spot(0,0)));
+        backEndBoard.addPiece(new Rook(true, new Spot(7,7)));
+        backEndBoard.addPiece(new Rook(true, new Spot(6,7)));
+        backEndBoard.addPiece(new Pawn(false, new Spot(1,7)));
+        backEndBoard.addPiece(new Bishop(true, new Spot(7,2)));
+        backEndBoard.addPiece(new Pawn(true, new Spot(6,0)));
         backEndBoard.addPiece(new King(true, new Spot(5,5)));
         backEndBoard.addPiece(new King(false, new Spot(2,1)));
     }
-
     public void setFrontEndBoard(BoardGUI boardGUI){
         this.boardGUI = boardGUI;
     }

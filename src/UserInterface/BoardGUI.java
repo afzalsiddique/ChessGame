@@ -49,6 +49,8 @@ public class BoardGUI extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {    
                 // call the board.startNewGame() here
+                game.startNewGame();
+                updateGUI();
             }
         });
         player1Wins = new JLabel("                       Player1 Wins: "+game.whiteWins+"              ");
