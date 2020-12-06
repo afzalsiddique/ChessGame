@@ -72,7 +72,7 @@ public class AllPieceDemo {
         board.addPiece(bKnight2);
 
         Game actualGame = new Game();
-        actualGame.setBoard(board);
+        actualGame.setBackEndBoard(board);
         BoardGUI gui = new BoardGUI(actualGame);
         gui.updateGUI();
 

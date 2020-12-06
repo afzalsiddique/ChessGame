@@ -1,7 +1,9 @@
 package BackEndLogic;
 
+import java.util.ArrayList;
+
 public class Game {
-    Board board = new Board();
+    Board backEndBoard = new Board();
     History moveHistory = new History();
     public int whiteWins;
     public int blackWins;
@@ -17,17 +19,17 @@ public class Game {
     Piece wBishop1 = new Bishop(true, new Spot(7,2));
 
     public Game(){
-        board.addPiece(bRook1);
-        board.addPiece(wRook2);
-        board.addPiece(bPawn8);
-        board.addPiece(wBishop1);
-        board.addPiece(wPawn1);
-        board.addPiece(new King(true, new Spot(5,5)));
-        board.addPiece(new King(false, new Spot(2,1)));
+        backEndBoard.addPiece(bRook1);
+        backEndBoard.addPiece(wRook2);
+        backEndBoard.addPiece(bPawn8);
+        backEndBoard.addPiece(wBishop1);
+        backEndBoard.addPiece(wPawn1);
+        backEndBoard.addPiece(new King(true, new Spot(5,5)));
+        backEndBoard.addPiece(new King(false, new Spot(2,1)));
     }
 
-    public void setBoard(Board board){
-        this.board = board;
+    public void setBackEndBoard(Board backEndBoard){
+        this.backEndBoard = backEndBoard;
     }
     public void checkIfGameEndedAndUpdateWinCount(){
 //        String winner = board.getWinner();
@@ -39,8 +41,8 @@ public class Game {
 //            return;
     }
 
-    public Board getBoard(){
-        return board;
+    public Board getBackEndBoard(){
+        return backEndBoard;
     }
 
     public void UndoLastMove(){
@@ -48,7 +50,28 @@ public class Game {
             return;
 
         moveHistory.removeLastRecord();;
-        setBoard(moveHistory.getLastRecord());
+        setBackEndBoard(moveHistory.getLastRecord());
+    }
+
+    public ArrayList<Spot> getAvailableMoves(){
+        return backEndBoard.getAvailableMoves();
+    }
+
+    public void selectPiece(int row, int col){
+        backEndBoard.selectPiece(row, col);
+    }
+
+    public void selectPiece(Spot spot){
+        selectPiece(spot.row, spot.col);
+    }
+
+    public void makeMove(int row, int col){
+        backEndBoard.makeMove(row, col);
+
+    }
+
+    public void makeMove(Spot spot){
+        makeMove(spot.row, spot.col);
     }
 
 }

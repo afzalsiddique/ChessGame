@@ -18,14 +18,12 @@ public class BoardGUI extends JPanel {
     public int Player1wins;
     public int Player2wins;
 
-    private Board backEndBoard;
-    private Game GameInfo;
+    private Game game;
 
     private boolean isSelectedState = false;
 
     public BoardGUI(Game gameInfo){
-        this.GameInfo = gameInfo;
-        backEndBoard = gameInfo.getBoard();
+        this.game = gameInfo;
         createButtons();
         createThingsBelowBoard();
         makeLayoutVisible();
@@ -36,8 +34,8 @@ public class BoardGUI extends JPanel {
         undoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GameInfo.UndoLastMove();
-                backEndBoard = GameInfo.getBoard();
+                game.UndoLastMove();
+//                backEndBoard = backEndGame.getBoard();
                 updateGUI();
             }
         });
@@ -57,6 +55,7 @@ public class BoardGUI extends JPanel {
     }
 
     public void updateGUI(){
+        Board backEndBoard = game.getBackEndBoard();
         for(int i=0; i<8; i++){
             for(int j=0; j<8; j++){
                 if(backEndBoard.isOccupied(i,j)){
@@ -82,6 +81,7 @@ public class BoardGUI extends JPanel {
     }
 
     private void highlightAvailableMoves(ArrayList<Spot> availableMoves){
+        Board backEndBoard = game.getBackEndBoard();
         for(int i=0; i<availableMoves.size(); i++){
 
             //Empty Spot
@@ -116,21 +116,23 @@ public class BoardGUI extends JPanel {
     }
 
     private void selectPiece(int x, int y){
-        backEndBoard.selectPiece(x, y);
-        highlightAvailableMoves(backEndBoard.getAvailableMoves());
+        game.selectPiece(x,y);
+        highlightAvailableMoves(game.getAvailableMoves());
     }
 
     private void moveSelectedPiece(int x, int y){
-        backEndBoard.makeMove(x, y);
+        game.makeMove(x, y);
         updateGUI();
-        backEndBoard.clearAvailableMoves();
+
+        // Refactor these lines later
+        game.getBackEndBoard().clearAvailableMoves();
         refreshBackGrounds();
-        if(backEndBoard.checkIfKingIsChecked(true)){
-            Spot reqSpot = backEndBoard.getKing(true).getCurrentSpot();
+        if(game.getBackEndBoard().checkIfKingIsChecked(true)){
+            Spot reqSpot = game.getBackEndBoard().getKing(true).getCurrentSpot();
             highlightCheck(reqSpot);
         }
-        if(backEndBoard.checkIfKingIsChecked(false)){
-            Spot reqSpot = backEndBoard.getKing(false).getCurrentSpot();
+        if(game.getBackEndBoard().checkIfKingIsChecked(false)){
+            Spot reqSpot = game.getBackEndBoard().getKing(false).getCurrentSpot();
             highlightCheck(reqSpot);
         }
     }

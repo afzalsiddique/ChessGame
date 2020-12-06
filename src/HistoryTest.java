@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 
 public class HistoryTest {
     Game game = new Game();
-    Board currentBoard = game.getBoard();
+    Board currentBoard = game.getBackEndBoard();
     History moveHistory = new History();
 
     @Test

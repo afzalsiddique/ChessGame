@@ -6,7 +6,7 @@ public class TestGUI1 {
     public static void main(String[] args) {
         Board board = new Board();
         Game actualGame = new Game();
-        actualGame.setBoard(board);
+        actualGame.setBackEndBoard(board);
 
 
         board.addPiece(new Pawn(true, new Spot(6,0)));

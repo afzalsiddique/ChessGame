@@ -31,7 +31,7 @@ public class MainTest {
        }
 
        Game actualGame = new Game();
-       actualGame.setBoard(board);
+       actualGame.setBackEndBoard(board);
        BoardGUI gui = new BoardGUI(actualGame);
        gui.updateGUI();
 
