@@ -18,6 +18,9 @@ public class BoardGUI extends JPanel {
     public int Player1wins;
     public int Player2wins;
 
+    JLabel player1Wins;
+    JLabel player2Wins;
+
     private Game game;
 
     private boolean isSelectedState = false;
@@ -48,9 +51,9 @@ public class BoardGUI extends JPanel {
                 // call the board.startNewGame() here
             }
         });
-        JLabel player1Wins = new JLabel("                       Player1 Wins: "+game.whiteWins+"              ");
+        player1Wins = new JLabel("                       Player1 Wins: "+game.whiteWins+"              ");
         add(player1Wins);
-        JLabel player2Wins = new JLabel("                Player2 Wins: "+game.blackWins+"                  ");
+        player2Wins = new JLabel("                Player2 Wins: "+game.blackWins+"                  ");
         add(player2Wins);
         this.add(startNewGame);
     }
@@ -113,6 +116,8 @@ public class BoardGUI extends JPanel {
                 }
             }
         }
+        player1Wins.setText("                       Player1 Wins: "+game.whiteWins+"              ");
+        player2Wins.setText("                Player2 Wins: "+game.blackWins+"                  ");
     }
 
     public void changeSelectedState(){
