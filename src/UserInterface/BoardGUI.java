@@ -44,19 +44,26 @@ public class BoardGUI extends JPanel {
             }
         });
         this.add(undoButton);
-        JButton startNewGame = new JButton("Start New Game");
         undoButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {    
+            public void actionPerformed(ActionEvent e) {
                 // call the board.startNewGame() here
-                game.startNewGame();
-                updateGUI();
+
             }
         });
         player1Wins = new JLabel("                       Player1 Wins: "+game.whiteWins+"              ");
         add(player1Wins);
         player2Wins = new JLabel("                Player2 Wins: "+game.blackWins+"                  ");
         add(player2Wins);
+        JButton startNewGame = new JButton("Start New Game");
+        startNewGame.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game.startNewGame();
+                System.out.println("start new game from board gui");
+                updateGUI();
+            }
+        });
         this.add(startNewGame);
     }
 
