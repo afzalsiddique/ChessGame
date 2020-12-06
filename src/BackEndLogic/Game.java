@@ -18,6 +18,7 @@ public class Game {
     Piece bRook1 = new Rook(false, new Spot(0,0));
 
     Piece wRook2 = new Rook(true, new Spot(7,7));
+    Piece wRook1 = new Rook(true, new Spot(6,7));
     Piece wPawn1 = new Pawn(true, new Spot(6,0));
 
     Piece bPawn8 = new Pawn(false, new Spot(1,7));
@@ -26,6 +27,7 @@ public class Game {
     public Game(){
         backEndBoard.addPiece(bRook1);
         backEndBoard.addPiece(wRook2);
+        backEndBoard.addPiece(wRook1);
         backEndBoard.addPiece(bPawn8);
         backEndBoard.addPiece(wBishop1);
         backEndBoard.addPiece(wPawn1);
@@ -41,13 +43,13 @@ public class Game {
         this.backEndBoard = backEndBoard;
     }
     public void checkIfGameEndedAndUpdateWinCount(){
-//        String winner = board.getWinner();
-//        if(winner.equals("black"))
-//            blackWins++;
-//        else if(winner.equals("white"))
-//            whiteWins++;
-//        else if(winner.equals("none"))
-//            return;
+        String winner = backEndBoard.getWinner();
+        if(winner.equals("black"))
+            blackWins++;
+        else if(winner.equals("white"))
+            whiteWins++;
+        else if(winner.equals("none"))
+            return;
     }
 
     public Board getBackEndBoard(){
@@ -101,6 +103,7 @@ public class Game {
         backEndBoard.makeMove(row, col);
         boardGUI.changeSelectedState();
         changeTurn();
+        checkIfGameEndedAndUpdateWinCount();
     }
 
     public void makeMove(Spot spot){
