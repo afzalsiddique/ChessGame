@@ -50,6 +50,10 @@ public class Board {
         return toCheck.getColor();
     }
 
+    boolean getOccupiedColor(int x, int y){
+        return getOccupiedColor(new Spot(x,y));
+    }
+
     boolean isOpponent(Piece piece1, Piece piece2){
         if(piece1 == null || piece2 == null) return false;
         if(piece1.getColor() == piece2.getColor())
@@ -189,7 +193,7 @@ public class Board {
         availableMoves.clear();
     }
 
-    boolean ifMoveIsValid(Spot inputSpot){
+    boolean isMoveValid(Spot inputSpot){
         return availableMoves.contains(inputSpot);
     }
 
@@ -207,12 +211,6 @@ public class Board {
     }
 
     public void makeMove(Spot spot){
-        if(!ifMoveIsValid(spot)){
-            System.out.println("Not a valid Move");
-            clearAvailableMoves();
-            moveTransitionRecord.reset();
-            return;
-        }
 
         // Actual Move Code
         clearAvailableMoves();

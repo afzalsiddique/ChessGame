@@ -62,6 +62,10 @@ public class Game {
         setBackEndBoard(moveHistory.getLastRecord());
     }
 
+    void changeTurn(){
+        whiteTurn = !whiteTurn;
+    }
+
     public ArrayList<Spot> getAvailableMoves(){
         return backEndBoard.getAvailableMoves();
     }
@@ -69,6 +73,11 @@ public class Game {
     public void selectPiece(int row, int col){
         if(!backEndBoard.isOccupied(row, col)) {
             System.out.println("Nothing There");
+            return;
+        }
+
+        if(backEndBoard.getOccupiedColor(row, col) != whiteTurn){
+            System.out.println("Not Your Turn");
             return;
         }
 
@@ -82,8 +91,16 @@ public class Game {
     }
 
     public void makeMove(int row, int col){
+        if(!backEndBoard.isMoveValid(new Spot(row, col))){
+            System.out.println("Not a valid Move");
+            backEndBoard.clearAvailableMoves();
+            backEndBoard.moveTransitionRecord.reset();
+            boardGUI.changeSelectedState();
+            return;
+        }
         backEndBoard.makeMove(row, col);
         boardGUI.changeSelectedState();
+        changeTurn();
     }
 
     public void makeMove(Spot spot){
