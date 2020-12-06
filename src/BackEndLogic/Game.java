@@ -74,6 +74,7 @@ public class Game {
 
         backEndBoard.selectPiece(row, col);
         boardGUI.highlightAvailableMoves(getAvailableMoves());
+        boardGUI.changeSelectedState();
     }
 
     public void selectPiece(Spot spot){
@@ -82,7 +83,7 @@ public class Game {
 
     public void makeMove(int row, int col){
         backEndBoard.makeMove(row, col);
-
+        boardGUI.changeSelectedState();
     }
 
     public void makeMove(Spot spot){

@@ -115,6 +115,10 @@ public class BoardGUI extends JPanel {
         }
     }
 
+    public void changeSelectedState(){
+        isSelectedState = !isSelectedState;
+    }
+
     private void selectPiece(int x, int y){
         game.selectPiece(x,y);
     }
