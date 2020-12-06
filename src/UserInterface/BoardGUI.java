@@ -44,7 +44,7 @@ public class BoardGUI extends JPanel {
         JButton startNewGame = new JButton("Start New Game");
         undoButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) {    
                 // call the board.startNewGame() here
             }
         });
