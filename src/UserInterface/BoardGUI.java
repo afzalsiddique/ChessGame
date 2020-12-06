@@ -44,13 +44,13 @@ public class BoardGUI extends JPanel {
         JButton startNewGame = new JButton("Start New Game");
         undoButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {    
+            public void actionPerformed(ActionEvent e) {
                 // call the board.startNewGame() here
             }
         });
-        JLabel player1Wins = new JLabel("                       Player1 Wins: "+game.whiteWins+"              ");
+        JLabel player1Wins = new JLabel("                       Player1 Wins: "+Game.whiteWins+"              ");
         add(player1Wins);
-        JLabel player2Wins = new JLabel("                Player2 Wins: "+game.blackWins+"                  ");
+        JLabel player2Wins = new JLabel("                Player2 Wins: "+Game.blackWins+"                  ");
         add(player2Wins);
         this.add(startNewGame);
     }
