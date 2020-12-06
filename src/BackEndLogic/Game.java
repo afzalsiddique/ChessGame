@@ -48,6 +48,8 @@ public class Game {
             blackWins++;
         else if(winner.equals("white"))
             whiteWins++;
+        else if(winner.equals("draw"))
+            return;
         else if(winner.equals("none"))
             return;
     }
