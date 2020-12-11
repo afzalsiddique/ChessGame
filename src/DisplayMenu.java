@@ -7,7 +7,7 @@ public class DisplayMenu {
 
         Game actualGame = new Game();
 
-        MainMenu menu = new MainMenu();
+        MenuGui menu = new MenuGui();
 
 
         DisplayWindow displayWindow = new DisplayWindow();
