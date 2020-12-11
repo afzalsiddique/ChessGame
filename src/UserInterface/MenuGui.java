@@ -39,6 +39,11 @@ public class MenuGui{
             }
         };
     }
+
+    public JPanel getPanel(){
+        return panel;
+    }
+
 //    private void makeLayoutVisible() {
 //        setLayout(new FlowLayout(FlowLayout.CENTER));
 //    }

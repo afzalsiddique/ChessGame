@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class DisplayWindow {
 
-    JFrame window = new JFrame("Chess");
+    JFrame window = new JFrame("N-ROL's Chess");
 
     public DisplayWindow(){
         window.setSize(700,720);
