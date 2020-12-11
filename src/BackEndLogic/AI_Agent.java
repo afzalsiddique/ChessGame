@@ -20,7 +20,7 @@ public class AI_Agent {
         if(depth==0)
             return score;
         // if someone wins
-        if(score>10000 || score < -10000) // assuming winning score is greater than
+        if(score==10000 || score == -10000) // assuming winning score is greater than
             return score;
 
         // if someone hasn't won or max depth hasn't reached
@@ -139,8 +139,14 @@ public class AI_Agent {
         // need to calculate checkmate score
         // if white wins score should be greater than 10000 or must be changed in minimax method
         // if white loses score should be less than -10000 or must be changed in minimax method
-        Piece[][] positions = board.positions;
+        if (board.getWinner().equals("white")){
+            return 10000;
+        }
+        if (board.getWinner().equals("black")){
+            return -10000;
+        }
         int score = 0;
+        Piece[][] positions = board.positions;
         for(int i=0;i<8;i++)
             for(int j=0;j<8;j++)
                 if(positions[i][j] != null)
