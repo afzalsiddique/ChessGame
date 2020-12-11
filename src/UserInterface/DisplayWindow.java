@@ -23,6 +23,12 @@ public class DisplayWindow {
         window.removeAll();
     }
 
+    void setSize(Dimension dimension){
+        window.setSize(dimension);
+    }
 
+    void setSize(int width, int height){
+        setSize(new Dimension(width, height));
+    }
 
 }
