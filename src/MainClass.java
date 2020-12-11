@@ -4,6 +4,12 @@ import UserInterface.*;
 public class MainClass {
     public static void main(String[] args) {
         DisplayWindow displayWindow = new DisplayWindow();
-        displayWindow.addPanel(new MenuGui().getPanel());
+
+        MenuGui menuGui = new MenuGui();
+        menuGui.addJFrame(displayWindow);
+
+        displayWindow.addPanel(menuGui.getPanel());
+
+
     }
 }
