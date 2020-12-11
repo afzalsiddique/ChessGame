@@ -10,8 +10,8 @@ public class DisplayMenu {
         MenuGui menu = new MenuGui();
 
 
-        DisplayWindow displayWindow = new DisplayWindow();
-
-        displayWindow.addPanel(menu);
+//        DisplayWindow displayWindow = new DisplayWindow();
+//
+//        displayWindow.addPanel(menu);
     }
 }

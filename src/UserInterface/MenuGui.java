@@ -6,19 +6,27 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MenuGui extends JPanel {
+public class MenuGui{
+    JFrame frame = new JFrame();
+    JPanel panel = new JPanel();
     public MenuGui(){
         createAIButtons();
-        makeLayoutVisible();
+//        makeLayoutVisible();
     }
 
     private void createAIButtons(){
+        frame.setSize(700, 720);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setLayout(new GridLayout());
         MenuButton playerVsPlayer = new MenuButton("Player vs Player");
         MenuButton playerVsAI = new MenuButton("Player vs AI");
-        add(playerVsPlayer);
-        add(playerVsAI);
+        panel.add(playerVsPlayer);
+        panel.add(playerVsAI);
         playerVsPlayer.addActionListener(createActionListener());
         playerVsAI.addActionListener(createActionListener());
+        frame.add(panel, BorderLayout.CENTER);
+        frame.pack();
+        frame.setVisible(true);
     }
 
 
@@ -27,13 +35,13 @@ public class MenuGui extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Button Pressed");
-
+                panel.setVisible(false);
             }
         };
     }
-    private void makeLayoutVisible() {
-        setLayout(new FlowLayout(FlowLayout.CENTER));
-    }
+//    private void makeLayoutVisible() {
+//        setLayout(new FlowLayout(FlowLayout.CENTER));
+//    }
 
 
 
