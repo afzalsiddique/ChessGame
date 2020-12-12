@@ -8,6 +8,7 @@ public class Game {
     Board backEndBoard = new Board();
     BoardGUI boardGUI;
     History moveHistory = new History();
+    AI_Agent ai_agent = new AI_Agent(backEndBoard);
     static public int whiteWins;
     static public int blackWins;
     Player whitePlayer;
@@ -25,7 +26,7 @@ public class Game {
             }
         }
         System.out.println("start new game from game class");
-        Game.whiteTurn = true;
+        Game.whiteTurn = false;
         backEndBoard.addPiece(new Rook(false, new Spot(0,6)));
         backEndBoard.addPiece(new Rook(false, new Spot(1,7)));
         backEndBoard.addPiece(new Rook(true, new Spot(7,7)));
@@ -104,12 +105,19 @@ public class Game {
         }
         backEndBoard.makeMove(row, col);
         boardGUI.changeSelectedState();
-        changeTurn();
+        Spot[] sourceAndDest = ai_agent.findBestMove(backEndBoard);
+        aiMakeMove(sourceAndDest);
         checkIfGameEndedAndUpdateWinCount();
     }
 
     public void makeMove(Spot spot){
         makeMove(spot.row, spot.col);
     }
-
+    public void aiMakeMove(Spot[] sourceAndDest){
+        Spot src = sourceAndDest[0];
+        Spot dst = sourceAndDest[1];
+        Piece piece = backEndBoard.getPiece(src);
+        backEndBoard.positions[dst.row][dst.col] = piece;
+        backEndBoard.positions[src.row][src.col] = null;
+    }
 }
