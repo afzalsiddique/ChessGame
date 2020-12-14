@@ -14,19 +14,21 @@ public class Game {
     Player whitePlayer;
     Player blackPlayer;
 
-    static boolean whiteTurn = true;
+    static boolean whiteTurn;
 
     public Game(){
         startNewGame();
     }
+
     public void startNewGame(){
         for(int i=0;i<8;i++){
             for(int j=0;j<8;j++){
                 backEndBoard.positions[i][j] = null;
             }
         }
+
         System.out.println("start new game from game class");
-        Game.whiteTurn = false;
+        Game.whiteTurn = true;
         backEndBoard.addPiece(new Rook(false, new Spot(0,6)));
         backEndBoard.addPiece(new Rook(false, new Spot(1,7)));
         backEndBoard.addPiece(new Rook(true, new Spot(7,7)));
@@ -80,7 +82,7 @@ public class Game {
             System.out.println("Nothing There");
             return;
         }
-
+        System.out.println("WhiteTurn=" + whiteTurn);
         if(backEndBoard.getOccupiedColor(row, col) != whiteTurn){
             System.out.println("Not Your Turn");
             return;
