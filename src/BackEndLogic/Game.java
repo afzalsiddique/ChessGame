@@ -82,7 +82,7 @@ public class Game {
             System.out.println("Nothing There");
             return;
         }
-        System.out.println("WhiteTurn=" + whiteTurn);
+
         if(backEndBoard.getOccupiedColor(row, col) != whiteTurn){
             System.out.println("Not Your Turn");
             return;
@@ -107,8 +107,9 @@ public class Game {
         }
         backEndBoard.makeMove(row, col);
         boardGUI.changeSelectedState();
-        Spot[] sourceAndDest = ai_agent.findBestMove(backEndBoard);
-        aiMakeMove(sourceAndDest);
+        changeTurn();
+//        Spot[] sourceAndDest = ai_agent.findBestMove(backEndBoard);
+//        aiMakeMove(sourceAndDest);
         checkIfGameEndedAndUpdateWinCount();
     }
 
