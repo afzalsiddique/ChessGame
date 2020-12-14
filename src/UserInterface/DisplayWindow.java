@@ -15,17 +15,23 @@ public class DisplayWindow {
         window.setVisible(true);
     }
 
+    public void refresh(){
+        window.validate();
+        window.repaint();
+    }
+
     public JFrame getWindow(){
         return window;
     }
 
     public void addPanel(JPanel jPanel){
         window.add(jPanel);
+        refresh();
     }
 
     public void removePanels(){
-        window.removeAll();
-        window.setVisible(true);
+        window.getContentPane().removeAll();
+        refresh();
     }
 
     void setSize(Dimension dimension){

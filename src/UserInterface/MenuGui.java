@@ -14,7 +14,6 @@ public class MenuGui{
     DisplayWindow window;
     public MenuGui(){
         createAIButtons();
-//        makeLayoutVisible();
     }
 
     private void createAIButtons(){
@@ -26,7 +25,7 @@ public class MenuGui{
         playerVsAI.addActionListener(createActionListener());
     }
 
-    public void addJFrame(DisplayWindow jframe){
+    public void addWindow(DisplayWindow jframe){
         window = jframe;
     }
 
@@ -38,8 +37,10 @@ public class MenuGui{
                 window.removePanels();
 
                 Game game = new Game();
-
-                window.addPanel(new BoardGUI(game));
+                BoardGUI boardGUI = new BoardGUI(game);
+                boardGUI.updateGUI();
+                window.addPanel(boardGUI);
+                window.refresh();
             }
         };
     }
