@@ -28,20 +28,15 @@ public class Game {
         }
 
         System.out.println("start new game from game class");
-        Game.whiteTurn = false;
+        Game.whiteTurn = true;
         backEndBoard.addPiece(new Rook(false, new Spot(0,6)));
         backEndBoard.addPiece(new Rook(false, new Spot(1,7)));
         backEndBoard.addPiece(new Rook(true, new Spot(7,7)));
         backEndBoard.addPiece(new Rook(true, new Spot(7,6)));
         backEndBoard.addPiece(new Bishop(true, new Spot(4,2)));
-//        backEndBoard.addPiece(new Pawn(true, new Spot(5,3)));
-//        backEndBoard.addPiece(new Pawn(true, new Spot(5,4)));
-//        backEndBoard.addPiece(new Pawn(true, new Spot(5,5)));
-//        backEndBoard.addPiece(new Bishop(false, new Spot(4,4)));
-//        backEndBoard.addPiece(new Queen(false, new Spot(4,5)));
-//        backEndBoard.addPiece(new Pawn(false, new Spot(3,3)));
-//        backEndBoard.addPiece(new King(true, new Spot(7,0)));
-//        backEndBoard.addPiece(new King(false, new Spot(0,0)));
+        backEndBoard.addPiece(new Pawn(true, new Spot(5,3)));
+        backEndBoard.addPiece(new King(true, new Spot(7,0)));
+        backEndBoard.addPiece(new King(false, new Spot(0,0)));
     }
     public void setFrontEndBoard(BoardGUI boardGUI){
         this.boardGUI = boardGUI;

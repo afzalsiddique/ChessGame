@@ -132,8 +132,6 @@ public class AI_Agent {
         int row = spot.row;
         int col = spot.col;
         board.positions[row][col] = piece;
-        piece.currentSpot.row = row;
-        piece.currentSpot.col = col;
     }
 
 
