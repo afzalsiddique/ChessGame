@@ -5,7 +5,6 @@ import java.util.Stack;
 
 public class History {
     private Stack<Board> records = new Stack<>();
-
 //    public History(Board board){
 //        addMove(board);
 //    }
@@ -34,9 +33,9 @@ public class History {
                 }
             }
         }
-        System.out.println("Added a Move");
         printBoard(new Board(positions));
         records.push(new Board(positions));
+        System.out.println("Added a Move. "+"record size: "+records.size());
     }
 
     void printBoard(Board board){

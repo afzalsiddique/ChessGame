@@ -108,6 +108,7 @@ public class Game {
         backEndBoard.makeMove(row, col);
         boardGUI.changeSelectedState();
         changeTurn();
+        moveHistory.addRecord(backEndBoard);
 //        Spot[] sourceAndDest = ai_agent.findBestMove(backEndBoard);
 //        aiMakeMove(sourceAndDest);
         checkIfGameEndedAndUpdateWinCount();
