@@ -65,8 +65,9 @@ public class Game {
         if(moveHistory.isEmpty())
             return;
 
-        moveHistory.removeLastRecord();;
-        setBackEndBoard(moveHistory.getLastRecord());
+        if (moveHistory.removeLastRecord()) {
+            setBackEndBoard(moveHistory.getLastRecord());
+        }
     }
 
     void changeTurn(){

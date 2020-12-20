@@ -5,6 +5,7 @@ import java.util.Stack;
 
 public class History {
     private Stack<Board> records = new Stack<>();
+    private int size = 2;
 //    public History(Board board){
 //        addMove(board);
 //    }
@@ -63,11 +64,19 @@ public class History {
         }
     }
 
-    public void removeLastRecord(){
+    public boolean removeLastRecord(){
         if(records.isEmpty())
-            return;
-        records.pop();
-        System.out.println("Removed last Move, Size is now: " + records.size());
+            return false;
+        if (records.size() >= size){
+            records.pop();
+            System.out.println("Removed last Move, Size is now: " + records.size());
+            size = records.size()+2;
+            return true;
+        }else{
+            System.out.println("undo not available");
+            return false;
+        }
+
     }
 
     public Board getLastRecord(){
