@@ -67,6 +67,7 @@ public class Game {
 
         if (moveHistory.removeLastRecord()) {
             setBackEndBoard(moveHistory.getLastRecord());
+            changeTurn();
         }
     }
 
