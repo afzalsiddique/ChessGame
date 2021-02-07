@@ -73,7 +73,10 @@ public class King extends Piece {
 
     @Override
     public String toString() {
-        return null;
+        String temp;
+        if(isWhite) temp = "w";
+        else temp = "b";
+        return temp+"+";
     }
 
     ArrayList<Spot> getThisPiecesMoves(Piece somePiece){
