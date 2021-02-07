@@ -84,7 +84,7 @@ public class History {
 
     public void removeLastRecord(){
         if(records.isEmpty()){
-            System.out.printf("Records empty");
+            System.out.println("Records empty");
             return;
         }
 
