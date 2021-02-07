@@ -42,6 +42,9 @@ public class King extends Piece {
             return false;
 
         for(int i=currentSpot.col+1; i<=8; i++){
+            if(i == 8)
+                return false;
+
             Spot spot = new Spot(currentSpot.row, i);
             if(board.isOccupied(spot)) {
                 if (board.getPiece(spot) instanceof Rook)
@@ -49,9 +52,6 @@ public class King extends Piece {
                 else
                     return false;
             }
-
-            if(i == 8)
-                return false;
         }
 
         return true;
@@ -62,6 +62,9 @@ public class King extends Piece {
             return false;
 
         for(int i=currentSpot.col-1; i>=-1; i--){
+            if(i == -1)
+                return false;
+
             Spot spot = new Spot(currentSpot.row, i);
             if(board.isOccupied(spot)) {
                 if (board.getPiece(spot) instanceof Rook)
@@ -69,9 +72,6 @@ public class King extends Piece {
                 else
                     return false;
             }
-
-            if(i == -1)
-                return false;
         }
 
         System.out.println("Found Rook Queen side");
@@ -132,13 +132,8 @@ public class King extends Piece {
         if(thisRow - 1 >= 0 && thisCol - 1 >= 0 && (board.isOpponent(this, board.getPiece(thisRow-1, thisCol-1)) || !board.isOccupied(thisRow-1, thisCol-1)))
             availableMoves.add(new Spot(thisRow-1, thisCol-1));
 
-
-        System.out.println("YES1");
-        if(checkKingSideCastle()){
-            System.out.println("YES");
+        if(checkKingSideCastle())
             availableMoves.add(new Spot(thisRow, thisCol+2));
-        }
-
 
         if(checkQueenSideCastle())
             availableMoves.add(new Spot(thisRow, thisCol-2));
