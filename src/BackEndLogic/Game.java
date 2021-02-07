@@ -35,6 +35,7 @@ public class Game {
         backEndBoard.addPiece(new Rook(false, new Spot(0,7)));
         backEndBoard.addPiece(new King(true, new Spot(7,4)));
         backEndBoard.addPiece(new King(false, new Spot(0,4)));
+        backEndBoard.addPiece(new Bishop(true, new Spot(7,2)));
 
         backEndBoard.setBoardOnAllPieces();
         moveHistory.addRecord(backEndBoard);
