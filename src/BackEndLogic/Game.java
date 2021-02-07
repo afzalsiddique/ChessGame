@@ -63,7 +63,7 @@ public class Game {
     }
 
     public void UndoLastMove(){
-        if(moveHistory.isEmpty())
+        if(moveHistory.getSize() <= 1)
             return;
 
         moveHistory.removeLastRecord();

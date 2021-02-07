@@ -71,7 +71,7 @@ public class History {
     }
 
     public int getSize(){
-
+        return records.size();
     }
 
     public void printEntireHistory(){
