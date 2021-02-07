@@ -5,14 +5,20 @@ import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Rook extends Piece
-{
+public class Rook extends Piece {
+
+    private boolean firstMove = true;
+
     public Rook(boolean isWhite, Spot spot)
     {
         this.isWhite = isWhite;
         this.currentSpot = spot;
         ImportImage();
         setValue();
+    }
+
+    public void setFirstMove(boolean thisBoolean){
+        firstMove = thisBoolean;
     }
 
     private void ImportImage(){

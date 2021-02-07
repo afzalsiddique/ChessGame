@@ -267,7 +267,7 @@ public class Board {
         moveTransitionRecord.getToMovePiece().setCurrentSpot(inputSpot);
         addPiece(moveTransitionRecord.getToMovePiece());
 
-        if(moveTransitionRecord.getToMovePiece() instanceof Pawn)
+        if(moveTransitionRecord.getToMovePiece() instanceof Pawn || moveTransitionRecord.getToMovePiece() instanceof King ||  moveTransitionRecord.getToMovePiece() instanceof Rook)
             ((Pawn) moveTransitionRecord.getToMovePiece()).setFirstMove(false);
     }
 

@@ -7,11 +7,17 @@ import java.util.ArrayList;
 
 public class King extends Piece {
 
+    private boolean firstMove = true;
+
     public King(boolean isWhite, Spot inputSpot){
         this.isWhite = isWhite;
         this.currentSpot = inputSpot;
         importImage();
         setValue();
+    }
+
+    public void setFirstMove(boolean thisBoolean){
+        firstMove = thisBoolean;
     }
 
     private void importImage(){
