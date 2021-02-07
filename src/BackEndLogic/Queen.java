@@ -220,7 +220,7 @@ public class Queen extends Piece {
         String temp;
         if(isWhite) temp = "w";
         else temp = "b";
-        return temp+"R";
+        return temp+"Q";
     }
 
     String promotion() {
