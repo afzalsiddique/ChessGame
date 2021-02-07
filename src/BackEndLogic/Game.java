@@ -37,6 +37,7 @@ public class Game {
         backEndBoard.addPiece(new Pawn(true, new Spot(5,3)));
         backEndBoard.addPiece(new King(true, new Spot(7,0)));
         backEndBoard.addPiece(new King(false, new Spot(0,0)));
+        moveHistory.addRecord(backEndBoard);
     }
     public void setFrontEndBoard(BoardGUI boardGUI){
         this.boardGUI = boardGUI;
@@ -65,10 +66,11 @@ public class Game {
         if(moveHistory.isEmpty())
             return;
 
-        if (moveHistory.removeLastRecord()) {
-            setBackEndBoard(moveHistory.getLastRecord());
-            changeTurn();
-        }
+        moveHistory.removeLastRecord();
+        setBackEndBoard(moveHistory.getLastRecord());
+        boardGUI.updateGUI();
+
+        changeTurn();
     }
 
     void changeTurn(){

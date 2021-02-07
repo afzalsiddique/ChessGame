@@ -63,6 +63,7 @@ public class BoardGUI extends JPanel {
 
     public void updateGUI(){
         Board backEndBoard = game.getBackEndBoard();
+        System.out.println("The Board\n" + backEndBoard);
         for(int i=0; i<8; i++){
             for(int j=0; j<8; j++){
                 if(backEndBoard.isOccupied(i,j)){
