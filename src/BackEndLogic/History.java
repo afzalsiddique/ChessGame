@@ -34,22 +34,12 @@ public class History {
                 }
             }
         }
-        printBoard(new Board(positions));
         records.push(new Board(positions));
         System.out.println("Added a Move. "+"record size: "+records.size());
     }
 
     void printBoard(Board board){
-        Piece positions[][] = board.getPositions();
-        for(int i=0; i<8; i++){
-            for(int j=0; j<8; j++){
-                if(positions[i][j] != null)
-                    System.out.print(1);
-                else
-                    System.out.print(0);
-            }
-            System.out.print('\n');
-        }
+        System.out.println(board);
     }
 
     public boolean isEmpty(){

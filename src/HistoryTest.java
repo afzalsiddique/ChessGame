@@ -12,8 +12,11 @@ public class HistoryTest {
         moveHistory.addRecord(currentBoard);
         moveHistory.getLastRecord();
 
-        System.out.println("Adding a Move");
+        System.out.println("Adding a Move on 0,7");
         currentBoard.addPiece(new Pawn(false, new Spot(0,7)));
+
+
+
         moveHistory.addRecord(currentBoard);
         moveHistory.getLastRecord();
 
@@ -21,7 +24,7 @@ public class HistoryTest {
         moveHistory.removeLastRecord();
         moveHistory.getLastRecord();
 
-        System.out.println("Adding a move");
+        System.out.println("Adding a move on 5,4");
         currentBoard.addPiece(new Rook(true, new Spot(5,4)));
         moveHistory.addRecord(currentBoard);
         moveHistory.getLastRecord();

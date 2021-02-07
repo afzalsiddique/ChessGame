@@ -287,9 +287,9 @@ public class Board {
             for(int j=0;j<8;j++){
                 Piece piece = positions[i][j];
                 if(piece!=null)
-                    temp = temp + piece.toString();
+                    temp = temp + piece.toString() + " ";
                 else
-                    temp = temp + "..";
+                    temp = temp + " .. ";
             }
             temp = temp + "\n";
         }
