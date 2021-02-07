@@ -65,8 +65,10 @@ public class Game {
         if(moveHistory.isEmpty())
             return;
 
-        moveHistory.removeLastRecord();;
-        setBackEndBoard(moveHistory.getLastRecord());
+        if (moveHistory.removeLastRecord()) {
+            setBackEndBoard(moveHistory.getLastRecord());
+            changeTurn();
+        }
     }
 
     void changeTurn(){
@@ -108,6 +110,7 @@ public class Game {
         backEndBoard.makeMove(row, col);
         boardGUI.changeSelectedState();
         changeTurn();
+        moveHistory.addRecord(backEndBoard);
 //        Spot[] sourceAndDest = ai_agent.findBestMove(backEndBoard);
 //        aiMakeMove(sourceAndDest);
         checkIfGameEndedAndUpdateWinCount();

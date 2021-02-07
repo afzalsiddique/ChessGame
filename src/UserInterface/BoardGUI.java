@@ -39,18 +39,11 @@ public class BoardGUI extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 game.UndoLastMove();
-//                backEndBoard = backEndGame.getBoard();
                 updateGUI();
             }
         });
         this.add(undoButton);
-        undoButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // call the board.startNewGame() here
 
-            }
-        });
         player1Wins = new JLabel("                       Player1 Wins: "+game.whiteWins+"              ");
         add(player1Wins);
         player2Wins = new JLabel("                Player2 Wins: "+game.blackWins+"                  ");

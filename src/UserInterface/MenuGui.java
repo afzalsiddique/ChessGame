@@ -22,7 +22,7 @@ public class MenuGui{
         panel.add(playerVsPlayer);
         panel.add(playerVsAI);
         playerVsPlayer.addActionListener(createActionListener());
-        playerVsAI.addActionListener(createActionListener());
+//        playerVsAI.addActionListener(createActionListener());
     }
 
     public void addWindow(DisplayWindow jframe){
