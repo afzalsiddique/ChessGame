@@ -37,6 +37,40 @@ public class King extends Piece {
         value = 900;
     }
 
+    boolean checkKingSideCastle(){
+        if(!firstMove)
+            return false;
+
+        for(int i=currentSpot.col; i<8; i++){
+            Spot spot = new Spot(currentSpot.row, i);
+            if(board.isOccupied(spot)) {
+                if (board.getPiece(spot) instanceof Rook)
+                    break;
+                else
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
+    boolean checkQueenSideCastle(){
+        if(!firstMove)
+            return false;
+
+        for(int i=currentSpot.col; i>=0; i--){
+            Spot spot = new Spot(currentSpot.row, i);
+            if(board.isOccupied(spot)) {
+                if (board.getPiece(spot) instanceof Rook)
+                    break;
+                else
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
     @Override
     public String toString() {
         return null;

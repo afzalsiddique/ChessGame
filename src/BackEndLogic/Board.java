@@ -28,6 +28,18 @@ public class Board {
             System.out.print('\n');
         }
     }
+
+    void setBoardOnAllPieces(){
+        for(int i=0; i<8; i++){
+            for(int j=0; j<8; j++){
+                if(positions[i][j] != null){
+                    Piece thisPiece = getPiece(i,j);
+                    thisPiece.setBoard(this);
+                }
+            }
+        }
+    }
+
     public String getWinner(){
         ArrayList<Spot> allPossibleMovesWhite = new ArrayList<>();
         for(int i=0;i<8;i++){
