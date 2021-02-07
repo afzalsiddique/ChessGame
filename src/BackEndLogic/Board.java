@@ -276,6 +276,7 @@ public class Board {
     }
 
     void moveSelectedPiece(Spot inputSpot){
+        Spot oldSpot = moveTransitionRecord.getPrevSpot();
         moveTransitionRecord.getToMovePiece().setCurrentSpot(inputSpot);
         addPiece(moveTransitionRecord.getToMovePiece());
 
@@ -285,6 +286,16 @@ public class Board {
             ((King)moveTransitionRecord.getToMovePiece()).setFirstMove(false);
         else if(moveTransitionRecord.getToMovePiece() instanceof Rook)
             ((Rook)moveTransitionRecord.getToMovePiece()).setFirstMove(false);
+
+        // check if it is a castling move
+        if(moveTransitionRecord.getToMovePiece() instanceof King){
+            if(oldSpot.row == inputSpot.row && Math.abs(inputSpot.col- oldSpot.col) == 2){
+                if(oldSpot.col < inputSpot.col)
+                    ((King) moveTransitionRecord.getToMovePiece()).castleKingSide();
+                else
+                    ((King) moveTransitionRecord.getToMovePiece()).castleQueenSide();
+            }
+        }
     }
 
     void removeSelectedPiece(){

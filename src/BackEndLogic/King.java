@@ -9,6 +9,8 @@ public class King extends Piece {
 
     private boolean firstMove = true;
 
+    private Rook castlingRookKingSide, castlingRookQueenSide;
+
     public King(boolean isWhite, Spot inputSpot){
         this.isWhite = isWhite;
         this.currentSpot = inputSpot;
@@ -47,8 +49,10 @@ public class King extends Piece {
 
             Spot spot = new Spot(currentSpot.row, i);
             if(board.isOccupied(spot)) {
-                if (board.getPiece(spot) instanceof Rook)
+                if (board.getPiece(spot) instanceof Rook) {
+                    castlingRookKingSide = (Rook) board.getPiece(currentSpot.row, i);
                     break;
+                }
                 else
                     return false;
             }
@@ -67,8 +71,10 @@ public class King extends Piece {
 
             Spot spot = new Spot(currentSpot.row, i);
             if(board.isOccupied(spot)) {
-                if (board.getPiece(spot) instanceof Rook)
+                if (board.getPiece(spot) instanceof Rook) {
+                    castlingRookQueenSide = (Rook) board.getPiece(currentSpot.row, i);
                     break;
+                }
                 else
                     return false;
             }
@@ -141,7 +147,12 @@ public class King extends Piece {
         return  availableMoves;
     }
 
-    public void castling(){
-
+    public void castleKingSide(){
+        castlingRookKingSide.castleKingSide();
     }
+
+    public void castleQueenSide(){
+        castlingRookQueenSide.castleQueenSide();
+    }
+
 }
