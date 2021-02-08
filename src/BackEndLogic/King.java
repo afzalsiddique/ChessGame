@@ -58,6 +58,9 @@ public class King extends Piece {
             }
         }
 
+        if(!castlingRookKingSide.isFirstMove())
+            return false;
+
         return true;
     }
 
@@ -80,7 +83,9 @@ public class King extends Piece {
             }
         }
 
-        System.out.println("Found Rook Queen side");
+        if(!castlingRookQueenSide.isFirstMove())
+            return false;
+
         return true;
     }
 

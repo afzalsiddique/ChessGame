@@ -132,18 +132,18 @@ public class Rook extends Piece {
         return  availableMoves;
     }
 
+    public boolean isFirstMove(){
+        return firstMove;
+    }
+
     public void castleKingSide(){
         int thisCol = currentSpot.col, thisRow = currentSpot.row;
-        if(!firstMove)
-            return;
         board.putPieceAtLocation(thisRow, thisCol-2, this);
         board.removePiece(thisRow, thisCol);
     }
 
     public void castleQueenSide(){
         int thisCol = currentSpot.col, thisRow = currentSpot.row;
-        if(!firstMove)
-            return;
         board.putPieceAtLocation(thisRow, thisCol+3, this);
         board.removePiece(thisRow, thisCol);
     }
