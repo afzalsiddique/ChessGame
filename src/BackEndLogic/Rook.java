@@ -17,6 +17,14 @@ public class Rook extends Piece {
         setValue();
     }
 
+    public Rook(boolean isWhite, Spot spot, boolean firstMove) {
+        this.isWhite = isWhite;
+        this.currentSpot = spot;
+        ImportImage();
+        setValue();
+        setFirstMove(firstMove);
+    }
+
     public void setFirstMove(boolean thisBoolean){
         firstMove = thisBoolean;
     }
@@ -138,12 +146,16 @@ public class Rook extends Piece {
 
     public void castleKingSide(){
         int thisCol = currentSpot.col, thisRow = currentSpot.row;
+
+        System.out.println("Doing Calcs On kings Side");
         board.putPieceAtLocation(thisRow, thisCol-2, this);
         board.removePiece(thisRow, thisCol);
     }
 
     public void castleQueenSide(){
         int thisCol = currentSpot.col, thisRow = currentSpot.row;
+
+        System.out.println("Doing Calcs On queens Side");
         board.putPieceAtLocation(thisRow, thisCol+3, this);
         board.removePiece(thisRow, thisCol);
     }

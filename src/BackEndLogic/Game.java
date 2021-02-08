@@ -116,6 +116,7 @@ public class Game {
         moveHistory.addRecord(backEndBoard);
 //        Spot[] sourceAndDest = ai_agent.findBestMove(backEndBoard);
 //        aiMakeMove(sourceAndDest);
+        boardGUI.updateGUI();
         checkIfGameEndedAndUpdateWinCount();
     }
 

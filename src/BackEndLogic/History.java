@@ -17,13 +17,13 @@ public class History {
                     Piece piece = board.getPiece(i,j);
                     Spot spot = new Spot(piece.currentSpot.row, piece.currentSpot.col);
                     if(piece instanceof Pawn)
-                        positions[i][j] = new Pawn(piece.getColor(), spot);
+                        positions[i][j] = new Pawn(piece.getColor(), spot, ((Pawn) piece).isFirstMove());
                     else if(piece instanceof Rook)
-                        positions[i][j] = new Rook(piece.getColor(), spot);
+                        positions[i][j] = new Rook(piece.getColor(), spot, ((Rook) piece).isFirstMove());
                     else if(piece instanceof Bishop)
                         positions[i][j] = new Bishop(piece.getColor(), spot);
                     else if(piece instanceof King)
-                        positions[i][j] = new King(piece.getColor(), spot);
+                        positions[i][j] = new King(piece.getColor(), spot, ((King) piece).isFirstMove());
                     else if(piece instanceof Queen)
                         positions[i][j] = new Queen(piece.getColor(), spot);
                     else if(piece instanceof Knight)

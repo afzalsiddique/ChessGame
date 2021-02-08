@@ -23,6 +23,18 @@ public class Pawn extends Piece {
         setValue();
     }
 
+    public Pawn(boolean isWhite, Spot spot, Boolean firstMove){
+        this.isWhite = isWhite;
+        this.currentSpot = spot;
+        ImportImage();
+        setValue();
+        setFirstMove(firstMove);
+    }
+
+    public boolean isFirstMove(){
+        return firstMove;
+    }
+
     public void setFirstMove(boolean thisBoolean){
         firstMove = thisBoolean;
     }

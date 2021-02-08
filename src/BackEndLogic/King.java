@@ -18,6 +18,18 @@ public class King extends Piece {
         setValue();
     }
 
+    public King(boolean isWhite, Spot spot, Boolean firstMove){
+        this.isWhite = isWhite;
+        this.currentSpot = spot;
+        importImage();
+        setValue();
+        setFirstMove(firstMove);
+    }
+
+    public boolean isFirstMove(){
+        return firstMove;
+    }
+
     public void setFirstMove(boolean thisBoolean){
         firstMove = thisBoolean;
     }
