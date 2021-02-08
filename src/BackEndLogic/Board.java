@@ -5,6 +5,8 @@ public class Board {
 
     public Piece[][] positions = new Piece[8][8];
 
+    private Game gameInfo;
+
     public Board(){}
     public Board(Piece[][] positions){
         this.positions = positions;
@@ -27,6 +29,14 @@ public class Board {
             }
             System.out.print('\n');
         }
+    }
+
+    void setGameInfo(Game gameInfo){
+        this.gameInfo = gameInfo;
+    }
+
+    History getHistory(){
+        return gameInfo.getHistory();
     }
 
     void setBoardOnAllPieces(){

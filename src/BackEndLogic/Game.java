@@ -20,6 +20,10 @@ public class Game {
         startNewGame();
     }
 
+    History getHistory(){
+        return moveHistory;
+    }
+
     public void startNewGame(){
         for(int i=0;i<8;i++){
             for(int j=0;j<8;j++){
@@ -36,8 +40,13 @@ public class Game {
         backEndBoard.addPiece(new King(true, new Spot(7,4)));
         backEndBoard.addPiece(new King(false, new Spot(0,4)));
         backEndBoard.addPiece(new Bishop(true, new Spot(7,2)));
+        backEndBoard.addPiece(new Pawn(true, new Spot(6,5)));
+        backEndBoard.addPiece(new Pawn(true, new Spot(6,4)));
+        backEndBoard.addPiece(new Pawn(false, new Spot(1,4)));
+        backEndBoard.addPiece(new Pawn(false, new Spot(1,5)));
 
         backEndBoard.setBoardOnAllPieces();
+        backEndBoard.setGameInfo(this);
         moveHistory.addRecord(backEndBoard);
     }
     public void setFrontEndBoard(BoardGUI boardGUI){

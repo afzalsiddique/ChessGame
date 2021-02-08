@@ -36,30 +36,8 @@ public class History {
     }
 
     public void addRecord(Board board){
-//        Piece[][] positions = new Piece[8][8];
-//        for(int i=0;i<8;i++){
-//            for(int j=0;j<8;j++){
-//                if (board.positions[i][j] != null){
-//                    Piece piece = board.getPiece(i,j);
-//                    Spot spot = new Spot(piece.currentSpot.row, piece.currentSpot.col);
-//                    if(piece instanceof Pawn)
-//                        positions[i][j] = new Pawn(piece.getColor(), spot);
-//                    else if(piece instanceof Rook)
-//                        positions[i][j] = new Rook(piece.getColor(), spot);
-//                    else if(piece instanceof Bishop)
-//                        positions[i][j] = new Bishop(piece.getColor(), spot);
-//                    else if(piece instanceof King)
-//                        positions[i][j] = new King(piece.getColor(), spot);
-//                    else if(piece instanceof Queen)
-//                        positions[i][j] = new Queen(piece.getColor(), spot);
-//                    else if(piece instanceof Knight)
-//                        positions[i][j] = new Knight(piece.getColor(), spot);
-//                    positions[i][j].setBoard(board);
-//                }
-//            }
-//        }
         records.push(createCopyOf(board));
-        System.out.println("Added a Move. "+"record size: "+records.size());
+//        System.out.println("Added a Move. "+"record size: "+records.size());
     }
 
     void printBoard(Board board){

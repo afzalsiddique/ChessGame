@@ -9,6 +9,8 @@ public class Pawn extends Piece {
 
     private boolean firstMove = true;
 
+    private Spot prevSpot;
+
     public Pawn(boolean isWhite, Spot spot){
         this.isWhite = isWhite;
         this.currentSpot = spot;
@@ -52,8 +54,45 @@ public class Pawn extends Piece {
         }
     }
 
+    boolean didPawnDoubleMove(){
+        if(prevSpot.col == currentSpot.col && Math.abs(prevSpot.row - prevSpot.row) == 2)
+            return true;
+        else
+            return false;
+    }
+
+    boolean isEnPassantAvailableOnLeft(){
+        Spot spotToCheck = new Spot(currentSpot.row, currentSpot.col-1);
+        if(!board.isOccupied(spotToCheck))
+            return false;
+
+        if(!board.isOpponent(this, board.getPiece(spotToCheck)) || !(board.getPiece(spotToCheck) instanceof Pawn))
+            return false;
+
+        if(((Pawn) board.getPiece(spotToCheck)).didPawnDoubleMove())
+            return true;
+
+        return false;
+    }
+
+    boolean isEnPassantAvailableOnRight(){
+        Spot spotToCheck = new Spot(currentSpot.row, currentSpot.col+1);
+        if(!board.isOccupied(spotToCheck))
+            return false;
+
+        if(!board.isOpponent(this, board.getPiece(spotToCheck)) || !(board.getPiece(spotToCheck) instanceof Pawn))
+            return false;
+
+        if(((Pawn) board.getPiece(spotToCheck)).didPawnDoubleMove())
+            return true;
+
+        return false;
+    }
+
     @Override
     public ArrayList<Spot> calculateAllPossibleMovesWithoutModifying() {
+        prevSpot = currentSpot;
+
         Piece[][] positions = board.positions;
         availableMoves.clear();
         int currentRow = currentSpot.row;
@@ -67,6 +106,11 @@ public class Pawn extends Piece {
                 availableMoves.add(new Spot(currentRow - 1, currentCol + 1));
             if (firstMove && !board.isOccupied(currentRow-2, currentCol))
                 availableMoves.add(new Spot(currentRow-2, currentCol));
+            if(isEnPassantAvailableOnLeft())
+                availableMoves.add(new Spot(currentRow-1, currentCol-1));
+            if(isEnPassantAvailableOnRight())
+                availableMoves.add(new Spot(currentRow-1, currentCol+1));
+
         }
         else {
             if (currentRow + 1 <= 7 && !board.isOccupied(new Spot(currentRow+1, currentCol)))
@@ -77,7 +121,12 @@ public class Pawn extends Piece {
                 availableMoves.add(new Spot(currentRow + 1, currentCol - 1));
             if (firstMove && !board.isOccupied(currentRow+2, currentCol))
                 availableMoves.add(new Spot(currentRow+2, currentCol));
+            if(isEnPassantAvailableOnLeft())
+                availableMoves.add(new Spot(currentRow+1, currentCol-1));
+            if(isEnPassantAvailableOnRight())
+                availableMoves.add(new Spot(currentRow+1, currentCol+1));
         }
+
         return  availableMoves;
     }
 
