@@ -4,6 +4,7 @@ import UserInterface.BoardGUI;
 
 import java.util.ArrayList;
 import static javax.swing.JOptionPane.showMessageDialog;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 public class Game {
     Board backEndBoard = new Board();
@@ -93,14 +94,16 @@ public class Game {
         String winner = backEndBoard.getWinner();
         if(winner.equals("black")) {
             blackWins++;
-            showMessageDialog(null, "Black Wins");
+            showMessageDialog(null, "Black Wins. Black Score: "+blackWins+" White Score: "+whiteWins);
         }
         else if(winner.equals("white")) {
             whiteWins++;
-            showMessageDialog(null, "White Wins");
+            showMessageDialog(null, "White Wins. Black Score: "+blackWins+" White Score: "+whiteWins);
         }
-        else if(winner.equals("draw"))
+        else if(winner.equals("draw")) {
+            showMessageDialog(null, "Match Draw. Black Score: "+blackWins+" White Score: "+whiteWins);
             return;
+        }
         else if(winner.equals("none"))
             return;
     }
@@ -137,6 +140,7 @@ public class Game {
 
         if(backEndBoard.getOccupiedColor(row, col) != whiteTurn){
             System.out.println("Not Your Turn");
+            showMessageDialog(null, "It's not your Turn");
             return;
         }
 
@@ -152,6 +156,7 @@ public class Game {
     public void makeMove(int row, int col){
         if(!backEndBoard.isMoveValid(new Spot(row, col))){
             System.out.println("Not a valid Move");
+            showMessageDialog(null, "This is not a valid move.");
             backEndBoard.clearAvailableMoves();
             backEndBoard.moveTransitionRecord.reset();
             boardGUI.changeSelectedState();
