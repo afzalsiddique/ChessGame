@@ -15,6 +15,8 @@ public class Game {
     Player blackPlayer;
     SimAI simAI = new SimAI();
 
+    private boolean aiMode;
+
     static boolean whiteTurn;
 
     public Game(){
@@ -33,7 +35,7 @@ public class Game {
         }
 
         System.out.println("start new game from game class");
-        Game.whiteTurn = false;
+        Game.whiteTurn = true;
         backEndBoard.addPiece(new Rook(true, new Spot(7,7)));
         backEndBoard.addPiece(new Rook(true, new Spot(7,0)));
         backEndBoard.addPiece(new Rook(false, new Spot(0,0)));
@@ -63,6 +65,11 @@ public class Game {
         backEndBoard.setGameInfo(this);
         moveHistory.addRecord(backEndBoard);
     }
+
+    public void setAiMode(boolean aiMode) {
+        this.aiMode = aiMode;
+    }
+
     public void setFrontEndBoard(BoardGUI boardGUI){
         this.boardGUI = boardGUI;
     }
@@ -98,7 +105,8 @@ public class Game {
     }
 
     void changeTurn(){
-//        whiteTurn = !whiteTurn;
+        if(!aiMode)
+            whiteTurn = !whiteTurn;
     }
 
     public ArrayList<Spot> getAvailableMoves(){
@@ -146,11 +154,15 @@ public class Game {
 //        }
 
         boardGUI.updateGUI();
-        simAI.getBestBoard(backEndBoard);
-        Piece temp = backEndBoard.getPiece(simAI.srcFinal);
-        backEndBoard.removePiece(simAI.srcFinal);
-        backEndBoard.putPieceAtLocation(simAI.destFinal, temp);
-        boardGUI.updateGUI();
+
+        if(aiMode) {
+            simAI.getBestBoard(backEndBoard);
+            Piece temp = backEndBoard.getPiece(simAI.srcFinal);
+            backEndBoard.removePiece(simAI.srcFinal);
+            backEndBoard.putPieceAtLocation(simAI.destFinal, temp);
+            boardGUI.updateGUI();
+        }
+
         checkIfGameEndedAndUpdateWinCount();
     }
 

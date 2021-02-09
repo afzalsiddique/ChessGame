@@ -19,20 +19,35 @@ public class MenuGui{
         MenuButton playerVsAI = new MenuButton("Player vs AI");
         panel.add(playerVsPlayer);
         panel.add(playerVsAI);
-        playerVsPlayer.addActionListener(createActionListener());
-//        playerVsAI.addActionListener(createActionListener());
+        playerVsPlayer.addActionListener(createActionListenerForHumans());
+        playerVsAI.addActionListener(createActionListenerForAI());
     }
 
     public void addWindow(DisplayWindow jframe){
         window = jframe;
     }
 
-    private ActionListener createActionListener(){
+    private ActionListener createActionListenerForHumans(){
         return e -> {
             System.out.println("Button Pressed");
             window.removePanels();
 
             Game game = new Game();
+            game.setAiMode(false);
+            BoardGUI boardGUI = new BoardGUI(game);
+            boardGUI.updateGUI();
+            window.addPanel(boardGUI);
+            window.refresh();
+        };
+    }
+
+    private ActionListener createActionListenerForAI(){
+        return e -> {
+            System.out.println("Button Pressed");
+            window.removePanels();
+
+            Game game = new Game();
+            game.setAiMode(true);
             BoardGUI boardGUI = new BoardGUI(game);
             boardGUI.updateGUI();
             window.addPanel(boardGUI);
