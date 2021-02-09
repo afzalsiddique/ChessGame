@@ -51,11 +51,11 @@ public class Game {
         backEndBoard.addPiece(new Knight(false, new Spot(0,6)));
         backEndBoard.addPiece(new Knight(false, new Spot(0,1)));
 
-        for(int i=5; i<8; i++){
+        for(int i=0; i<8; i++){
             backEndBoard.addPiece(new Pawn(false, new Spot(1,i)));
         }
 
-        for(int i=6; i<8; i++){
+        for(int i=0; i<8; i++){
             backEndBoard.addPiece(new Pawn(true, new Spot(6,i)));
         }
 
@@ -137,6 +137,15 @@ public class Game {
         boardGUI.changeSelectedState();
         changeTurn();
         moveHistory.addRecord(backEndBoard);
+
+//        // Wait for 1-2 s
+//        for(int i=0; i<1000000000; i++){
+//            for(int j=0; j<1000000000; j++){
+//
+//            }
+//        }
+
+        boardGUI.updateGUI();
         simAI.getBestBoard(backEndBoard);
         Piece temp = backEndBoard.getPiece(simAI.srcFinal);
         backEndBoard.removePiece(simAI.srcFinal);

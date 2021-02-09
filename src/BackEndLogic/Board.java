@@ -87,7 +87,7 @@ public class Board {
             System.out.println("draw");
             return "draw";
         }
-        System.out.println("no winner yet");
+//        System.out.println("no winner yet");
         return "none";
     }
     public boolean isOccupied(Spot inputSpot){             // True if already occupied, false if not
