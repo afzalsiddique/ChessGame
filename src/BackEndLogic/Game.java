@@ -28,7 +28,7 @@ public class Game {
         }
 
         System.out.println("start new game from game class");
-        Game.whiteTurn = true;
+        Game.whiteTurn = false;
         backEndBoard.addPiece(new Rook(false, new Spot(0,6)));
         backEndBoard.addPiece(new Rook(false, new Spot(1,7)));
         backEndBoard.addPiece(new Rook(true, new Spot(7,7)));
