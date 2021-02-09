@@ -3,6 +3,7 @@ package BackEndLogic;
 import UserInterface.BoardGUI;
 
 import java.util.ArrayList;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 public class Game {
     Board backEndBoard = new Board();
@@ -90,10 +91,14 @@ public class Game {
     }
     public void checkIfGameEndedAndUpdateWinCount(){
         String winner = backEndBoard.getWinner();
-        if(winner.equals("black"))
+        if(winner.equals("black")) {
             blackWins++;
-        else if(winner.equals("white"))
+            showMessageDialog(null, "Black Wins");
+        }
+        else if(winner.equals("white")) {
             whiteWins++;
+            showMessageDialog(null, "White Wins");
+        }
         else if(winner.equals("draw"))
             return;
         else if(winner.equals("none"))
