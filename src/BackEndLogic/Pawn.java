@@ -191,6 +191,14 @@ public class Pawn extends Piece {
         value = 10;
     }
 
+    public void Promotion(){
+        Queen queen = new Queen(isWhite, currentSpot);
+        queen.setBoard(board);
+
+        board.putPieceAtLocation(currentSpot, queen);
+
+    }
+
     @Override
     public String toString() {
         String temp;

@@ -324,11 +324,15 @@ public class Board {
             }
         }
 
-        // check if en Passant move
+        // check if Pawn move
         if(moveTransitionRecord.getToMovePiece() instanceof Pawn){
+            // check if en Passant move
             if(((Pawn) moveTransitionRecord.getToMovePiece()).isEnPassantMove()){
                 ((Pawn) moveTransitionRecord.getToMovePiece()).executeEnPassant();
             }
+
+            if(moveTransitionRecord.getToMovePiece().getCurrentSpot().row == 0 || moveTransitionRecord.getToMovePiece().getCurrentSpot().row == 7)
+                ((Pawn) moveTransitionRecord.getToMovePiece()).Promotion();
 
         }
 
