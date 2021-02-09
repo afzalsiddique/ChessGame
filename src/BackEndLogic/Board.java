@@ -316,6 +316,13 @@ public class Board {
             }
         }
 
+        if(moveTransitionRecord.getToMovePiece() instanceof Pawn){
+            if(((Pawn) moveTransitionRecord.getToMovePiece()).isEnPassantMove()){
+                ((Pawn) moveTransitionRecord.getToMovePiece()).executeEnPassant();
+            }
+
+        }
+
 
     }
 

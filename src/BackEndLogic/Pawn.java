@@ -11,6 +11,8 @@ public class Pawn extends Piece {
 
     private Spot prevSpot;
 
+    private Pawn enPassantPawnOpponent;
+
     public Pawn(boolean isWhite, Spot spot){
         this.isWhite = isWhite;
         this.currentSpot = spot;
@@ -50,6 +52,33 @@ public class Pawn extends Piece {
 
     public Spot getPrevSpot(){
         return prevSpot;
+    }
+
+    public boolean isEnPassantMove(){
+        if(prevSpot.col == currentSpot.col)
+            return false;
+        if(isWhite) {
+            if(board.getPiece(new Spot(currentSpot.row + 1, currentSpot.col)) instanceof Pawn) {
+                Pawn pawnToCheck = (Pawn) board.getPiece(new Spot(currentSpot.row + 1, currentSpot.col));
+                if(pawnToCheck.didPawnDoubleMove()){
+                    enPassantPawnOpponent = pawnToCheck;
+                    return true;
+                }
+
+            }
+            return false;
+        }
+
+        else{
+            if(board.getPiece(new Spot(currentSpot.row-1, currentSpot.col)) instanceof Pawn) {
+                Pawn pawnToCheck = (Pawn) board.getPiece(new Spot(currentSpot.row + 1, currentSpot.col));
+                if(pawnToCheck.didPawnDoubleMove()){
+                    enPassantPawnOpponent = pawnToCheck;
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 
     private void ImportImage(){
@@ -127,6 +156,10 @@ public class Pawn extends Piece {
 
 //        System.out.println("right");
         return true;
+    }
+
+    public void executeEnPassant(){
+        board.removePiece(enPassantPawnOpponent.currentSpot);
     }
 
     @Override
