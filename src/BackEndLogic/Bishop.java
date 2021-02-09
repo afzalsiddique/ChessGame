@@ -133,9 +133,9 @@ public class Bishop extends Piece
     @Override
     public String toString() {
         String temp;
-        if(isWhite) temp = "w";
-        else temp = "b";
-        return temp+"B";
+        if(isWhite) temp = " w";
+        else temp = " b";
+        return temp+"B ";
     }
 
 }

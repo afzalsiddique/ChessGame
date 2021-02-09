@@ -104,9 +104,9 @@ public class King extends Piece {
     @Override
     public String toString() {
         String temp;
-        if(isWhite) temp = "w";
-        else temp = "b";
-        return temp+"+";
+        if(isWhite) temp = " w";
+        else temp = " b";
+        return temp+"+ ";
     }
 
     ArrayList<Spot> getThisPiecesMoves(Piece somePiece){

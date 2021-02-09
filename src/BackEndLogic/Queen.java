@@ -218,9 +218,9 @@ public class Queen extends Piece {
     @Override
     public String toString() {
         String temp;
-        if(isWhite) temp = "w";
-        else temp = "b";
-        return temp+"Q";
+        if(isWhite) temp = " w";
+        else temp = " b";
+        return temp+"Q ";
     }
 
     String promotion() {

@@ -209,8 +209,8 @@ public class Pawn extends Piece {
     @Override
     public String toString() {
         String temp;
-        if(isWhite) temp = "w";
-        else temp = "b";
-        return temp+"P";
+        if(isWhite) temp = " w";
+        else temp = " b";
+        return temp+"P ";
     }
 }
