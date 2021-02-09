@@ -31,6 +31,14 @@ public class Game {
         this.whiteTurn = isWhite;
     }
 
+    public void AIMakeMove(){
+        simAI.getBestBoard(backEndBoard);
+        Piece temp = backEndBoard.getPiece(simAI.srcFinal);
+        backEndBoard.removePiece(simAI.srcFinal);
+        backEndBoard.putPieceAtLocation(simAI.destFinal, temp);
+        boardGUI.updateGUI();
+    }
+
     public void startNewGame(){
         for(int i=0;i<8;i++){
             for(int j=0;j<8;j++){
@@ -158,13 +166,8 @@ public class Game {
 
         boardGUI.updateGUI();
 
-        if(aiMode) {
-            simAI.getBestBoard(backEndBoard);
-            Piece temp = backEndBoard.getPiece(simAI.srcFinal);
-            backEndBoard.removePiece(simAI.srcFinal);
-            backEndBoard.putPieceAtLocation(simAI.destFinal, temp);
-            boardGUI.updateGUI();
-        }
+        if(aiMode)
+            AIMakeMove();
 
         checkIfGameEndedAndUpdateWinCount();
     }
@@ -173,11 +176,11 @@ public class Game {
         makeMove(spot.row, spot.col);
     }
 
-    public void aiMakeMove(Spot[] sourceAndDest){
-        Spot src = sourceAndDest[0];
-        Spot dst = sourceAndDest[1];
-        Piece piece = backEndBoard.getPiece(src);
-        backEndBoard.positions[dst.row][dst.col] = piece;
-        backEndBoard.positions[src.row][src.col] = null;
-    }
+//    public void aiMakeMove(Spot[] sourceAndDest){
+//        Spot src = sourceAndDest[0];
+//        Spot dst = sourceAndDest[1];
+//        Piece piece = backEndBoard.getPiece(src);
+//        backEndBoard.positions[dst.row][dst.col] = piece;
+//        backEndBoard.positions[src.row][src.col] = null;
+//    }
 }

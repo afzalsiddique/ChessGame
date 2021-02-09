@@ -71,8 +71,12 @@ public class MenuGui{
             game.simAI.setIsWhite(true);
             game.setIsWhite(false);
 
+
             BoardGUI boardGUI = new BoardGUI(game);
             boardGUI.updateGUI();
+
+            game.AIMakeMove();
+
             window.addPanel(boardGUI);
             window.refresh();
         };
