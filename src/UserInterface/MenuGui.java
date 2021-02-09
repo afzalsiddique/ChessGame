@@ -1,12 +1,10 @@
 package UserInterface;
 
 
-import BackEndLogic.Board;
 import BackEndLogic.Game;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
+
 import java.awt.event.ActionListener;
 
 public class MenuGui{
@@ -30,18 +28,15 @@ public class MenuGui{
     }
 
     private ActionListener createActionListener(){
-        return new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Button Pressed");
-                window.removePanels();
+        return e -> {
+            System.out.println("Button Pressed");
+            window.removePanels();
 
-                Game game = new Game();
-                BoardGUI boardGUI = new BoardGUI(game);
-                boardGUI.updateGUI();
-                window.addPanel(boardGUI);
-                window.refresh();
-            }
+            Game game = new Game();
+            BoardGUI boardGUI = new BoardGUI(game);
+            boardGUI.updateGUI();
+            window.addPanel(boardGUI);
+            window.refresh();
         };
     }
 
