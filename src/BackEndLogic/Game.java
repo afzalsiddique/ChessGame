@@ -8,7 +8,7 @@ public class Game {
     Board backEndBoard = new Board();
     BoardGUI boardGUI;
     History moveHistory = new History();
-    AI_Agent ai_agent = new AI_Agent(backEndBoard);
+    AI_Agent ai_agent = new AI_Agent(this);
     static public int whiteWins;
     static public int blackWins;
     Player whitePlayer;
@@ -85,7 +85,7 @@ public class Game {
         return backEndBoard;
     }
 
-    public void UndoLastMove(){
+    public void undoLastMove(){
         if(moveHistory.getSize() <= 1)
             return;
 
@@ -136,8 +136,10 @@ public class Game {
         boardGUI.changeSelectedState();
         changeTurn();
         moveHistory.addRecord(backEndBoard);
-//        Spot[] sourceAndDest = ai_agent.findBestMove(backEndBoard);
-//        aiMakeMove(sourceAndDest);
+        boardGUI.updateGUI();
+        checkIfGameEndedAndUpdateWinCount();
+        Spot[] sourceAndDest = ai_agent.findBestMove(backEndBoard);
+        aiMakeMove(sourceAndDest);
         boardGUI.updateGUI();
         checkIfGameEndedAndUpdateWinCount();
     }
@@ -151,5 +153,6 @@ public class Game {
         Piece piece = backEndBoard.getPiece(src);
         backEndBoard.positions[dst.row][dst.col] = piece;
         backEndBoard.positions[src.row][src.col] = null;
+        moveHistory.addRecord(backEndBoard);
     }
 }

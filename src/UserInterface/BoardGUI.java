@@ -38,7 +38,7 @@ public class BoardGUI extends JPanel {
         undoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                game.UndoLastMove();
+                game.undoLastMove();
                 updateGUI();
             }
         });

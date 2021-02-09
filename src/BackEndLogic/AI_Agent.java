@@ -6,10 +6,9 @@ import static java.lang.Integer.max;
 import static java.lang.Integer.min;
 
 public class AI_Agent {
-    Board board;
-
-    public AI_Agent(Board currentGameBoard) {
-        this.board = currentGameBoard;
+    Game game;
+    public AI_Agent(Game game) {
+        this.game = game;
     }
     public int minimax(Board board, int depth, boolean maxPlayer){ // first call to this method should be with !maxPlayer
         Spot spotPieceSource;
@@ -31,24 +30,32 @@ public class AI_Agent {
                 for(int j=0;j<8;j++){
                     pieceSource = positions[i][j];
                     if(pieceSource!=null){
-                        spotPieceSource = pieceSource.getCurrentSpot();
+                        game.selectPiece(pieceSource.getCurrentSpot());
                         ArrayList<Spot> availableMoves = pieceSource.calculateAllPossibleMoves();
                         for(int k=0;k<availableMoves.size();k++) {
                             spotPieceDest = availableMoves.get(k);
                             pieceDest = board.getPiece(spotPieceDest);
+
                             // make the move
                             // move pieceSource to spotPieceDest
-                            movePieceToSpot(board, pieceSource, spotPieceDest);
+//                            movePieceToSpot(board, pieceSource, spotPieceDest);
                             // make spotPieceSource null
-                            board.positions[spotPieceSource.row][spotPieceSource.col] = null;
+//                            board.positions[spotPieceSource.row][spotPieceSource.col] = null;
+
+                            game.makeMove(spotPieceDest);
+
+
                             // calculate score and take the maxScore
                             score = minimax(board, depth - 1, !maxPlayer);
                             maxScore = max(maxScore, score);
                             // undo the move
                             // move pieceSource to spotPieceSource
-                            movePieceToSpot(board, pieceSource, spotPieceSource);
+//                            movePieceToSpot(board, pieceSource, spotPieceSource);
                             // move pieceDest to spotPieceDest
-                            movePieceToSpot(board, pieceDest, spotPieceDest);
+//                            movePieceToSpot(board, pieceDest, spotPieceDest);
+
+                            game.undoLastMove();
+
                         }
                     }
                 }
@@ -61,24 +68,28 @@ public class AI_Agent {
                 for(int j=0;j<8;j++){
                     pieceSource = positions[i][j];
                     if(pieceSource!=null){
-                        spotPieceSource = pieceSource.getCurrentSpot();
+                        game.selectPiece(pieceSource.getCurrentSpot());
                         ArrayList<Spot> availableMoves = pieceSource.calculateAllPossibleMoves();
                         for(int k=0;k<availableMoves.size();k++){
                             spotPieceDest = availableMoves.get(k);
-                            pieceDest = board.getPiece(spotPieceDest);
                             // make the move
                             // move pieceSource to spotPieceDest
-                            movePieceToSpot(board, pieceSource, spotPieceDest);
+//                            movePieceToSpot(board, pieceSource, spotPieceDest);
                             // make spotPieceSource null
-                            board.positions[spotPieceSource.row][spotPieceSource.col] = null;
+//                            board.positions[spotPieceSource.row][spotPieceSource.col] = null;
+
+                            game.makeMove(spotPieceDest);
+
                             // calculate score and take the min Score
                             score = minimax(board, depth-1, !maxPlayer);
                             minScore = min(minScore, score);
                             // undo the move
                             // move pieceSource to spotPieceSource
-                            movePieceToSpot(board, pieceSource, spotPieceSource);
+//                            movePieceToSpot(board, pieceSource, spotPieceSource);
                             // move pieceDest to spotPieceDest
-                            movePieceToSpot(board, pieceDest, spotPieceDest);
+//                            movePieceToSpot(board, pieceDest, spotPieceDest);
+                            game.undoLastMove();
+
                         }
                     }
                 }
@@ -101,14 +112,18 @@ public class AI_Agent {
                 if(pieceSource!=null && pieceSource.isWhite){ // We are finding best move for the White
                     spotPieceSource = pieceSource.getCurrentSpot();
                     ArrayList<Spot> availableMoves = pieceSource.calculateAllPossibleMoves();
+                    game.selectPiece(pieceSource.getCurrentSpot());
                     for(int k=0;k<availableMoves.size();k++){
                         spotPieceDest = availableMoves.get(k);
                         pieceDest = board.getPiece(spotPieceDest);
                         // make the move
                         // move pieceSource to spotPieceDest
-                        movePieceToSpot(board, pieceSource, spotPieceDest);
+//                        movePieceToSpot(board, pieceSource, spotPieceDest);
                         // make spotPieceSource null
-                        board.positions[spotPieceSource.row][spotPieceSource.col] = null;
+
+                        game.makeMove(spotPieceDest);
+
+//                        board.positions[spotPieceSource.row][spotPieceSource.col] = null;
                         // calculate moveVal and take the bestVal
                         int moveVal = minimax(board, DEPTH, false);
                         if(moveVal > bestVal){
@@ -119,9 +134,11 @@ public class AI_Agent {
                         }
                         // undo the move
                         // move pieceSource to spotPieceSource
-                        movePieceToSpot(board, pieceSource, spotPieceSource);
+//                        movePieceToSpot(board, pieceSource, spotPieceSource);
                         // move pieceDest to spotPieceDest
-                        movePieceToSpot(board, pieceDest, spotPieceDest);
+//                        movePieceToSpot(board, pieceDest, spotPieceDest);
+                        game.undoLastMove();
+
                     }
                 }
             }
