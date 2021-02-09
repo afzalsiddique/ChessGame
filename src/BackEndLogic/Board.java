@@ -93,6 +93,10 @@ public class Board {
     public boolean isOccupied(Spot inputSpot){             // True if already occupied, false if not
         int col = inputSpot.col;
         int row = inputSpot.row;
+
+        if(col >= 8 || col < 0 || row >= 8 || col < 0)
+            return true;
+
         Piece positionToCheck = positions[row][col];
         if(positionToCheck == null)
             return false;

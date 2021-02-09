@@ -52,7 +52,7 @@ public abstract class Piece {
         if(isWhite)
             return value;
         else
-            return -value;
+            return -1*value;
     }
 
     abstract void setValue();
