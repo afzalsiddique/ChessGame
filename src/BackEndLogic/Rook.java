@@ -5,14 +5,28 @@ import javax.swing.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Rook extends Piece
-{
+public class Rook extends Piece {
+
+    private boolean firstMove = true;
+
     public Rook(boolean isWhite, Spot spot)
     {
         this.isWhite = isWhite;
         this.currentSpot = spot;
         ImportImage();
         setValue();
+    }
+
+    public Rook(boolean isWhite, Spot spot, boolean firstMove) {
+        this.isWhite = isWhite;
+        this.currentSpot = spot;
+        ImportImage();
+        setValue();
+        setFirstMove(firstMove);
+    }
+
+    public void setFirstMove(boolean thisBoolean){
+        firstMove = thisBoolean;
     }
 
     private void ImportImage(){
@@ -126,18 +140,38 @@ public class Rook extends Piece
         return  availableMoves;
     }
 
-    public void castling()
-    {
-
+    public boolean isFirstMove(){
+        return firstMove;
     }
+
+    public void castleKingSide(){
+        int thisCol = currentSpot.col, thisRow = currentSpot.row;
+
+        System.out.println("Doing Calcs On kings Side");
+        board.putPieceAtLocation(thisRow, thisCol-2, this);
+        board.removePiece(thisRow, thisCol);
+
+        setFirstMove(false);
+    }
+
+    public void castleQueenSide(){
+        int thisCol = currentSpot.col, thisRow = currentSpot.row;
+
+        System.out.println("Doing Calcs On queens Side");
+        board.putPieceAtLocation(thisRow, thisCol+3, this);
+        board.removePiece(thisRow, thisCol);
+
+        setFirstMove(false);
+    }
+
     public void setValue(){
         this.value = 50;
     }
     @Override
     public String toString() {
         String temp;
-        if(isWhite) temp = "w";
-        else temp = "b";
-        return temp+"R";
+        if(isWhite) temp = " w";
+        else temp = " b";
+        return temp+"R ";
     }
 }

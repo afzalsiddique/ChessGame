@@ -7,11 +7,31 @@ import java.util.ArrayList;
 
 public class King extends Piece {
 
+    private boolean firstMove = true;
+
+    private Rook castlingRookKingSide, castlingRookQueenSide;
+
     public King(boolean isWhite, Spot inputSpot){
         this.isWhite = isWhite;
         this.currentSpot = inputSpot;
         importImage();
         setValue();
+    }
+
+    public King(boolean isWhite, Spot spot, Boolean firstMove){
+        this.isWhite = isWhite;
+        this.currentSpot = spot;
+        importImage();
+        setValue();
+        setFirstMove(firstMove);
+    }
+
+    public boolean isFirstMove(){
+        return firstMove;
+    }
+
+    public void setFirstMove(boolean thisBoolean){
+        firstMove = thisBoolean;
     }
 
     private void importImage(){
@@ -29,6 +49,56 @@ public class King extends Piece {
 
     void setValue() {
         value = 900;
+    }
+
+    boolean checkKingSideCastle(){
+        if(!firstMove)
+            return false;
+
+        for(int i=currentSpot.col+1; i<=8; i++){
+            if(i == 8)
+                return false;
+
+            Spot spot = new Spot(currentSpot.row, i);
+            if(board.isOccupied(spot)) {
+                if (board.getPiece(spot) instanceof Rook) {
+                    castlingRookKingSide = (Rook) board.getPiece(currentSpot.row, i);
+                    break;
+                }
+                else
+                    return false;
+            }
+        }
+
+        if(!castlingRookKingSide.isFirstMove())
+            return false;
+
+        return true;
+    }
+
+    boolean checkQueenSideCastle(){
+        if(!firstMove)
+            return false;
+
+        for(int i=currentSpot.col-1; i>=-1; i--){
+            if(i == -1)
+                return false;
+
+            Spot spot = new Spot(currentSpot.row, i);
+            if(board.isOccupied(spot)) {
+                if (board.getPiece(spot) instanceof Rook) {
+                    castlingRookQueenSide = (Rook) board.getPiece(currentSpot.row, i);
+                    break;
+                }
+                else
+                    return false;
+            }
+        }
+
+        if(!castlingRookQueenSide.isFirstMove())
+            return false;
+
+        return true;
     }
 
     @Override
@@ -85,10 +155,21 @@ public class King extends Piece {
         if(thisRow - 1 >= 0 && thisCol - 1 >= 0 && (board.isOpponent(this, board.getPiece(thisRow-1, thisCol-1)) || !board.isOccupied(thisRow-1, thisCol-1)))
             availableMoves.add(new Spot(thisRow-1, thisCol-1));
 
+        if(checkKingSideCastle())
+            availableMoves.add(new Spot(thisRow, thisCol+2));
+
+        if(checkQueenSideCastle())
+            availableMoves.add(new Spot(thisRow, thisCol-2));
+
         return  availableMoves;
     }
 
-    public void castling(){
-
+    public void castleKingSide(){
+        castlingRookKingSide.castleKingSide();
     }
+
+    public void castleQueenSide(){
+        castlingRookQueenSide.castleQueenSide();
+    }
+
 }

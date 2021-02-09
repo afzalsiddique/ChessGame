@@ -62,11 +62,14 @@ public class Game {
     }
 
     public void UndoLastMove(){
-        if(moveHistory.isEmpty())
+        if(moveHistory.getSize() <= 1)
             return;
 
         moveHistory.removeLastRecord();;
         setBackEndBoard(moveHistory.getLastRecord());
+        boardGUI.updateGUI();
+
+        changeTurn();
     }
 
     void changeTurn(){
@@ -82,7 +85,7 @@ public class Game {
             System.out.println("Nothing There");
             return;
         }
-        System.out.println("WhiteTurn=" + whiteTurn);
+
         if(backEndBoard.getOccupiedColor(row, col) != whiteTurn){
             System.out.println("Not Your Turn");
             return;

@@ -5,6 +5,8 @@ public class Board {
 
     public Piece[][] positions = new Piece[8][8];
 
+    private Game gameInfo;
+
     public Board(){}
     public Board(Piece[][] positions){
         this.positions = positions;
@@ -28,6 +30,26 @@ public class Board {
             System.out.print('\n');
         }
     }
+
+    void setGameInfo(Game gameInfo){
+        this.gameInfo = gameInfo;
+    }
+
+    History getHistory(){
+        return gameInfo.getHistory();
+    }
+
+    void setBoardOnAllPieces(){
+        for(int i=0; i<8; i++){
+            for(int j=0; j<8; j++){
+                if(positions[i][j] != null){
+                    Piece thisPiece = getPiece(i,j);
+                    thisPiece.setBoard(this);
+                }
+            }
+        }
+    }
+
     public String getWinner(){
         ArrayList<Spot> allPossibleMovesWhite = new ArrayList<>();
         for(int i=0;i<8;i++){
@@ -264,11 +286,44 @@ public class Board {
     }
 
     void moveSelectedPiece(Spot inputSpot){
+        Spot oldSpot = moveTransitionRecord.getPrevSpot();
         moveTransitionRecord.getToMovePiece().setCurrentSpot(inputSpot);
         addPiece(moveTransitionRecord.getToMovePiece());
 
-        if(moveTransitionRecord.getToMovePiece() instanceof Pawn)
+        if(moveTransitionRecord.getToMovePiece() instanceof Pawn){
+            System.out.println("Pawn Moved");
             ((Pawn) moveTransitionRecord.getToMovePiece()).setFirstMove(false);
+            ((Pawn) moveTransitionRecord.getToMovePiece()).setPrevSpot(oldSpot);
+            System.out.println("PrevSpot=" + ((Pawn) moveTransitionRecord.getToMovePiece()).getPrevSpot() + " CurrentSpot=" + ((Pawn) moveTransitionRecord.getToMovePiece()).getCurrentSpot());
+        }
+
+        else if(moveTransitionRecord.getToMovePiece() instanceof King)
+            ((King)moveTransitionRecord.getToMovePiece()).setFirstMove(false);
+        else if(moveTransitionRecord.getToMovePiece() instanceof Rook){
+            System.out.println("Rook Moved");
+            ((Rook)moveTransitionRecord.getToMovePiece()).setFirstMove(false);
+        }
+
+
+        // check if it is a castling move
+        if(moveTransitionRecord.getToMovePiece() instanceof King){
+            System.out.println("King Moved");
+            if(oldSpot.row == inputSpot.row && Math.abs(inputSpot.col- oldSpot.col) == 2){
+                if(oldSpot.col < inputSpot.col)
+                    ((King) moveTransitionRecord.getToMovePiece()).castleKingSide();
+                else
+                    ((King) moveTransitionRecord.getToMovePiece()).castleQueenSide();
+            }
+        }
+
+        if(moveTransitionRecord.getToMovePiece() instanceof Pawn){
+            if(((Pawn) moveTransitionRecord.getToMovePiece()).isEnPassantMove()){
+                ((Pawn) moveTransitionRecord.getToMovePiece()).executeEnPassant();
+            }
+
+        }
+
+
     }
 
     void removeSelectedPiece(){
@@ -289,7 +344,7 @@ public class Board {
                 if(piece!=null)
                     temp = temp + piece.toString();
                 else
-                    temp = temp + "..";
+                    temp = temp + " .. ";
             }
             temp = temp + "\n";
         }
