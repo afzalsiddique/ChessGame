@@ -55,6 +55,7 @@ public class AI_Agent {
             }
             return maxScore;
         }
+
         else{
             int minScore = 999999;
             for(int i=0;i<8;i++){
@@ -86,6 +87,7 @@ public class AI_Agent {
             return minScore;
         }
     }
+
     public Spot[] findBestMove(Board board){
         Spot[] sourceAndDest = {new Spot(-1,-1), new Spot(-1,-1)};
         int DEPTH = 1;
