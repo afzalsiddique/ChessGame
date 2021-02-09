@@ -51,11 +51,11 @@ public class Game {
         backEndBoard.addPiece(new Knight(false, new Spot(0,6)));
         backEndBoard.addPiece(new Knight(false, new Spot(0,1)));
 
-        for(int i=0; i<8; i++){
+        for(int i=5; i<8; i++){
             backEndBoard.addPiece(new Pawn(false, new Spot(1,i)));
         }
 
-        for(int i=0; i<8; i++){
+        for(int i=6; i<8; i++){
             backEndBoard.addPiece(new Pawn(true, new Spot(6,i)));
         }
 
@@ -148,6 +148,7 @@ public class Game {
     public void makeMove(Spot spot){
         makeMove(spot.row, spot.col);
     }
+
     public void aiMakeMove(Spot[] sourceAndDest){
         Spot src = sourceAndDest[0];
         Spot dst = sourceAndDest[1];

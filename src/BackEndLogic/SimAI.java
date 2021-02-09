@@ -12,7 +12,7 @@ public class SimAI {
             for(int j=0;j<8;j++){
                 Piece srcPiece = positions[i][j];
                 if(srcPiece!=null && srcPiece.isWhite){
-                    ArrayList<Spot> availableMoves = srcPiece.calculateAllPossibleMovesWithoutModifying();
+                    ArrayList<Spot> availableMoves = srcPiece.calculateAllPossibleMoves();
                     for(int k=0;k<availableMoves.size();k++){
                         // move the srcPiece
                         Spot dest = availableMoves.get(k);
@@ -32,6 +32,7 @@ public class SimAI {
                             srcFinal = new Spot(i,j);
                             destFinal = dest;
                         }
+
                         // undo the move
 //                        positions[i][j] = srcPiece;
 //                        srcPiece.setCurrentSpot(new Spot(i,j));
@@ -41,6 +42,8 @@ public class SimAI {
                         board.putPieceAtLocation(i,j,srcPiece);
                         board.removePiece(dest);
                         board.putPieceAtLocation(dest, destPiece);
+
+                        availableMoves.clear();
                     }
                 }
             }
