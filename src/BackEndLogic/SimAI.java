@@ -4,22 +4,27 @@ import java.util.ArrayList;
 
 public class SimAI {
     Board bestBoard;
-    int bestScore = Integer.MIN_VALUE;
     Spot srcFinal, destFinal;
     public void getBestBoard(Board board){
+        int bestScore = Integer.MIN_VALUE;
         Piece [][] positions = board.positions;
         for(int i=0;i<8;i++){
             for(int j=0;j<8;j++){
                 Piece srcPiece = positions[i][j];
                 if(srcPiece!=null && srcPiece.isWhite){
-                    ArrayList<Spot> availableMoves = srcPiece.calculateAllPossibleMoves();
+                    ArrayList<Spot> availableMoves = srcPiece.calculateAllPossibleMovesWithoutModifying();
                     for(int k=0;k<availableMoves.size();k++){
                         // move the srcPiece
                         Spot dest = availableMoves.get(k);
-                        Piece destPiece = positions[dest.row][dest.col];
-                        positions[dest.row][dest.col] = srcPiece;
-                        positions[i][j] = null;
-                        srcPiece.setCurrentSpot(dest);
+                        Piece destPiece = board.getPiece(dest);
+//                        positions[dest.row][dest.col] = srcPiece;
+//                        positions[i][j] = null;
+//                        srcPiece.setCurrentSpot(dest);
+
+                        board.putPieceAtLocation(dest, srcPiece);
+
+                        board.removePiece(i,j);
+
                         // calculate score
                         int currentScore = evaluate(board);
                         if (currentScore>bestScore){
@@ -28,11 +33,14 @@ public class SimAI {
                             destFinal = dest;
                         }
                         // undo the move
-                        positions[i][j] = srcPiece;
-                        srcPiece.setCurrentSpot(new Spot(i,j));
-                        positions[dest.row][dest.col] = destPiece;
-                        if (destPiece != null)
-                            destPiece.setCurrentSpot(new Spot(dest.row,dest.col));
+//                        positions[i][j] = srcPiece;
+//                        srcPiece.setCurrentSpot(new Spot(i,j));
+//                        positions[dest.row][dest.col] = destPiece;
+//                        if (destPiece != null)
+//                            destPiece.setCurrentSpot(new Spot(dest.row,dest.col));
+                        board.putPieceAtLocation(i,j,srcPiece);
+                        board.removePiece(dest);
+                        board.putPieceAtLocation(dest, destPiece);
                     }
                 }
             }
