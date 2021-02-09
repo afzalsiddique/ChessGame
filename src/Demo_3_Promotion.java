@@ -2,7 +2,7 @@ import BackEndLogic.*;
 import UserInterface.BoardGUI;
 import UserInterface.DisplayWindow;
 
-public class SpecialMoveDemo {
+public class Demo_3_Promotion {
     public static void main(String[] args) {
         Board board = new Board();
         Piece bRook1 = new Rook(false, new Spot(0,0));
