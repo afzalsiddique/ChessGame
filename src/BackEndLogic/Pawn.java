@@ -60,7 +60,7 @@ public class Pawn extends Piece {
         if(isWhite) {
             if(board.getPiece(new Spot(currentSpot.row + 1, currentSpot.col)) instanceof Pawn) {
                 Pawn pawnToCheck = (Pawn) board.getPiece(new Spot(currentSpot.row + 1, currentSpot.col));
-                if(pawnToCheck.didPawnDoubleMove()){
+                if(pawnToCheck.didPawnDoubleMove() && board.isOpponent(pawnToCheck,this)){
                     enPassantPawnOpponent = pawnToCheck;
                     return true;
                 }
@@ -71,8 +71,8 @@ public class Pawn extends Piece {
 
         else{
             if(board.getPiece(new Spot(currentSpot.row-1, currentSpot.col)) instanceof Pawn) {
-                Pawn pawnToCheck = (Pawn) board.getPiece(new Spot(currentSpot.row + 1, currentSpot.col));
-                if(pawnToCheck.didPawnDoubleMove()){
+                Pawn pawnToCheck = (Pawn) board.getPiece(new Spot(currentSpot.row - 1, currentSpot.col));
+                if(pawnToCheck.didPawnDoubleMove() && board.isOpponent(pawnToCheck,this)){
                     enPassantPawnOpponent = pawnToCheck;
                     return true;
                 }
@@ -109,7 +109,7 @@ public class Pawn extends Piece {
     }
 
     boolean isEnPassantAvailableOnLeft(){
-        System.out.println("Checking left Pawn on " + currentSpot);
+        System.out.println("Checking left Pawn " + isWhite + " on " + currentSpot);
 
         Spot spotToCheck = new Spot(currentSpot.row, currentSpot.col-1);
 
