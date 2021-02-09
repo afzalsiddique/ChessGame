@@ -23,6 +23,8 @@ public class AIDemo {
 
 
         Game actualGame = new Game();
+        actualGame.setIsWhite(true);
+        actualGame.setAiMode(true);
         actualGame.setBackEndBoard(board);
         BoardGUI gui = new BoardGUI(actualGame);
         gui.updateGUI();
