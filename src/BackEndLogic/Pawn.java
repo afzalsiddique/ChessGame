@@ -153,6 +153,8 @@ public class Pawn extends Piece {
         int currentRow = currentSpot.row;
         int currentCol = currentSpot.col;
         if(isWhite) {
+//            System.out.println("Pawn at " + currentSpot);
+
             if (currentRow - 1 >= 0 && !board.isOccupied(new Spot(currentRow-1, currentCol)))
                 availableMoves.add(new Spot(currentRow - 1, currentCol));
             if (currentRow - 1 >= 0 && currentCol - 1 >= 0  && board.isOpponent(this,positions[currentRow-1][currentCol-1]))

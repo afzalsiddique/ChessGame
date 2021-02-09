@@ -9,7 +9,7 @@ public abstract class Piece {
     boolean isWhite;
     public ArrayList<Spot> availableMoves = new ArrayList<>();
     Board board;
-    protected static int value;
+    protected int value;
     public void setBoard(Board board){
         this.board = board;
     }
@@ -52,7 +52,7 @@ public abstract class Piece {
         if(isWhite)
             return value;
         else
-            return -value;
+            return -1*value;
     }
 
     abstract void setValue();

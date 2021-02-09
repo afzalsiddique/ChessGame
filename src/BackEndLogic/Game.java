@@ -37,25 +37,25 @@ public class Game {
         backEndBoard.addPiece(new Rook(true, new Spot(7,7)));
         backEndBoard.addPiece(new Rook(true, new Spot(7,0)));
         backEndBoard.addPiece(new Rook(false, new Spot(0,0)));
-        backEndBoard.addPiece(new Rook(false, new Spot(0,7)));
+//        backEndBoard.addPiece(new Rook(false, new Spot(0,7)));
         backEndBoard.addPiece(new King(true, new Spot(7,4)));
         backEndBoard.addPiece(new King(false, new Spot(0,4)));
-        backEndBoard.addPiece(new Bishop(true, new Spot(7,2)));
-        backEndBoard.addPiece(new Bishop(true, new Spot(7,5)));
-        backEndBoard.addPiece(new Bishop(false, new Spot(0,2)));
-        backEndBoard.addPiece(new Bishop(false, new Spot(0,5)));
-        backEndBoard.addPiece(new Queen(true, new Spot(7,3)));
-        backEndBoard.addPiece(new Queen(false, new Spot(0,3)));
-        backEndBoard.addPiece(new Knight(true, new Spot(7,1)));
-        backEndBoard.addPiece(new Knight(true, new Spot(7,6)));
+//        backEndBoard.addPiece(new Bishop(true, new Spot(7,2)));
+//        backEndBoard.addPiece(new Bishop(true, new Spot(7,5)));
+//        backEndBoard.addPiece(new Bishop(false, new Spot(0,2)));
+//        backEndBoard.addPiece(new Bishop(false, new Spot(0,5)));
+//        backEndBoard.addPiece(new Queen(true, new Spot(7,3)));
+//        backEndBoard.addPiece(new Queen(false, new Spot(0,3)));
+//        backEndBoard.addPiece(new Knight(true, new Spot(7,1)));
+//        backEndBoard.addPiece(new Knight(true, new Spot(7,6)));
         backEndBoard.addPiece(new Knight(false, new Spot(0,6)));
         backEndBoard.addPiece(new Knight(false, new Spot(0,1)));
 
-        for(int i=0; i<8; i++){
+        for(int i=5; i<8; i++){
             backEndBoard.addPiece(new Pawn(false, new Spot(1,i)));
         }
 
-        for(int i=0; i<8; i++){
+        for(int i=0; i<4; i++){
             backEndBoard.addPiece(new Pawn(true, new Spot(6,i)));
         }
 

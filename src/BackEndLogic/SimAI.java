@@ -12,8 +12,12 @@ public class SimAI {
             for(int j=0;j<8;j++){
                 Piece srcPiece = positions[i][j];
                 if(srcPiece!=null && srcPiece.isWhite){
-                    ArrayList<Spot> availableMoves = srcPiece.calculateAllPossibleMoves();
+                    board.selectPiece(srcPiece.getCurrentSpot());
+                    ArrayList<Spot> availableMoves = board.getAvailableMoves();
+//                     srcPiece.calculateAllPossibleMoves();
+                    System.out.println("Considering a Move" + srcPiece + " at " + new Spot (i,j) + "\navailable moves size = " + availableMoves.size());
                     for(int k=0;k<availableMoves.size();k++){
+                        System.out.println("Spot " + k + ": " + availableMoves.get(k));
                         // move the srcPiece
                         Spot dest = availableMoves.get(k);
                         Piece destPiece = board.getPiece(dest);
@@ -27,7 +31,10 @@ public class SimAI {
 
                         // calculate score
                         int currentScore = evaluate(board);
+//                        System.out.println("Considering a Move" + srcPiece + " at " + new Spot (i,j) + " to " + dest + "\nScore is " + currentScore);
+
                         if (currentScore>bestScore){
+//                            System.out.println("Current Score Replaced");
                             bestScore = currentScore;
                             srcFinal = new Spot(i,j);
                             destFinal = dest;
@@ -42,9 +49,9 @@ public class SimAI {
                         board.putPieceAtLocation(i,j,srcPiece);
                         board.removePiece(dest);
                         board.putPieceAtLocation(dest, destPiece);
-
-                        availableMoves.clear();
+                        board.moveTransitionRecord.reset();
                     }
+
                 }
             }
         }
@@ -55,10 +62,10 @@ public class SimAI {
         // if white wins score should be greater than 10000 or must be changed in minimax method
         // if white loses score should be less than -10000 or must be changed in minimax method
         if (board.getWinner().equals("white")){
-            return 10000;
+            return 100000;
         }
         if (board.getWinner().equals("black")){
-            return -10000;
+            return -100000;
         }
         int score = 0;
         Piece[][] positions = board.positions;
