@@ -13,6 +13,7 @@ public class SimAI {
                 Piece srcPiece = positions[i][j];
                 if(srcPiece!=null && srcPiece.isWhite){
                     ArrayList<Spot> availableMoves = srcPiece.calculateAllPossibleMoves();
+                    System.out.println("source Piece: "+srcPiece+ " at "+srcPiece.currentSpot);
                     for(int k=0;k<availableMoves.size();k++){
                         // move the srcPiece
                         Spot dest = availableMoves.get(k);
@@ -27,7 +28,9 @@ public class SimAI {
 
                         // calculate score
                         int currentScore = evaluate(board);
+                        System.out.println("Moving to: "+dest+" Score: "+currentScore);
                         if (currentScore>bestScore){
+                            System.out.println("replaced: "+currentScore);
                             bestScore = currentScore;
                             srcFinal = new Spot(i,j);
                             destFinal = dest;
@@ -43,8 +46,9 @@ public class SimAI {
                         board.removePiece(dest);
                         board.putPieceAtLocation(dest, destPiece);
 
-                        availableMoves.clear();
+
                     }
+                        availableMoves.clear();
                 }
             }
         }
@@ -64,8 +68,13 @@ public class SimAI {
         Piece[][] positions = board.positions;
         for(int i=0;i<8;i++)
             for(int j=0;j<8;j++)
-                if(positions[i][j] != null)
+                if(positions[i][j] != null) {
+                    System.out.println(i + " " + j);
+                    Piece temp = positions[i][j];
+                    int value = temp.getValue();
+                    System.out.println(value);
                     score += positions[i][j].getValue();
+                }
         return score;
     }
     public Board createCopyOf(Board board) {
