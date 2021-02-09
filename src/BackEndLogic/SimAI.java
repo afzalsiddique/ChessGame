@@ -48,6 +48,7 @@ public class SimAI {
                 }
             }
         }
+        System.out.println("best");
     }
     public int evaluate(Board board){ // this can evaluate any board not just current game board
         // need to calculate checkmate score
