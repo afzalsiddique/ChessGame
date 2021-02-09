@@ -13,6 +13,7 @@ public class Game {
     static public int blackWins;
     Player whitePlayer;
     Player blackPlayer;
+    SimAI simAI = new SimAI();
 
     static boolean whiteTurn;
 
@@ -32,7 +33,7 @@ public class Game {
         }
 
         System.out.println("start new game from game class");
-        Game.whiteTurn = true;
+        Game.whiteTurn = false;
         backEndBoard.addPiece(new Rook(true, new Spot(7,7)));
         backEndBoard.addPiece(new Rook(true, new Spot(7,0)));
         backEndBoard.addPiece(new Rook(false, new Spot(0,0)));
@@ -97,7 +98,7 @@ public class Game {
     }
 
     void changeTurn(){
-        whiteTurn = !whiteTurn;
+//        whiteTurn = !whiteTurn;
     }
 
     public ArrayList<Spot> getAvailableMoves(){
@@ -136,8 +137,10 @@ public class Game {
         boardGUI.changeSelectedState();
         changeTurn();
         moveHistory.addRecord(backEndBoard);
-//        Spot[] sourceAndDest = ai_agent.findBestMove(backEndBoard);
-//        aiMakeMove(sourceAndDest);
+        simAI.getBestBoard(backEndBoard);
+        Piece temp = backEndBoard.getPiece(simAI.srcFinal);
+        backEndBoard.removePiece(simAI.srcFinal);
+        backEndBoard.putPieceAtLocation(simAI.destFinal, temp);
         boardGUI.updateGUI();
         checkIfGameEndedAndUpdateWinCount();
     }
