@@ -95,51 +95,35 @@ public class Pawn extends Piece {
     }
 
     boolean didPawnDoubleMove(){
-        System.out.println("Check double move for Pawn on " + currentSpot);
-        System.out.println("CurrentSpot=" + currentSpot);
-        System.out.println("prevSpot=" + prevSpot);
-
-        if(prevSpot.col == currentSpot.col && Math.abs(prevSpot.row - currentSpot.row) == 2){
-            System.out.println("true");
+        if(prevSpot.col == currentSpot.col && Math.abs(prevSpot.row - currentSpot.row) == 2)
             return true;
-        }
 
-        System.out.println("false");
         return false;
     }
 
     boolean isEnPassantAvailableOnLeft(){
-        System.out.println("Checking left Pawn " + isWhite + " on " + currentSpot);
 
         Spot spotToCheck = new Spot(currentSpot.row, currentSpot.col-1);
 
         if(spotToCheck.row >= 8 || spotToCheck.row < 0 || spotToCheck.col >= 8 || spotToCheck.col < 0)
             return false;
 
-        if(!board.isOccupied(spotToCheck)){
-            System.out.println("1");
+        if(!board.isOccupied(spotToCheck))
             return false;
-        }
 
 
-        if(!board.isOpponent(this, board.getPiece(spotToCheck)) || !(board.getPiece(spotToCheck) instanceof Pawn)){
-            System.out.println("2");
+
+        if(!board.isOpponent(this, board.getPiece(spotToCheck)) || !(board.getPiece(spotToCheck) instanceof Pawn))
             return false;
-        }
 
 
-        if(!((Pawn) board.getPiece(spotToCheck)).didPawnDoubleMove()){
-            System.out.println("3");
+        if(!((Pawn) board.getPiece(spotToCheck)).didPawnDoubleMove())
             return false;
-        }
 
-
-        System.out.println("left");
         return true;
     }
 
     boolean isEnPassantAvailableOnRight(){
-        System.out.println("Checking right Pawn on " + currentSpot);
         Spot spotToCheck = new Spot(currentSpot.row, currentSpot.col+1);
 
         if(spotToCheck.row >= 8 || spotToCheck.row < 0 || spotToCheck.col >= 8 || spotToCheck.col < 0)
@@ -154,7 +138,6 @@ public class Pawn extends Piece {
         if(!((Pawn) board.getPiece(spotToCheck)).didPawnDoubleMove())
             return false;
 
-//        System.out.println("right");
         return true;
     }
 
