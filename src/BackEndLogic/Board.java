@@ -79,11 +79,11 @@ public class Board {
             System.out.println("black wins");
             return "black";
         }
-        else if(allPossibleMovesBlack.size()==0 && !checkIfKingIsChecked(false) && !Game.whiteTurn){
+        else if(allPossibleMovesBlack.size()==0 && !checkIfKingIsChecked(false) && !gameInfo.whiteTurn){
             System.out.println("draw");
             return "draw";
         }
-        else if(allPossibleMovesWhite.size()==0 && !checkIfKingIsChecked(true) && Game.whiteTurn){
+        else if(allPossibleMovesWhite.size()==0 && !checkIfKingIsChecked(true) && gameInfo.whiteTurn){
             System.out.println("draw");
             return "draw";
         }

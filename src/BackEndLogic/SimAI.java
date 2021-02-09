@@ -5,13 +5,25 @@ import java.util.ArrayList;
 public class SimAI {
     Board bestBoard;
     Spot srcFinal, destFinal;
+    boolean isWhite;
+
+    public void setIsWhite(boolean isWhite){
+        this.isWhite = isWhite;
+    }
+
     public void getBestBoard(Board board){
-        int bestScore = Integer.MIN_VALUE;
+        int bestScore;
+
+        if(isWhite)
+            bestScore = Integer.MIN_VALUE;
+        else
+            bestScore = Integer.MAX_VALUE;
+
         Piece [][] positions = board.positions;
         for(int i=0;i<8;i++){
             for(int j=0;j<8;j++){
                 Piece srcPiece = positions[i][j];
-                if(srcPiece!=null && srcPiece.isWhite){
+                if(srcPiece!=null && srcPiece.isWhite == isWhite){
                     ArrayList<Spot> availableMoves = srcPiece.calculateAllPossibleMoves();
                     System.out.println("source Piece: "+srcPiece+ " at "+srcPiece.currentSpot);
                     for(int k=0;k<availableMoves.size();k++){
@@ -31,7 +43,14 @@ public class SimAI {
                         // calculate score
                         int currentScore = evaluate(board);
                         System.out.println("Moving to: "+dest+" Score: "+currentScore);
-                        if (currentScore>bestScore){
+                        if (isWhite && currentScore>bestScore){
+                            System.out.println("replaced: "+currentScore);
+                            bestScore = currentScore;
+                            srcFinal = new Spot(i,j);
+                            destFinal = dest;
+                        }
+
+                        else if(!isWhite && currentScore<bestScore){
                             System.out.println("replaced: "+currentScore);
                             bestScore = currentScore;
                             srcFinal = new Spot(i,j);
@@ -58,6 +77,7 @@ public class SimAI {
         }
         System.out.println("best");
     }
+
     public int evaluate(Board board){ // this can evaluate any board not just current game board
         // need to calculate checkmate score
         // if white wins score should be greater than 10000 or must be changed in minimax method

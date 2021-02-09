@@ -29,7 +29,6 @@ public class MenuGui{
 
     private ActionListener createActionListenerForHumans(){
         return e -> {
-            System.out.println("Button Pressed");
             window.removePanels();
 
             Game game = new Game();
@@ -43,11 +42,14 @@ public class MenuGui{
 
     private ActionListener createActionListenerForAI(){
         return e -> {
-            System.out.println("Button Pressed");
             window.removePanels();
 
             Game game = new Game();
             game.setAiMode(true);
+
+            game.simAI.setIsWhite(false);
+            game.setIsWhite(true);
+
             BoardGUI boardGUI = new BoardGUI(game);
             boardGUI.updateGUI();
             window.addPanel(boardGUI);

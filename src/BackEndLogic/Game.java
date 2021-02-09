@@ -13,11 +13,11 @@ public class Game {
     static public int blackWins;
     Player whitePlayer;
     Player blackPlayer;
-    SimAI simAI = new SimAI();
+    public SimAI simAI = new SimAI();
 
     private boolean aiMode;
 
-    static boolean whiteTurn;
+    boolean whiteTurn;
 
     public Game(){
         startNewGame();
@@ -25,6 +25,10 @@ public class Game {
 
     History getHistory(){
         return moveHistory;
+    }
+
+    public void setIsWhite(boolean isWhite){
+        this.whiteTurn = isWhite;
     }
 
     public void startNewGame(){
@@ -35,7 +39,6 @@ public class Game {
         }
 
         System.out.println("start new game from game class");
-        Game.whiteTurn = true;
         backEndBoard.addPiece(new Rook(true, new Spot(7,7)));
         backEndBoard.addPiece(new Rook(true, new Spot(7,0)));
         backEndBoard.addPiece(new Rook(false, new Spot(0,0)));
