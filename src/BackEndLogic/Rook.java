@@ -170,8 +170,8 @@ public class Rook extends Piece {
     @Override
     public String toString() {
         String temp;
-        if(isWhite) temp = "w";
-        else temp = "b";
-        return temp+"R";
+        if(isWhite) temp = " w";
+        else temp = " b";
+        return temp+"R ";
     }
 }

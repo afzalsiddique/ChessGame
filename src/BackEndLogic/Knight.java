@@ -190,9 +190,9 @@ public class Knight extends Piece {
     @Override
     public String toString() {
         String temp;
-        if(isWhite) temp = "w";
-        else temp = "b";
-        return temp+"K";
+        if(isWhite) temp = " w";
+        else temp = " b";
+        return temp+"K ";
     }
 
 }
