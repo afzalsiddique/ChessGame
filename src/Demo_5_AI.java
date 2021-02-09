@@ -2,7 +2,7 @@ import BackEndLogic.*;
 import UserInterface.BoardGUI;
 import UserInterface.DisplayWindow;
 
-public class Demo_4_AI {
+public class Demo_5_AI {
     public static void main(String[] args) {
         Board board = new Board();
 

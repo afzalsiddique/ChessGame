@@ -44,9 +44,9 @@ public class BoardGUI extends JPanel {
         });
         this.add(undoButton);
 
-        player1Wins = new JLabel("                       Player1 Wins: "+game.whiteWins+"              ");
+        player1Wins = new JLabel("                       White Wins: "+game.whiteWins+"              ");
         add(player1Wins);
-        player2Wins = new JLabel("                Player2 Wins: "+game.blackWins+"                  ");
+        player2Wins = new JLabel("                Black Wins: "+game.blackWins+"                  ");
         add(player2Wins);
         JButton startNewGame = new JButton("Start New Game");
         startNewGame.addActionListener(new ActionListener() {
