@@ -87,12 +87,16 @@ public class Board {
             System.out.println("draw");
             return "draw";
         }
-        System.out.println("no winner yet");
+//        System.out.println("no winner yet");
         return "none";
     }
     public boolean isOccupied(Spot inputSpot){             // True if already occupied, false if not
         int col = inputSpot.col;
         int row = inputSpot.row;
+
+        if(col >= 8 || col < 0 || row >= 8 || col < 0)
+            return true;
+
         Piece positionToCheck = positions[row][col];
         if(positionToCheck == null)
             return false;
@@ -224,7 +228,7 @@ public class Board {
         return isCheck;
     }
 
-    protected ArrayList<Spot> modifyAvailableMoves(ArrayList<Spot> Moves, Spot currentSpot, boolean isWhite){        // Remove the Moves that cause check
+    ArrayList<Spot> modifyAvailableMoves(ArrayList<Spot> Moves, Spot currentSpot, boolean isWhite){        // Remove the Moves that cause check
         ArrayList<Spot> finalMoves = new ArrayList<>();
         for(int i=0; i<Moves.size(); i++){
             if(!checkIfMoveCreatesCheck(Moves.get(i), currentSpot, isWhite))
@@ -280,6 +284,10 @@ public class Board {
 
     }
 
+    void removeSelectedPiece(){
+        Spot prevPos = moveTransitionRecord.getToMovePiece().getCurrentSpot();
+        positions[prevPos.row][prevPos.col] = null;
+    }
     public void addPiece(Piece piece){
         piece.setBoard(this);
         positions[piece.getCurrentSpot().row][piece.getCurrentSpot().col] = piece;
@@ -316,6 +324,7 @@ public class Board {
             }
         }
 
+        // check if en Passant move
         if(moveTransitionRecord.getToMovePiece() instanceof Pawn){
             if(((Pawn) moveTransitionRecord.getToMovePiece()).isEnPassantMove()){
                 ((Pawn) moveTransitionRecord.getToMovePiece()).executeEnPassant();
@@ -326,10 +335,7 @@ public class Board {
 
     }
 
-    void removeSelectedPiece(){
-        Spot prevPos = moveTransitionRecord.getToMovePiece().getCurrentSpot();
-        positions[prevPos.row][prevPos.col] = null;
-    }
+
 
     public void makeMove(int row, int col){
         makeMove(new Spot(row, col));
