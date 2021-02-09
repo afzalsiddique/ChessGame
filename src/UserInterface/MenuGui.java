@@ -16,11 +16,14 @@ public class MenuGui{
 
     private void createAIButtons(){
         MenuButton playerVsPlayer = new MenuButton("Player vs Player");
-        MenuButton playerVsAI = new MenuButton("Player vs AI");
+        MenuButton playerVsAIWhite = new MenuButton("Player (White) vs AI (Black)");
+        MenuButton playerVsAIBlack = new MenuButton("Player (Black) vs AI (White)");
         panel.add(playerVsPlayer);
-        panel.add(playerVsAI);
+        panel.add(playerVsAIWhite);
+        panel.add(playerVsAIBlack);
         playerVsPlayer.addActionListener(createActionListenerForHumans());
-        playerVsAI.addActionListener(createActionListenerForAI());
+        playerVsAIWhite.addActionListener(createActionListenerForAIWhite());
+        playerVsAIBlack.addActionListener(createActionListenerForAIBlack());
     }
 
     public void addWindow(DisplayWindow jframe){
@@ -33,6 +36,7 @@ public class MenuGui{
 
             Game game = new Game();
             game.setAiMode(false);
+            game.setIsWhite(true);
             BoardGUI boardGUI = new BoardGUI(game);
             boardGUI.updateGUI();
             window.addPanel(boardGUI);
@@ -40,7 +44,7 @@ public class MenuGui{
         };
     }
 
-    private ActionListener createActionListenerForAI(){
+    private ActionListener createActionListenerForAIWhite(){
         return e -> {
             window.removePanels();
 
@@ -49,6 +53,23 @@ public class MenuGui{
 
             game.simAI.setIsWhite(false);
             game.setIsWhite(true);
+
+            BoardGUI boardGUI = new BoardGUI(game);
+            boardGUI.updateGUI();
+            window.addPanel(boardGUI);
+            window.refresh();
+        };
+    }
+
+    private ActionListener createActionListenerForAIBlack(){
+        return e -> {
+            window.removePanels();
+
+            Game game = new Game();
+            game.setAiMode(true);
+
+            game.simAI.setIsWhite(true);
+            game.setIsWhite(false);
 
             BoardGUI boardGUI = new BoardGUI(game);
             boardGUI.updateGUI();
