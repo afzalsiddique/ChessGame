@@ -2,6 +2,7 @@ package BackEndLogic;
 
 import UserInterface.BoardGUI;
 
+import javax.swing.plaf.basic.BasicScrollPaneUI;
 import java.util.ArrayList;
 
 public class Game {
@@ -38,6 +39,11 @@ public class Game {
         backEndBoard.addPiece(new King(true, new Spot(7,0)));
         backEndBoard.addPiece(new King(false, new Spot(0,0)));
     }
+
+    public History getHistory(){
+        return moveHistory;
+    }
+
     public void setFrontEndBoard(BoardGUI boardGUI){
         this.boardGUI = boardGUI;
     }
