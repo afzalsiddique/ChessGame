@@ -40,10 +40,14 @@ public class Game {
         backEndBoard.addPiece(new King(true, new Spot(7,4)));
         backEndBoard.addPiece(new King(false, new Spot(0,4)));
         backEndBoard.addPiece(new Bishop(true, new Spot(7,2)));
-        backEndBoard.addPiece(new Pawn(true, new Spot(6,5)));
-        backEndBoard.addPiece(new Pawn(true, new Spot(6,4)));
-        backEndBoard.addPiece(new Pawn(false, new Spot(1,4)));
-        backEndBoard.addPiece(new Pawn(false, new Spot(1,5)));
+
+        for(int i=1; i<8; i++){
+            backEndBoard.addPiece(new Pawn(false, new Spot(1,i)));
+        }
+
+        for(int i=1; i<8; i++){
+            backEndBoard.addPiece(new Pawn(true, new Spot(6,i)));
+        }
 
         backEndBoard.setBoardOnAllPieces();
         backEndBoard.setGameInfo(this);

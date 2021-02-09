@@ -150,6 +150,8 @@ public class Rook extends Piece {
         System.out.println("Doing Calcs On kings Side");
         board.putPieceAtLocation(thisRow, thisCol-2, this);
         board.removePiece(thisRow, thisCol);
+
+        setFirstMove(false);
     }
 
     public void castleQueenSide(){
@@ -158,6 +160,8 @@ public class Rook extends Piece {
         System.out.println("Doing Calcs On queens Side");
         board.putPieceAtLocation(thisRow, thisCol+3, this);
         board.removePiece(thisRow, thisCol);
+
+        setFirstMove(false);
     }
 
     public void setValue(){

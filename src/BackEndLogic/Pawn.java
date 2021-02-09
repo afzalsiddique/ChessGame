@@ -16,6 +16,7 @@ public class Pawn extends Piece {
         this.currentSpot = spot;
         ImportImage();
         setValue();
+        setPrevSpot(currentSpot);
     }
 
     public Pawn(boolean isWhite, int x, int y){
@@ -23,6 +24,7 @@ public class Pawn extends Piece {
         this.currentSpot = new Spot(x,y);
         ImportImage();
         setValue();
+        setPrevSpot(currentSpot);
     }
 
     public Pawn(boolean isWhite, Spot spot, Boolean firstMove){
@@ -31,6 +33,7 @@ public class Pawn extends Piece {
         ImportImage();
         setValue();
         setFirstMove(firstMove);
+        setPrevSpot(currentSpot);
     }
 
     public boolean isFirstMove(){
@@ -39,6 +42,14 @@ public class Pawn extends Piece {
 
     public void setFirstMove(boolean thisBoolean){
         firstMove = thisBoolean;
+    }
+
+    public void setPrevSpot(Spot prevSpot) {
+        this.prevSpot = prevSpot;
+    }
+
+    public Spot getPrevSpot(){
+        return prevSpot;
     }
 
     private void ImportImage(){
@@ -55,43 +66,71 @@ public class Pawn extends Piece {
     }
 
     boolean didPawnDoubleMove(){
-        if(prevSpot.col == currentSpot.col && Math.abs(prevSpot.row - prevSpot.row) == 2)
+        System.out.println("Check double move for Pawn on " + currentSpot);
+        System.out.println("CurrentSpot=" + currentSpot);
+        System.out.println("prevSpot=" + prevSpot);
+
+        if(prevSpot.col == currentSpot.col && Math.abs(prevSpot.row - currentSpot.row) == 2){
+            System.out.println("true");
             return true;
-        else
-            return false;
+        }
+
+        System.out.println("false");
+        return false;
     }
 
     boolean isEnPassantAvailableOnLeft(){
+        System.out.println("Checking left Pawn on " + currentSpot);
+
         Spot spotToCheck = new Spot(currentSpot.row, currentSpot.col-1);
-        if(!board.isOccupied(spotToCheck))
+
+        if(spotToCheck.row >= 8 || spotToCheck.row < 0 || spotToCheck.col >= 8 || spotToCheck.col < 0)
             return false;
 
-        if(!board.isOpponent(this, board.getPiece(spotToCheck)) || !(board.getPiece(spotToCheck) instanceof Pawn))
+        if(!board.isOccupied(spotToCheck)){
+            System.out.println("1");
             return false;
+        }
 
-        if(((Pawn) board.getPiece(spotToCheck)).didPawnDoubleMove())
-            return true;
 
-        return false;
+        if(!board.isOpponent(this, board.getPiece(spotToCheck)) || !(board.getPiece(spotToCheck) instanceof Pawn)){
+            System.out.println("2");
+            return false;
+        }
+
+
+        if(!((Pawn) board.getPiece(spotToCheck)).didPawnDoubleMove()){
+            System.out.println("3");
+            return false;
+        }
+
+
+        System.out.println("left");
+        return true;
     }
 
     boolean isEnPassantAvailableOnRight(){
+        System.out.println("Checking right Pawn on " + currentSpot);
         Spot spotToCheck = new Spot(currentSpot.row, currentSpot.col+1);
+
+        if(spotToCheck.row >= 8 || spotToCheck.row < 0 || spotToCheck.col >= 8 || spotToCheck.col < 0)
+            return false;
+
         if(!board.isOccupied(spotToCheck))
             return false;
 
         if(!board.isOpponent(this, board.getPiece(spotToCheck)) || !(board.getPiece(spotToCheck) instanceof Pawn))
             return false;
 
-        if(((Pawn) board.getPiece(spotToCheck)).didPawnDoubleMove())
-            return true;
+        if(!((Pawn) board.getPiece(spotToCheck)).didPawnDoubleMove())
+            return false;
 
-        return false;
+//        System.out.println("right");
+        return true;
     }
 
     @Override
     public ArrayList<Spot> calculateAllPossibleMovesWithoutModifying() {
-        prevSpot = currentSpot;
 
         Piece[][] positions = board.positions;
         availableMoves.clear();
