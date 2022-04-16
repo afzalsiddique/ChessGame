@@ -12,23 +12,43 @@ public class TestPawn {
     @Test
     public void test1(){
         Board board = new Board();
-        Piece piece1 = new Pawn(true, new Spot(6,1));
+        Pawn piece1 = new Pawn(true, new Spot(6,2));
         board.addPiece(piece1);
         ArrayList<Spot> actual = piece1.calculateAllPossibleMoves();
         Collections.sort(actual);
         ArrayList<Spot> expected = new ArrayList<>(){
             {
-                add(new Spot(5,1));
+                add(new Spot(5,2));
+                add(new Spot(4,2));
             }
         };
+        Collections.sort(expected);
         Assert.assertArrayEquals(expected.toArray(), actual.toArray());
     }
+
+    @Test
+    public void test2(){
+        Board board = new Board();
+        Pawn piece1 = new Pawn(true, new Spot(6,2));
+        piece1.setFirstMove(false);
+        board.addPiece(piece1);
+        ArrayList<Spot> actual = piece1.calculateAllPossibleMoves();
+        Collections.sort(actual);
+        ArrayList<Spot> expected = new ArrayList<>(){
+            {
+                add(new Spot(5,2));
+            }
+        };
+        Collections.sort(expected);
+        Assert.assertArrayEquals(expected.toArray(), actual.toArray());
+    }
+
     @Test
     public void test3(){
         Board board = new Board();
-        Piece piece1 = new Pawn(true, new Spot(6,1));
+        Pawn piece1 = new Pawn(true, new Spot(6,1));
         board.addPiece(piece1);
-        Piece piece2 = new Pawn(false, new Spot(5,0));
+        Pawn piece2 = new Pawn(false, new Spot(5,0));
         board.addPiece(piece2);
         ArrayList<Spot> actual = piece1.calculateAllPossibleMoves();
         Collections.sort(actual);
@@ -36,6 +56,7 @@ public class TestPawn {
             {
                 add(new Spot(5,0));
                 add(new Spot(5,1));
+                add(new Spot(4,1));
             }
         };
         Collections.sort(expected);

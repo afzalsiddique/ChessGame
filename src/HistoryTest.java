@@ -1,13 +1,16 @@
 import BackEndLogic.*;
 import org.junit.jupiter.api.Test;
+import org.junit.Assert;
 
 public class HistoryTest {
-    Game game = new Game();
-    Board currentBoard = game.getBackEndBoard();
-    History moveHistory = new History();
+
 
     @Test
     public void Test1(){
+        Game game = new Game();
+        Board currentBoard = game.getBackEndBoard();
+        History moveHistory = new History();
+
         System.out.println("Adding a Move");
         moveHistory.addRecord(currentBoard);
         moveHistory.getLastRecord();
@@ -16,9 +19,10 @@ public class HistoryTest {
         currentBoard.addPiece(new Pawn(false, new Spot(0,7)));
 
 
-
         moveHistory.addRecord(currentBoard);
         moveHistory.printEntireHistory();
+
+//        History expectedHist = new History();
 
         System.out.println("Removing a move");
         moveHistory.removeLastRecord();

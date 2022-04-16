@@ -10,7 +10,7 @@ public class Game {
     Board backEndBoard = new Board();
     BoardGUI boardGUI;
     History moveHistory = new History();
-    AI_Agent ai_agent = new AI_Agent(backEndBoard);
+//    AI_Agent ai_agent = new AI_Agent(backEndBoard);
     static public int whiteWins;
     static public int blackWins;
     Player whitePlayer;
@@ -167,12 +167,6 @@ public class Game {
         changeTurn();
         moveHistory.addRecord(backEndBoard);
 
-//        // Wait for 1-2 s
-//        for(int i=0; i<1000000000; i++){
-//            for(int j=0; j<1000000000; j++){
-//
-//            }
-//        }
 
         boardGUI.updateGUI();
 
