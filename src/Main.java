@@ -3,7 +3,7 @@ import UserInterface.*;
 import java.util.Random;
 
 // Just creates a window with the menu
-public class Demo_1_MainClass {
+public class Main {
     public static void main(String[] args) {
         DisplayWindow displayWindow = new DisplayWindow();
         MenuGui menuGui = new MenuGui();
